@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>硬连接和软连接 | Cooper Yang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Inode inode（即索引节点号）是Linux系统识别文件的唯一标识。 系统是通过inode来查找正确的文件数据块，并不是通过文件名。   Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。  硬链接和软链接在Linux系统为了解决文件共享问题，使用两种方式：hard lin">
+  <meta name="description" content="Inode inode（即索引节点号）是Linux系统识别文件的唯一标识。 系统是通过inode来查找正确的文件数据块，并不是通过文件名。  Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。 硬链接和软链接在Linux系统为了解决文件共享问题，使用两种方式：hard link（">
 <meta name="keywords" content="前端,Network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="硬连接和软连接">
 <meta property="og:url" content="http://yoursite.com/2017/07/06/20180706-硬连接和软连接/index.html">
 <meta property="og:site_name" content="Cooper Yang">
-<meta property="og:description" content="Inode inode（即索引节点号）是Linux系统识别文件的唯一标识。 系统是通过inode来查找正确的文件数据块，并不是通过文件名。   Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。  硬链接和软链接在Linux系统为了解决文件共享问题，使用两种方式：hard lin">
+<meta property="og:description" content="Inode inode（即索引节点号）是Linux系统识别文件的唯一标识。 系统是通过inode来查找正确的文件数据块，并不是通过文件名。  Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。 硬链接和软链接在Linux系统为了解决文件共享问题，使用两种方式：hard link（">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-06T07:58:55.714Z">
+<meta property="og:updated_time" content="2018-07-06T08:07:46.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="硬连接和软连接">
-<meta name="twitter:description" content="Inode inode（即索引节点号）是Linux系统识别文件的唯一标识。 系统是通过inode来查找正确的文件数据块，并不是通过文件名。   Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。  硬链接和软链接在Linux系统为了解决文件共享问题，使用两种方式：hard lin">
+<meta name="twitter:description" content="Inode inode（即索引节点号）是Linux系统识别文件的唯一标识。 系统是通过inode来查找正确的文件数据块，并不是通过文件名。  Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。 硬链接和软链接在Linux系统为了解决文件共享问题，使用两种方式：hard link（">
   
   
     <link rel="icon" href="/favicon.png">
@@ -193,9 +193,7 @@
 <li>inode（即索引节点号）是Linux系统识别文件的唯一标识。</li>
 <li>系统是通过inode来查找正确的文件数据块，并不是通过文件名。</li>
 </ol>
-<hr>
 <h4 id="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"><a href="#Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。" class="headerlink" title="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"></a>Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。</h4><p>元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。</p>
-<hr>
 <h1 id="硬链接和软链接"><a href="#硬链接和软链接" class="headerlink" title="硬链接和软链接"></a>硬链接和软链接</h1><p>在Linux系统为了解决文件共享问题，使用两种方式：hard link（硬链接）和soft link（软链接），链接不仅仅可以共享文件，还有方便管理、隐藏路径、节省空间等好处。</p>
 <h2 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h2><h3 id="若是使用同一个inode对应多个文件，则使用的就是硬链接。"><a href="#若是使用同一个inode对应多个文件，则使用的就是硬链接。" class="headerlink" title="若是使用同一个inode对应多个文件，则使用的就是硬链接。"></a>若是使用同一个inode对应多个文件，则使用的就是硬链接。</h3><p>硬链接可以使用link和ln创建</p>
 <p>语法：ln filename [linkname ]</p>
@@ -246,13 +244,13 @@
 <h4 id="建立了软链接，而链接数还是1没有改变"><a href="#建立了软链接，而链接数还是1没有改变" class="headerlink" title="建立了软链接，而链接数还是1没有改变"></a>建立了软链接，而链接数还是1没有改变</h4><ol start="6">
 <li>删除软链接并不影响源文件，但删除源文件软链接就会变成死链接，若链接指向的路径文件被重新建立，则链接恢复</li>
 </ol>
-<h4 id="在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"><a href="#在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据" class="headerlink" title="在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"></a>在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据</h4><hr>
-<h2 id="其他相关命令"><a href="#其他相关命令" class="headerlink" title="其他相关命令"></a>其他相关命令</h2><p>使用find 命令可以查找链接文件</p>
+<h4 id="在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"><a href="#在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据" class="headerlink" title="在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"></a>在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据</h4><h2 id="其他相关命令"><a href="#其他相关命令" class="headerlink" title="其他相关命令"></a>其他相关命令</h2><p>使用find 命令可以查找链接文件</p>
 <ol>
 <li>查找目录文件下相同inode的文件</li>
 </ol>
-<h4 id="find-dirs-inum-inode"><a href="#find-dirs-inum-inode" class="headerlink" title="find /dirs inum inode"></a>find /dirs inum inode</h4><p>2.</p>
-<hr>
+<h4 id="find-dirs-inum-inode"><a href="#find-dirs-inum-inode" class="headerlink" title="find /dirs inum inode"></a>find /dirs inum inode</h4><ol start="2">
+<li>。。。。。</li>
+</ol>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>硬链接本质上就是同一个文件的不同文件名。软链接就是独立的文件，不过文件中存放的是源文件的路径。</p>
 
       
