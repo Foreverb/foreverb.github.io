@@ -189,7 +189,9 @@
         <h1 id="js获取光标位置"><a href="#js获取光标位置" class="headerlink" title="js获取光标位置"></a>js获取光标位置</h1><ol>
 <li>概念和原理</li>
 </ol>
+<blockquote>
 <p>DOM中并没有直接获取光标位置的方法，那么我们只能间接来获取光标位置。DOM支持获取光标选中的范围，我们可以以此为切入点，来获取或定位光标的位置。当选取范围起始点和结束点一样时，就是光标插入的位置。</p>
+</blockquote>
 <ul>
 <li>术语</li>
 </ul>
@@ -215,9 +217,13 @@
 <ul>
 <li>input/textarea</li>
 </ul>
+<blockquote>
 <p>在html5中，可输入性表单元素（input/textarea）都存在以下属性。不支持IE6/7。</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">selectionDirection:forward | backward | none,选区方向</span><br><span class="line">selectionEnd:选区终点位置</span><br><span class="line">selectionStart:选区起点位置</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>setSelectionRange(selectionStart, selectionEnd, [selectionDirection]):设置获取焦点的输入性元素的选区范围。</p>
+</blockquote>
 <ol start="2">
 <li>获取光标位置</li>
 </ol>
@@ -231,7 +237,9 @@
 <ol start="3">
 <li>设置光标位置</li>
 </ol>
+<blockquote>
 <p>可编辑div设置光标位置</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//设置光标位置</span><br><span class="line">const setCaretPosition = function (element, pos) &#123;</span><br><span class="line">  var range, selection;</span><br><span class="line">  if (document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+</span><br><span class="line">  &#123;</span><br><span class="line">    range = document.createRange();//创建一个选中区域</span><br><span class="line">    range.selectNodeContents(element);//选中节点的内容</span><br><span class="line">    if(element.innerHTML.length &gt; 0) &#123;</span><br><span class="line">      range.setStart(element.childNodes[0], pos); //设置光标起始为指定位置</span><br><span class="line">    &#125;</span><br><span class="line">    range.collapse(true);       //设置选中区域为一个点</span><br><span class="line">    selection = window.getSelection();//获取当前选中区域</span><br><span class="line">    selection.removeAllRanges();//移出所有的选中范围</span><br><span class="line">    selection.addRange(range);//添加新建的范围</span><br><span class="line">  &#125;</span><br><span class="line">  else if (document.selection)//IE 8 and lower</span><br><span class="line">  &#123;</span><br><span class="line">    range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)</span><br><span class="line">    range.moveToElementText(element);//Select the entire contents of the element with the range</span><br><span class="line">    range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start</span><br><span class="line">    range.select();//Select the range (make it the visible selection</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> input/textarea获取光标位置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 设置光标位置</span><br><span class="line">function setCaretPosition(textDom, pos)&#123;</span><br><span class="line">    if(textDom.setSelectionRange) &#123;</span><br><span class="line">        // IE Support</span><br><span class="line">        textDom.focus();</span><br><span class="line">        textDom.setSelectionRange(pos, pos);</span><br><span class="line">    &#125;else if (textDom.createTextRange) &#123;</span><br><span class="line">        // Firefox support</span><br><span class="line">        var range = textDom.createTextRange();</span><br><span class="line">        range.collapse(true);</span><br><span class="line">        range.moveEnd(&apos;character&apos;, pos);</span><br><span class="line">        range.moveStart(&apos;character&apos;, pos);</span><br><span class="line">        range.select();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1508,11 +1516,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1653,26 +1661,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1685,11 +1673,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ALL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
             
             <div class="clearfix"></div>
