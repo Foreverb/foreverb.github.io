@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-16T12:38:39.624Z</updated>
+  <updated>2018-10-29T14:24:27.884Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端求职面试问题</title>
+    <link href="http://yoursite.com/2017/10/29/git%E5%88%9B%E5%BB%BA%EF%BC%8C%E6%9F%A5%E7%9C%8B%EF%BC%8C%E5%88%A0%E9%99%A4%EF%BC%8C%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF/"/>
+    <id>http://yoursite.com/2017/10/29/git创建，查看，删除，切换分支/</id>
+    <published>2017-10-28T16:00:00.000Z</published>
+    <updated>2018-10-29T14:24:27.884Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="git创建新分支，查看分支，删除分支，切换分支等问题"><a href="#git创建新分支，查看分支，删除分支，切换分支等问题" class="headerlink" title="git创建新分支，查看分支，删除分支，切换分支等问题"></a>git创建新分支，查看分支，删除分支，切换分支等问题</h2><h2 id="一、使用背景"><a href="#一、使用背景" class="headerlink" title="一、使用背景"></a>一、使用背景</h2><p>总所周知，在日常开发中，我们需要把测试服务器和正式服务器分开。相应的，为了保持正式版本能正常运行，我们需要新建一个git分支用来专门的存放正式版APP的源码。</p><p>这样，每当我们生成一个版本的时候，我们都可以把稳定版本的源码放到online这个分支上。然后在master分支上继续开发新功能。当需要升级版本的时候，我们只需要把master分支上成熟的代码推送到online分支即可。</p><h2 id="二、创建分支及其相关命令"><a href="#二、创建分支及其相关命令" class="headerlink" title="二、创建分支及其相关命令"></a>二、创建分支及其相关命令</h2><p>1、创建新分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//新建online分支</span><br><span class="line">git checkout -b online</span><br></pre></td></tr></table></figure><p>2、查看当前所有分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//查看当前所有的分支</span><br><span class="line">git branch -a</span><br><span class="line">//结果显示带*号的，而且颜色是绿色的即为我们当前所在的分支</span><br><span class="line">*master</span><br><span class="line">online</span><br></pre></td></tr></table></figure><p>3、切换分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//从当前的master分支切换到online分支上面</span><br><span class="line">git checkout online</span><br><span class="line">//此时可以查看分支,使用git branch即可看到master和online分支</span><br><span class="line">git branch</span><br></pre></td></tr></table></figure><p>4、删除分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//删除online分支</span><br><span class="line">git branch -d online</span><br></pre></td></tr></table></figure><p>5、本地合并新分支代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//origin是本地默认的一个名称，自己在新建本地仓库的时候是可以改名的</span><br><span class="line">//平常使用的git pull都是默认从master分支上拉去代码。这里是从online分支上拉取代码</span><br><span class="line">git pull origin online</span><br></pre></td></tr></table></figure><p>6、本地提交代码到新的分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//这里和上面的git pull差不多。是提交本地代码到online分支</span><br><span class="line">git push origin online</span><br></pre></td></tr></table></figure><h2 id="三、需要注意的问题"><a href="#三、需要注意的问题" class="headerlink" title="三、需要注意的问题"></a>三、需要注意的问题</h2><p>1、远程新建分支之后，本地如果立刻使用 git branch -a 查看分支的话，会看不到新建的分支。需要现在本地git pull一下。</p><p>2、如果我们已经通过git checkout master，切换到了master分支。那么我们在本地通过git pull和git push 都可以直接拉去或提交代码到master分支。git会默认使用你当前所在的分支</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;git创建新分支，查看分支，删除分支，切换分支等问题&quot;&gt;&lt;a href=&quot;#git创建新分支，查看分支，删除分支，切换分支等问题&quot; class=&quot;headerlink&quot; title=&quot;git创建新分支，查看分支，删除分支，切换分支等问题&quot;&gt;&lt;/a&gt;git创建新分支
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>js获取光标位置</title>
@@ -150,9 +177,9 @@
     
       <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
       <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
       <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
     
