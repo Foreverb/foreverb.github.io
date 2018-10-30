@@ -173,7 +173,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/01/node自动重启工具/">js获取光标位置</a>
+      <a class="article-title" href="/2017/11/01/node自动重启工具/">Node自动重启工具 nodemon</a>
     </h1>
   
 
@@ -186,7 +186,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Node自动重启工具-nodemon"><a href="#Node自动重启工具-nodemon" class="headerlink" title="Node自动重启工具 nodemon"></a>Node自动重启工具 nodemon</h2><h3 id="为什么要使用"><a href="#为什么要使用" class="headerlink" title="为什么要使用"></a>为什么要使用</h3><p>在编写调试Node.js项目，修改代码后，需要频繁的手动close掉，然后再重新启动，非常繁琐。现在，我们可以使用nodemon这个工具，它的作用是监听代码文件的变动，当代码改变之后，自动重启。</p>
+        <h3 id="为什么要使用"><a href="#为什么要使用" class="headerlink" title="为什么要使用"></a>为什么要使用</h3><p>在编写调试Node.js项目，修改代码后，需要频繁的手动close掉，然后再重新启动，非常繁琐。现在，我们可以使用nodemon这个工具，它的作用是监听代码文件的变动，当代码改变之后，自动重启。</p>
 <h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm/cnpm install -g nodemon</span><br></pre></td></tr></table></figure>
 <p>安装在全局。</p>
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>编写代码 app.js</p>
@@ -281,7 +281,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Promise-的基础用法"><a href="#Promise-的基础用法" class="headerlink" title="Promise 的基础用法"></a>Promise 的基础用法</h2><h3 id="Promise-的含义"><a href="#Promise-的含义" class="headerlink" title="Promise 的含义"></a>Promise 的含义</h3><p>Promise 是异步编程的一种解决方案，比传统的解决方案–回调函数和事件－－更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise</p>
+        <h3 id="Promise-的含义"><a href="#Promise-的含义" class="headerlink" title="Promise 的含义"></a>Promise 的含义</h3><p>Promise 是异步编程的一种解决方案，比传统的解决方案–回调函数和事件－－更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise</p>
 <p>所谓Promise ，简单说就是一个容器，里面保存着某个未来才回结束的事件(通常是一个异步操作）的结果。从语法上说，Promise是一个对象，从它可以获取异步操作的消息。<br>Promise 对象的状态不受外界影响</p>
 <h3 id="三种状态"><a href="#三种状态" class="headerlink" title="三种状态:"></a>三种状态:</h3><ul>
 <li>pending：进行中</li>
@@ -482,7 +482,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="git创建新分支，查看分支，删除分支，切换分支等问题"><a href="#git创建新分支，查看分支，删除分支，切换分支等问题" class="headerlink" title="git创建新分支，查看分支，删除分支，切换分支等问题"></a>git创建新分支，查看分支，删除分支，切换分支等问题</h2><h2 id="一、使用背景"><a href="#一、使用背景" class="headerlink" title="一、使用背景"></a>一、使用背景</h2><p>总所周知，在日常开发中，我们需要把测试服务器和正式服务器分开。相应的，为了保持正式版本能正常运行，我们需要新建一个git分支用来专门的存放正式版APP的源码。</p>
+        <h2 id="一、使用背景"><a href="#一、使用背景" class="headerlink" title="一、使用背景"></a>一、使用背景</h2><p>总所周知，在日常开发中，我们需要把测试服务器和正式服务器分开。相应的，为了保持正式版本能正常运行，我们需要新建一个git分支用来专门的存放正式版APP的源码。</p>
 <p>这样，每当我们生成一个版本的时候，我们都可以把稳定版本的源码放到online这个分支上。然后在master分支上继续开发新功能。当需要升级版本的时候，我们只需要把master分支上成熟的代码推送到online分支即可。</p>
 <h2 id="二、创建分支及其相关命令"><a href="#二、创建分支及其相关命令" class="headerlink" title="二、创建分支及其相关命令"></a>二、创建分支及其相关命令</h2><p>1、创建新分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//新建online分支</span><br><span class="line">git checkout -b online</span><br></pre></td></tr></table></figure>
@@ -579,7 +579,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="js获取光标位置"><a href="#js获取光标位置" class="headerlink" title="js获取光标位置"></a>js获取光标位置</h1><ol>
+        <ol>
 <li>概念和原理</li>
 </ol>
 <blockquote>
@@ -2074,18 +2074,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -2098,11 +2086,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
