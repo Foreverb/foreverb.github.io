@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-01T05:06:46.680Z</updated>
+  <updated>2018-11-10T11:00:05.188Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js模拟UBB表情发送</title>
+    <link href="http://yoursite.com/2017/11/10/ubb%E8%A1%A8%E6%83%85%E9%80%BB%E8%BE%91/"/>
+    <id>http://yoursite.com/2017/11/10/ubb表情逻辑/</id>
+    <published>2017-11-09T16:00:00.000Z</published>
+    <updated>2018-11-10T11:00:05.188Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近本人在用react开发一个在线视频聊天的项目的时候碰到了一个难题：发送带有表情的消息，或许对于大部分人来说算不上什么，<br>但作为前端小白的我，挨过这个坎其实也不易。</p><p>无论做什么事情，思路不清逻辑不顺的话，不说百分之百，反正一般人独立解决问题的话应该会有些困难的，本人个人观点。废话不多说</p><p>以下就是我解决这个问题的主要逻辑和思路；</p><h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><a href="http://192.168.31.69:8080/img/step.jpg" target="_blank" rel="noopener">http://192.168.31.69:8080/img/step.jpg</a></p><h5 id="设置和获取光标位置，可以自己在网上查找相关功能接口"><a href="#设置和获取光标位置，可以自己在网上查找相关功能接口" class="headerlink" title="设置和获取光标位置，可以自己在网上查找相关功能接口"></a>设置和获取光标位置，可以自己在网上查找相关功能接口</h5><h2 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h2><p>输入表情(微笑)或者(伤心) =&gt; [微笑] or [伤心]显示在输入框内，这就是下面会提到的UBB标签(字符串)；</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>前提，React Render 时，在JSX中，变量是 字符串或者是 JSX 对象，可以被正常渲染，字符串是字符串，JSX是对应的DOM元素</li><li>前提，React Render 时，在JSX中，变量是一个数组，数组中每个成员是字符串或者是JSX对象，则这个数组内所有的成员，都能被正常渲染</li><li>约定，发送或者接收的消息，都是特殊格式的字符串，聊天消息内容(字符串)+UBB标签(字符串)</li><li>猜想，若能够把消息字符串，转换为一个数组，聊天消息内容，为正常的字符串，UBB标签字符串转换为 JSX对象，类型为 img，img 的src 根据其内容不同而不同</li><li>故：只要把聊天消息，转换为React能接受的数组，即可完成 UBB表情功能</li></ol><p>由此，我做了一个实验，如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例如：你好[笑脸]，不要不理我，[哭脸]。</span><br><span class="line">生成：</span><br><span class="line">out = [</span><br><span class="line">  &quot;你好&quot;,</span><br><span class="line">  &lt;img src=&quot;1.jpg&quot;&gt;,</span><br><span class="line">  &quot;，不要不理我，&quot;</span><br><span class="line">  &lt;img src=&quot;2.jpg&quot;&gt;,</span><br><span class="line">  &quot;。&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>我将这变量out以：{out}这种形式将其放在了jsx对象中，刷新页面，发现out中的内容被渲染成了<br>文字加图片的形式：”你好😁，不要不理我，😭 “。于是这个猜想得到了验证</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>也就是说，想要完成UBB表情功能，我们只需要将发送或者接受到的消息，从string的格式转化为<br>数组的格式，然后将这数组作为content，写入到jsx对象中，即可由react将其渲染为我们想看到<br>的内容：文字加图片</p><p>解决问题少不了逻辑和思维也就是思路，逻辑思维不清晰，最好不要继续下去，因为这样会使你大脑更乱<br>写代码亦是如此。</p><p>大胆猜想，小心实践，over ！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近本人在用react开发一个在线视频聊天的项目的时候碰到了一个难题：发送带有表情的消息，或许对于大部分人来说算不上什么，&lt;br&gt;但作为前端小白的我，挨过这个坎其实也不易。&lt;/p&gt;
+&lt;p&gt;无论做什么事情，思路不清逻辑不顺的话，不说百分之百，反正一般人独立解决问题的话应该会有
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="UBB" scheme="http://yoursite.com/tags/UBB/"/>
+    
+  </entry>
   
   <entry>
     <title>深入理解 call，apply 和 bind</title>
@@ -210,6 +240,31 @@
   </entry>
   
   <entry>
+    <title>箭头函数</title>
+    <link href="http://yoursite.com/2017/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2017/07/06/箭头函数/</id>
+    <published>2017-07-05T16:00:00.000Z</published>
+    <updated>2018-07-06T08:13:01.301Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="箭头函数没有arugments"><a href="#箭头函数没有arugments" class="headerlink" title="箭头函数没有arugments"></a>箭头函数没有arugments</h2><p>普通函数有arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123; console.log(arguments) &#125;</span><br><span class="line">a(1,2,3)</span><br><span class="line"></span><br><span class="line">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span><br></pre></td></tr></table></figure><p>箭头函数才有 arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = ()=&gt;&#123; console.log(arguments) &#125;</span><br><span class="line">b(1,2,3)</span><br><span class="line">// VM13852:1 Uncaught ReferenceError: arguments is not defined</span><br></pre></td></tr></table></figure><h2 id="箭头函数的this为定义时的环境"><a href="#箭头函数的this为定义时的环境" class="headerlink" title="箭头函数的this为定义时的环境"></a>箭头函数的this为定义时的环境</h2><p>函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br></pre></td></tr></table></figure><p>真实函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>( <span class="built_in">window</span> )&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 箭头函数原理</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="function">(<span class="params"> (v</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        &#125;.bind( v )</span><br><span class="line"></span><br><span class="line">    &#125; )( <span class="keyword">this</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>定义返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a;</span><br><span class="line"><span class="comment">// ƒ a()&#123; console.log(this) &#125;</span></span><br><span class="line">b;</span><br><span class="line"><span class="comment">// ()=&gt;&#123; console.log(this) &#125;</span></span><br></pre></td></tr></table></figure><p>执行返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br><span class="line"></span><br><span class="line">b()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure><p>其他对象调用返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">obj = &#123;&#125;</span><br><span class="line">obj.name = <span class="string">'myObj'</span>;</span><br><span class="line">obj.fa = a;</span><br><span class="line">obj.fb = b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj.fa();</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;fa: ƒ, name: "myObj", fb: ƒ&#125;</span></span><br><span class="line">obj.fb();</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;箭头函数没有arugments&quot;&gt;&lt;a href=&quot;#箭头函数没有arugments&quot; class=&quot;headerlink&quot; title=&quot;箭头函数没有arugments&quot;&gt;&lt;/a&gt;箭头函数没有arugments&lt;/h2&gt;&lt;p&gt;普通函数有arguments&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>硬连接和软连接</title>
     <link href="http://yoursite.com/2017/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/"/>
     <id>http://yoursite.com/2017/07/06/20180706-硬连接和软连接/</id>
@@ -235,31 +290,6 @@
       <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
     
       <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>箭头函数</title>
-    <link href="http://yoursite.com/2017/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2017/07/06/箭头函数/</id>
-    <published>2017-07-05T16:00:00.000Z</published>
-    <updated>2018-07-06T08:13:01.301Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="箭头函数没有arugments"><a href="#箭头函数没有arugments" class="headerlink" title="箭头函数没有arugments"></a>箭头函数没有arugments</h2><p>普通函数有arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123; console.log(arguments) &#125;</span><br><span class="line">a(1,2,3)</span><br><span class="line"></span><br><span class="line">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span><br></pre></td></tr></table></figure><p>箭头函数才有 arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = ()=&gt;&#123; console.log(arguments) &#125;</span><br><span class="line">b(1,2,3)</span><br><span class="line">// VM13852:1 Uncaught ReferenceError: arguments is not defined</span><br></pre></td></tr></table></figure><h2 id="箭头函数的this为定义时的环境"><a href="#箭头函数的this为定义时的环境" class="headerlink" title="箭头函数的this为定义时的环境"></a>箭头函数的this为定义时的环境</h2><p>函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br></pre></td></tr></table></figure><p>真实函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>( <span class="built_in">window</span> )&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 箭头函数原理</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="function">(<span class="params"> (v</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        &#125;.bind( v )</span><br><span class="line"></span><br><span class="line">    &#125; )( <span class="keyword">this</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>定义返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a;</span><br><span class="line"><span class="comment">// ƒ a()&#123; console.log(this) &#125;</span></span><br><span class="line">b;</span><br><span class="line"><span class="comment">// ()=&gt;&#123; console.log(this) &#125;</span></span><br></pre></td></tr></table></figure><p>执行返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br><span class="line"></span><br><span class="line">b()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure><p>其他对象调用返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">obj = &#123;&#125;</span><br><span class="line">obj.name = <span class="string">'myObj'</span>;</span><br><span class="line">obj.fa = a;</span><br><span class="line">obj.fb = b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj.fa();</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;fa: ƒ, name: "myObj", fb: ƒ&#125;</span></span><br><span class="line">obj.fb();</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;箭头函数没有arugments&quot;&gt;&lt;a href=&quot;#箭头函数没有arugments&quot; class=&quot;headerlink&quot; title=&quot;箭头函数没有arugments&quot;&gt;&lt;/a&gt;箭头函数没有arugments&lt;/h2&gt;&lt;p&gt;普通函数有arguments&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   

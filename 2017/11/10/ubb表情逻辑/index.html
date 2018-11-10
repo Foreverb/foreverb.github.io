@@ -27,7 +27,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">git 创建、查看、删除、切换分支问题</h3>
+    <h3 class="subtitle">js模拟UBB表情发送</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -44,31 +44,33 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">git 创建、查看、删除、切换分支问题</h1>
+        <h1 class="title">js模拟UBB表情发送</h1>
         <div class="stuff">
-            <span>十月 29, 2017</span>
+            <span>十一月 10, 2017</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/git/">git</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/工具/">工具</a></li></ul>
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JS/">JS</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/UBB/">UBB</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/工具/">工具</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <h2 id="一、使用背景"><a href="#一、使用背景" class="headerlink" title="一、使用背景"></a>一、使用背景</h2><p>总所周知，在日常开发中，我们需要把测试服务器和正式服务器分开。相应的，为了保持正式版本能正常运行，我们需要新建一个git分支用来专门的存放正式版APP的源码。</p>
-<p>这样，每当我们生成一个版本的时候，我们都可以把稳定版本的源码放到online这个分支上。然后在master分支上继续开发新功能。当需要升级版本的时候，我们只需要把master分支上成熟的代码推送到online分支即可。</p>
-<h2 id="二、创建分支及其相关命令"><a href="#二、创建分支及其相关命令" class="headerlink" title="二、创建分支及其相关命令"></a>二、创建分支及其相关命令</h2><p>1、创建新分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//新建online分支</span><br><span class="line">git checkout -b online</span><br></pre></td></tr></table></figure>
-<p>2、查看当前所有分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//查看当前所有的分支</span><br><span class="line">git branch -a</span><br><span class="line">//结果显示带*号的，而且颜色是绿色的即为我们当前所在的分支</span><br><span class="line">*master</span><br><span class="line">online</span><br></pre></td></tr></table></figure>
-<p>3、切换分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//从当前的master分支切换到online分支上面</span><br><span class="line">git checkout online</span><br><span class="line">//此时可以查看分支,使用git branch即可看到master和online分支</span><br><span class="line">git branch</span><br></pre></td></tr></table></figure>
-<p>4、删除分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//删除online分支</span><br><span class="line">git branch -d online</span><br></pre></td></tr></table></figure>
-<p>5、本地合并新分支代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//origin是本地默认的一个名称，自己在新建本地仓库的时候是可以改名的</span><br><span class="line">//平常使用的git pull都是默认从master分支上拉去代码。这里是从online分支上拉取代码</span><br><span class="line">git pull origin online</span><br></pre></td></tr></table></figure>
-<p>6、本地提交代码到新的分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//这里和上面的git pull差不多。是提交本地代码到online分支</span><br><span class="line">git push origin online</span><br></pre></td></tr></table></figure>
-<h2 id="三、需要注意的问题"><a href="#三、需要注意的问题" class="headerlink" title="三、需要注意的问题"></a>三、需要注意的问题</h2><p>1、远程新建分支之后，本地如果立刻使用 git branch -a 查看分支的话，会看不到新建的分支。需要现在本地git pull一下。</p>
-<p>2、如果我们已经通过git checkout master，切换到了master分支。那么我们在本地通过git pull和git push 都可以直接拉去或提交代码到master分支。git会默认使用你当前所在的分支</p>
+            <p>最近本人在用react开发一个在线视频聊天的项目的时候碰到了一个难题：发送带有表情的消息，或许对于大部分人来说算不上什么，<br>但作为前端小白的我，挨过这个坎其实也不易。</p>
+<p>无论做什么事情，思路不清逻辑不顺的话，不说百分之百，反正一般人独立解决问题的话应该会有些困难的，本人个人观点。废话不多说</p>
+<p>以下就是我解决这个问题的主要逻辑和思路；</p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><a href="http://192.168.31.69:8080/img/step.jpg" target="_blank" rel="noopener">http://192.168.31.69:8080/img/step.jpg</a></p>
+<h5 id="设置和获取光标位置，可以自己在网上查找相关功能接口"><a href="#设置和获取光标位置，可以自己在网上查找相关功能接口" class="headerlink" title="设置和获取光标位置，可以自己在网上查找相关功能接口"></a>设置和获取光标位置，可以自己在网上查找相关功能接口</h5><h2 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h2><p>输入表情(微笑)或者(伤心) =&gt; [微笑] or [伤心]显示在输入框内，这就是下面会提到的UBB标签(字符串)；</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>前提，React Render 时，在JSX中，变量是 字符串或者是 JSX 对象，可以被正常渲染，字符串是字符串，JSX是对应的DOM元素</li>
+<li>前提，React Render 时，在JSX中，变量是一个数组，数组中每个成员是字符串或者是JSX对象，则这个数组内所有的成员，都能被正常渲染</li>
+<li>约定，发送或者接收的消息，都是特殊格式的字符串，聊天消息内容(字符串)+UBB标签(字符串)</li>
+<li>猜想，若能够把消息字符串，转换为一个数组，聊天消息内容，为正常的字符串，UBB标签字符串转换为 JSX对象，类型为 img，img 的src 根据其内容不同而不同</li>
+<li>故：只要把聊天消息，转换为React能接受的数组，即可完成 UBB表情功能</li>
+</ol>
+<p>由此，我做了一个实验，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例如：你好[笑脸]，不要不理我，[哭脸]。</span><br><span class="line">生成：</span><br><span class="line">out = [</span><br><span class="line">  &quot;你好&quot;,</span><br><span class="line">  &lt;img src=&quot;1.jpg&quot;&gt;,</span><br><span class="line">  &quot;，不要不理我，&quot;</span><br><span class="line">  &lt;img src=&quot;2.jpg&quot;&gt;,</span><br><span class="line">  &quot;。&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>我将这变量out以：{out}这种形式将其放在了jsx对象中，刷新页面，发现out中的内容被渲染成了<br>文字加图片的形式：”你好😁，不要不理我，😭 “。于是这个猜想得到了验证</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>也就是说，想要完成UBB表情功能，我们只需要将发送或者接受到的消息，从string的格式转化为<br>数组的格式，然后将这数组作为content，写入到jsx对象中，即可由react将其渲染为我们想看到<br>的内容：文字加图片</p>
+<p>解决问题少不了逻辑和思维也就是思路，逻辑思维不清晰，最好不要继续下去，因为这样会使你大脑更乱<br>写代码亦是如此。</p>
+<p>大胆猜想，小心实践，over ！！！</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
