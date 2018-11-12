@@ -121,9 +121,9 @@
     
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
-      <category term="语法" scheme="http://yoursite.com/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="语法" scheme="http://yoursite.com/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
@@ -148,9 +148,9 @@
     
       <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -175,9 +175,9 @@
     
       <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -240,31 +240,6 @@
   </entry>
   
   <entry>
-    <title>箭头函数</title>
-    <link href="http://yoursite.com/2017/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2017/07/06/箭头函数/</id>
-    <published>2017-07-05T16:00:00.000Z</published>
-    <updated>2018-07-06T08:13:01.301Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="箭头函数没有arugments"><a href="#箭头函数没有arugments" class="headerlink" title="箭头函数没有arugments"></a>箭头函数没有arugments</h2><p>普通函数有arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123; console.log(arguments) &#125;</span><br><span class="line">a(1,2,3)</span><br><span class="line"></span><br><span class="line">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span><br></pre></td></tr></table></figure><p>箭头函数才有 arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = ()=&gt;&#123; console.log(arguments) &#125;</span><br><span class="line">b(1,2,3)</span><br><span class="line">// VM13852:1 Uncaught ReferenceError: arguments is not defined</span><br></pre></td></tr></table></figure><h2 id="箭头函数的this为定义时的环境"><a href="#箭头函数的this为定义时的环境" class="headerlink" title="箭头函数的this为定义时的环境"></a>箭头函数的this为定义时的环境</h2><p>函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br></pre></td></tr></table></figure><p>真实函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>( <span class="built_in">window</span> )&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 箭头函数原理</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="function">(<span class="params"> (v</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        &#125;.bind( v )</span><br><span class="line"></span><br><span class="line">    &#125; )( <span class="keyword">this</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>定义返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a;</span><br><span class="line"><span class="comment">// ƒ a()&#123; console.log(this) &#125;</span></span><br><span class="line">b;</span><br><span class="line"><span class="comment">// ()=&gt;&#123; console.log(this) &#125;</span></span><br></pre></td></tr></table></figure><p>执行返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br><span class="line"></span><br><span class="line">b()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure><p>其他对象调用返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">obj = &#123;&#125;</span><br><span class="line">obj.name = <span class="string">'myObj'</span>;</span><br><span class="line">obj.fa = a;</span><br><span class="line">obj.fb = b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj.fa();</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;fa: ƒ, name: "myObj", fb: ƒ&#125;</span></span><br><span class="line">obj.fb();</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;箭头函数没有arugments&quot;&gt;&lt;a href=&quot;#箭头函数没有arugments&quot; class=&quot;headerlink&quot; title=&quot;箭头函数没有arugments&quot;&gt;&lt;/a&gt;箭头函数没有arugments&lt;/h2&gt;&lt;p&gt;普通函数有arguments&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>硬连接和软连接</title>
     <link href="http://yoursite.com/2017/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/"/>
     <id>http://yoursite.com/2017/07/06/20180706-硬连接和软连接/</id>
@@ -290,6 +265,31 @@
       <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
     
       <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>箭头函数</title>
+    <link href="http://yoursite.com/2017/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2017/07/06/箭头函数/</id>
+    <published>2017-07-05T16:00:00.000Z</published>
+    <updated>2018-07-06T08:13:01.301Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="箭头函数没有arugments"><a href="#箭头函数没有arugments" class="headerlink" title="箭头函数没有arugments"></a>箭头函数没有arugments</h2><p>普通函数有arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123; console.log(arguments) &#125;</span><br><span class="line">a(1,2,3)</span><br><span class="line"></span><br><span class="line">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span><br></pre></td></tr></table></figure><p>箭头函数才有 arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = ()=&gt;&#123; console.log(arguments) &#125;</span><br><span class="line">b(1,2,3)</span><br><span class="line">// VM13852:1 Uncaught ReferenceError: arguments is not defined</span><br></pre></td></tr></table></figure><h2 id="箭头函数的this为定义时的环境"><a href="#箭头函数的this为定义时的环境" class="headerlink" title="箭头函数的this为定义时的环境"></a>箭头函数的this为定义时的环境</h2><p>函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br></pre></td></tr></table></figure><p>真实函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>( <span class="built_in">window</span> )&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 箭头函数原理</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="function">(<span class="params"> (v</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        &#125;.bind( v )</span><br><span class="line"></span><br><span class="line">    &#125; )( <span class="keyword">this</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>定义返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a;</span><br><span class="line"><span class="comment">// ƒ a()&#123; console.log(this) &#125;</span></span><br><span class="line">b;</span><br><span class="line"><span class="comment">// ()=&gt;&#123; console.log(this) &#125;</span></span><br></pre></td></tr></table></figure><p>执行返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br><span class="line"></span><br><span class="line">b()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure><p>其他对象调用返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">obj = &#123;&#125;</span><br><span class="line">obj.name = <span class="string">'myObj'</span>;</span><br><span class="line">obj.fa = a;</span><br><span class="line">obj.fb = b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj.fa();</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;fa: ƒ, name: "myObj", fb: ƒ&#125;</span></span><br><span class="line">obj.fb();</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;箭头函数没有arugments&quot;&gt;&lt;a href=&quot;#箭头函数没有arugments&quot; class=&quot;headerlink&quot; title=&quot;箭头函数没有arugments&quot;&gt;&lt;/a&gt;箭头函数没有arugments&lt;/h2&gt;&lt;p&gt;普通函数有arguments&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
