@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://yoursite.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://yoursite.com">
+<meta name="author" content="Cooper Yang">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>js获取光标位置 - Cooper Yang</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="">
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="说">说</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">说IT</h1>
+        <h3 class="cover-siteTitle">用代码摇滚这个世界</h3>
+        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/Foreverb" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+        
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2017-10-16">2017-10-16</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">js获取光标位置</h2>
+            <div class="post-meta">
+                本文总共8948个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <ol>
+<li>概念和原理</li>
+</ol>
+<blockquote>
+<p>DOM中并没有直接获取光标位置的方法，那么我们只能间接来获取光标位置。DOM支持获取光标选中的范围，我们可以以此为切入点，来获取或定位光标的位置。当选取范围起始点和结束点一样时，就是光标插入的位置。</p>
+</blockquote>
+<ul>
+<li>术语</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">anchor(瞄点)：选区起点。</span><br><span class="line"></span><br><span class="line">focus(焦点)：选区终点。</span><br><span class="line"></span><br><span class="line">range(范围)：选区范围，包含整个节点或节点的一部分。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Selection</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Selection:Selection对象表示用户选择的文本范围或插入符号的位置。</span><br><span class="line"></span><br><span class="line">Selection对象存在于window对象上，可以通过window.getSelection()获取示例。</span><br></pre></td></tr></table></figure>
+<h5 id="Selection选取的节点范围都是块级节点。input和texteare并不能作为Selection的节点"><a href="#Selection选取的节点范围都是块级节点。input和texteare并不能作为Selection的节点" class="headerlink" title="Selection选取的节点范围都是块级节点。input和texteare并不能作为Selection的节点"></a>Selection选取的节点范围都是块级节点。input和texteare并不能作为Selection的节点</h5><p>属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">anchorNode:选区起点的节点。</span><br><span class="line"></span><br><span class="line">anchorOffset:选区的起点位置。</span><br><span class="line"></span><br><span class="line">focusNode:选区终点的节点。</span><br><span class="line"></span><br><span class="line">focusOffset:选区的终点位置。</span><br><span class="line"></span><br><span class="line">isCollapsed:起点和终点是否重叠。</span><br><span class="line"></span><br><span class="line">rangeCount:选区包含的range数目。</span><br></pre></td></tr></table></figure>
+<p>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">getRangeAt(index):获取指定的选取范围。</span><br><span class="line"></span><br><span class="line">addRange(range):将一个范围添加到Selection对象中。</span><br><span class="line"></span><br><span class="line">removeRange():移出指定的范围。</span><br><span class="line"></span><br><span class="line">removeAllRanges():移出所有range对象。</span><br><span class="line"></span><br><span class="line">collapse(parentNode,offset):将光标移动到parentNode节点的offset位置。</span><br><span class="line"></span><br><span class="line">collapseToStart():取消当前选区，并把光标定位在原选区的最开始处，如果此时光标所处的位置是可编辑的，且它获得了焦点，则光标会在原地闪烁。</span><br><span class="line"></span><br><span class="line">collapseToEnd():取消当前选区，并将光标定位到原选取的最末位。如果此时光标所处的位置是可编辑的，且它获得了焦点，则光标会在原地闪烁。</span><br><span class="line"></span><br><span class="line">extend(node,offset):将终点位置移动到node节点的offset位置。</span><br><span class="line"></span><br><span class="line">modify(alter,direction,granularity):通过alter方式(move/extend)来改变光标位置，移动方向为direction(left/right)，移动单位为granularity。</span><br><span class="line"></span><br><span class="line">containsNode(aNode,aPartlyContained):判断aNode是否包含在Selection中。aPartlyContained为false表示全包含，为true表示只要部分包含即可。</span><br><span class="line"></span><br><span class="line">toString():放回当前Selection对象的字符串。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Range</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Range对象表示一个Selection的选择范围，一个Selection可以包含多个Range。</span><br></pre></td></tr></table></figure>
+<p>获取对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.createRange():创建一个Range。</span><br><span class="line"></span><br><span class="line">selection.getRangeAt(index):获取指定的Range。</span><br></pre></td></tr></table></figure>
+<p>属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">collapsed:判断起始位置是否重合。</span><br><span class="line"></span><br><span class="line">endContaniner:range终点节点。</span><br><span class="line"></span><br><span class="line">endOffset:range的终点位置。</span><br><span class="line"></span><br><span class="line">startContaniner:ranstartge起点节点。</span><br><span class="line"></span><br><span class="line">startOffset:range的起点位置。</span><br><span class="line"></span><br><span class="line">commonAncestorContainer:包含起始点的节点。</span><br></pre></td></tr></table></figure>
+<p>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">setStart(startNode,startOffset):设置范围在startNode的起始位置为startOffset。</span><br><span class="line"></span><br><span class="line">setEnd(endNode,endOffset):设置范围在endNode的起始位置为endOffset。</span><br><span class="line"></span><br><span class="line">selectNode(referenceNode):设置range的节点为referenceNode。</span><br><span class="line"></span><br><span class="line">selectNodeContents(referenceNode):设置range的内容为referenceNode。</span><br><span class="line"></span><br><span class="line">collapse(toStart):向边界点折叠range，即是设置光标位置，toStart默认为false，表示光标定位在节点末尾。true表示光标定位在节点起点。</span><br><span class="line"></span><br><span class="line">cloneContents():克隆一个range的内容片段。</span><br><span class="line"></span><br><span class="line">deleteContents():删除range的内容片段。</span><br><span class="line"></span><br><span class="line">extractContents():将range的内容从文档树移动到文档片段中。</span><br><span class="line"></span><br><span class="line">insertNode(newNode):在range的其实位置插入新的节点。</span><br><span class="line"></span><br><span class="line">surroundContents(newNode):将range对象的内容移动到新的节点中。</span><br><span class="line"></span><br><span class="line">cloneRange():克隆一个range对象。</span><br><span class="line"></span><br><span class="line">detach():释放当前range。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>input/textarea</li>
+</ul>
+<blockquote>
+<p>在html5中，可输入性表单元素（input/textarea）都存在以下属性。不支持IE6/7。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">selectionDirection:forward | backward | none,选区方向</span><br><span class="line">selectionEnd:选区终点位置</span><br><span class="line">selectionStart:选区起点位置</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>setSelectionRange(selectionStart, selectionEnd, [selectionDirection]):设置获取焦点的输入性元素的选区范围。</p>
+</blockquote>
+<ol start="2">
+<li>获取光标位置</li>
+</ol>
+<ul>
+<li>可编辑div获取光标位置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//获取当前光标位置</span><br><span class="line">const getCursortPosition = function (element) &#123;</span><br><span class="line">  var caretOffset = 0;</span><br><span class="line">  var doc = element.ownerDocument || element.document;</span><br><span class="line">  var win = doc.defaultView || doc.parentWindow;</span><br><span class="line">  var sel;</span><br><span class="line">  if (typeof win.getSelection != &quot;undefined&quot;) &#123;//谷歌、火狐</span><br><span class="line">    sel = win.getSelection();</span><br><span class="line">    if (sel.rangeCount &gt; 0) &#123;//选中的区域</span><br><span class="line">      var range = win.getSelection().getRangeAt(0);</span><br><span class="line">      var preCaretRange = range.cloneRange();//克隆一个选中区域</span><br><span class="line">      preCaretRange.selectNodeContents(element);//设置选中区域的节点内容为当前节点</span><br><span class="line">      preCaretRange.setEnd(range.endContainer, range.endOffset);  //重置选中区域的结束位置</span><br><span class="line">      caretOffset = preCaretRange.toString().length;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else if ((sel = doc.selection) &amp;&amp; sel.type != &quot;Control&quot;) &#123;//IE</span><br><span class="line">    var textRange = sel.createRange();</span><br><span class="line">    var preCaretTextRange = doc.body.createTextRange();</span><br><span class="line">    preCaretTextRange.moveToElementText(element);</span><br><span class="line">    preCaretTextRange.setEndPoint(&quot;EndToEnd&quot;, textRange);</span><br><span class="line">    caretOffset = preCaretTextRange.text.length;</span><br><span class="line">  &#125;</span><br><span class="line">  return caretOffset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">获取光标的位置是先通过获取鼠标的选取范围，然后克隆该选</span><br><span class="line">取范围，修改克隆范围的结束位置，这样克隆的范围就只剩下</span><br><span class="line">起点到结束点的内容，光标之后的内容被截取扔掉了。所以可</span><br><span class="line">以通过剩余内容的长度来确定光标位置。之所以要克隆一个选</span><br><span class="line">取范围出来，是为了避免修改光标结束位置时影响到原先内容</span><br></pre></td></tr></table></figure>
+<p>input/textarea获取光标位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//输入框获取光标</span><br><span class="line">const getPosition = function (element) &#123;</span><br><span class="line">    let cursorPos = 0;</span><br><span class="line">    if (document.selection) &#123;//IE</span><br><span class="line">        var selectRange = document.selection.createRange();</span><br><span class="line">        selectRange.moveStart(&apos;character&apos;, -element.value.length);</span><br><span class="line">        cursorPos = selectRange.text.length;</span><br><span class="line">    &#125; else if (element.selectionStart || element.selectionStart == &apos;0&apos;) &#123;</span><br><span class="line">        cursorPos = element.selectionStart;</span><br><span class="line">    &#125;</span><br><span class="line">    return cursorPos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>设置光标位置</li>
+</ol>
+<blockquote>
+<p>可编辑div设置光标位置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//设置光标位置</span><br><span class="line">const setCaretPosition = function (element, pos) &#123;</span><br><span class="line">  var range, selection;</span><br><span class="line">  if (document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+</span><br><span class="line">  &#123;</span><br><span class="line">    range = document.createRange();//创建一个选中区域</span><br><span class="line">    range.selectNodeContents(element);//选中节点的内容</span><br><span class="line">    if(element.innerHTML.length &gt; 0) &#123;</span><br><span class="line">      range.setStart(element.childNodes[0], pos); //设置光标起始为指定位置</span><br><span class="line">    &#125;</span><br><span class="line">    range.collapse(true);       //设置选中区域为一个点</span><br><span class="line">    selection = window.getSelection();//获取当前选中区域</span><br><span class="line">    selection.removeAllRanges();//移出所有的选中范围</span><br><span class="line">    selection.addRange(range);//添加新建的范围</span><br><span class="line">  &#125;</span><br><span class="line">  else if (document.selection)//IE 8 and lower</span><br><span class="line">  &#123;</span><br><span class="line">    range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)</span><br><span class="line">    range.moveToElementText(element);//Select the entire contents of the element with the range</span><br><span class="line">    range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start</span><br><span class="line">    range.select();//Select the range (make it the visible selection</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> input/textarea获取光标位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 设置光标位置</span><br><span class="line">function setCaretPosition(textDom, pos)&#123;</span><br><span class="line">    if(textDom.setSelectionRange) &#123;</span><br><span class="line">        // IE Support</span><br><span class="line">        textDom.focus();</span><br><span class="line">        textDom.setSelectionRange(pos, pos);</span><br><span class="line">    &#125;else if (textDom.createTextRange) &#123;</span><br><span class="line">        // Firefox support</span><br><span class="line">        var range = textDom.createTextRange();</span><br><span class="line">        range.collapse(true);</span><br><span class="line">        range.moveEnd(&apos;character&apos;, pos);</span><br><span class="line">        range.moveStart(&apos;character&apos;, pos);</span><br><span class="line">        range.select();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>示例</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;光标测试&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    p &#123;</span><br><span class="line">      display: flex;</span><br><span class="line">      flex-direction: row;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .btn &#123;</span><br><span class="line">      height: 24px;</span><br><span class="line">      margin: 0 10px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .edit-div &#123;</span><br><span class="line">      display: inline-block;</span><br><span class="line">      width: 225px;</span><br><span class="line">      border: 1px solid #decdcd;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line"></span><br><span class="line">    function getCursortPosition(e) &#123;</span><br><span class="line">      var eleP = e.target.parentNode; //获取父级元素</span><br><span class="line">      var pos = 0;</span><br><span class="line">      if (e.target.nodeName == &quot;DIV&quot;) &#123;</span><br><span class="line">        pos = getDivPosition(e.target);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        pos = getPosition(e.target);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      var spanEle = (eleP.childNodes)[7];</span><br><span class="line">      spanEle.innerText = pos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //可编辑div获取坐标</span><br><span class="line">    const getDivPosition = function (element) &#123;</span><br><span class="line">      var caretOffset = 0;</span><br><span class="line">      var doc = element.ownerDocument || element.document;</span><br><span class="line">      var win = doc.defaultView || doc.parentWindow;</span><br><span class="line">      var sel;</span><br><span class="line">      if (typeof win.getSelection != &quot;undefined&quot;) &#123;//谷歌、火狐</span><br><span class="line">        sel = win.getSelection();</span><br><span class="line">        if (sel.rangeCount &gt; 0) &#123;//选中的区域</span><br><span class="line">          var range = win.getSelection().getRangeAt(0);</span><br><span class="line">          var preCaretRange = range.cloneRange();//克隆一个选中区域</span><br><span class="line">          preCaretRange.selectNodeContents(element);//设置选中区域的节点内容为当前节点</span><br><span class="line">          preCaretRange.setEnd(range.endContainer, range.endOffset);  //重置选中区域的结束位置</span><br><span class="line">          caretOffset = preCaretRange.toString().length;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else if ((sel = doc.selection) &amp;&amp; sel.type != &quot;Control&quot;) &#123;//IE</span><br><span class="line">        var textRange = sel.createRange();</span><br><span class="line">        var preCaretTextRange = doc.body.createTextRange();</span><br><span class="line">        preCaretTextRange.moveToElementText(element);</span><br><span class="line">        preCaretTextRange.setEndPoint(&quot;EndToEnd&quot;, textRange);</span><br><span class="line">        caretOffset = preCaretTextRange.text.length;</span><br><span class="line">      &#125;</span><br><span class="line">      return caretOffset;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //输入框获取光标</span><br><span class="line">    const getPosition = function (element) &#123;</span><br><span class="line">      let cursorPos = 0;</span><br><span class="line">      if (document.selection) &#123;//IE</span><br><span class="line">        var selectRange = document.selection.createRange();</span><br><span class="line">        selectRange.moveStart(&apos;character&apos;, -element.value.length);</span><br><span class="line">        cursorPos = selectRange.text.length;</span><br><span class="line">      &#125; else if (element.selectionStart || element.selectionStart == &apos;0&apos;) &#123;</span><br><span class="line">        cursorPos = element.selectionStart;</span><br><span class="line">      &#125;</span><br><span class="line">      return cursorPos;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;label&gt;输入框测试:&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; style=&quot;width:220px&quot; onclick=&quot;getCursortPosition(event);&quot; /&gt;</span><br><span class="line">    &lt;span&gt;光标位置:&lt;/span&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;label&gt;文本框测试:&lt;/label&gt;</span><br><span class="line">    &lt;textarea rows=&quot;5&quot; style=&quot;width:220px&quot; onclick=&quot;getCursortPosition(event);&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">    &lt;span&gt;光标位置:&lt;/span&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;label&gt;可编辑div:&lt;/label&gt;</span><br><span class="line">    &lt;div contenteditable=&quot;true&quot; class=&quot;edit-div&quot; onclick=&quot;getCursortPosition(event);&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;光标位置:&lt;/span&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/前端/">前端</a>
+            
+            <a href="/tags/js/">js</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
