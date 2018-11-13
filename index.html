@@ -1,308 +1,542 @@
-<!DOCTYPE html>
-<html>
-  <!DOCTYPE html>
-<html lang="zh-CN">
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  
-  <title>Cooper Yang undefined A FrontEnd Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  
-  <meta name="keywords" content=>
-  
-  
-  
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://yoursite.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
 
-  <link rel="stylesheet" href="/css/style.css?v=1.06">
-  </head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-  <body>
-    <div class="container">
-      <header class="header">
-  <nav class="navbar">
-    <div class="menu">
-      <div class="menu-item">
-      
-      </div>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://yoursite.com">
+<meta name="author" content="Cooper Yang">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>Cooper Yang - A FrontEnd Engineer</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="">
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="说">说</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">说IT</h1>
+        <h3 class="cover-siteTitle">用代码摇滚这个世界</h3>
+        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/Foreverb" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
     </div>
-
-    <div class="menu">
-      <div class="menu-item">
-      
-      
-        <a href="javascript:void(0)" class="menu-item-link search">搜索</a>
-      
-      </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li class="active">
+            <a href="/" data-name="最近文章">最近</a>
+        </li>
+        
+        <li class="">
+            <a href="/categories/tech-notes" data-name="技术">技术</a>
+        </li>
+        
+        <li class="">
+            <a href="/categories/humanities" data-name="人文">人文</a>
+        </li>
+        
+        <li class="">
+            <a href="/categories/others" data-name="其他">其他</a>
+        </li>
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">Input Search key Words Here</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="Input Search key Words Here" />
+        <button type="submit" class="search-form-submit" title="Search"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </nav>
-</header>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
 
-
-
-
-
-
-<div class="cards-container">
-  <div class="cards">
-  
-      <div
-        class="bgc-pink fc-pinker"
-        style="padding:0.5000633024482811rem 1.0001266048965622rem;
-        font-size:2.0002532097931245rem;top:91.79287204285262%;left:13.821664519620015%;transform:translate(-50%, -50%) rotate(333.3746269522648deg) ;z-index:9"
-      >
-        <a href="/tags/前端/">前端</a>
-      </div>
+    </ul>
+</div>
+<div class="main-inner">
     
-      <div
-        class="bgc-pink fc-pinker"
-        style="padding:0.7539873854196119rem 1.5079747708392237rem;
-        font-size:3.0159495416784474rem;top:95.33934364749956%;left:17.23582013904128%;transform:translate(-50%, -50%) rotate(194.75222460439045deg) ;z-index:9"
-      >
-        <a href="/tags/JS/">JS</a>
-      </div>
+    <!-- 首页默认取最最新文章集 -->
     
-      <div
-        class="bgc-pink fc-pinker"
-        style="padding:0.5684564551643765rem 1.136912910328753rem;
-        font-size:2.273825820657506rem;top:42.840396579236725%;left:24.611552538988192%;transform:translate(-50%, -50%) rotate(194.56811152475078deg) ;z-index:9"
-      >
-        <a href="/tags/语法/">语法</a>
-      </div>
     
-      <div
-        class="bgc-pink fc-pinker"
-        style="padding:0.6619303435095714rem 1.3238606870191427rem;
-        font-size:2.6477213740382854rem;top:22.566047570761548%;left:49.54028272150484%;transform:translate(-50%, -50%) rotate(153.08522090639727deg) ;z-index:9"
-      >
-        <a href="/tags/工具/">工具</a>
-      </div>
+<article class="post">
     
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:0.704447262477376rem 1.408894524954752rem;
-        font-size:2.817789049909504rem;top:79.9747256596054%;left:42.43409089660659%;transform:translate(-50%, -50%) rotate(197.99164406729307deg) ;z-index:9"
-      >
-        <a href="/tags/面试/">面试</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:0.9860224727748634rem 1.9720449455497269rem;
-        font-size:3.9440898910994537rem;top:8.062295465232715%;left:48.164117396696746%;transform:translate(-50%, -50%) rotate(56.11654570722109deg) ;z-index:9"
-      >
-        <a href="/tags/HTML/">HTML</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:0.7685370454099242rem 1.5370740908198484rem;
-        font-size:3.0741481816396967rem;top:67.52614637869516%;left:46.94551176546704%;transform:translate(-50%, -50%) rotate(15.738610950430711deg) ;z-index:9"
-      >
-        <a href="/tags/CSS/">CSS</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:3.1224028527756005rem 6.244805705551201rem;
-        font-size:12.489611411102402rem;top:40.129730764357994%;left:62.55941851144953%;transform:translate(-50%, -50%) rotate(48.41513246387858deg) ;z-index:4"
-      >
-        <a href="/tags/Linux/">Linux</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:1.2071129479139273rem 2.4142258958278546rem;
-        font-size:4.828451791655709rem;top:46.731568668187705%;left:97.07708156486528%;transform:translate(-50%, -50%) rotate(187.76149662840504deg) ;z-index:8"
-      >
-        <a href="/tags/shell/">shell</a>
-      </div>
-    
-      <div
-        class="bgc-pink fc-pinker"
-        style="padding:1.134188405870141rem 2.268376811740282rem;
-        font-size:4.536753623480564rem;top:3.569862007722713%;left:52.104605614402864%;transform:translate(-50%, -50%) rotate(356.591082557659deg) ;z-index:8"
-      >
-        <a href="/tags/文件系统/">文件系统</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:0.7078083568193586rem 1.4156167136387172rem;
-        font-size:2.8312334272774344rem;top:59.14972737359214%;left:39.521654594868274%;transform:translate(-50%, -50%) rotate(268.8194121830909deg) ;z-index:9"
-      >
-        <a href="/tags/git/">git</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:0.5890740108054838rem 1.1781480216109677rem;
-        font-size:2.3562960432219353rem;top:78.50169751999303%;left:17.059128251736055%;transform:translate(-50%, -50%) rotate(335.02379829189584deg) ;z-index:9"
-      >
-        <a href="/tags/js/">js</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:0.5039923112199168rem 1.0079846224398337rem;
-        font-size:2.0159692448796673rem;top:57.918676796584464%;left:45.27282173864964%;transform:translate(-50%, -50%) rotate(73.42380249552998deg) ;z-index:9"
-      >
-        <a href="/tags/UBB/">UBB</a>
-      </div>
-    
-      <div
-        class="bgc-pink fc-pinker"
-        style="padding:1.9911487423272132rem 3.9822974846544263rem;
-        font-size:7.964594969308853rem;top:13.81943090718658%;left:74.24046760385119%;transform:translate(-50%, -50%) rotate(40.65535604230643deg) ;z-index:7"
-      >
-        <a href="/tags/开发/">开发</a>
-      </div>
-    
-      <div
-        class="bgc-pink fc-pinker"
-        style="padding:1.1194276237205911rem 2.2388552474411823rem;
-        font-size:4.4777104948823645rem;top:94.25884657628572%;left:78.87676519549687%;transform:translate(-50%, -50%) rotate(194.2109713116414deg) ;z-index:8"
-      >
-        <a href="/tags/node/">node</a>
-      </div>
-    
-      <div
-        class="bgc-pinker fc-pink"
-        style="padding:2.922105009885983rem 5.844210019771966rem;
-        font-size:11.688420039543931rem;top:32.57207414317418%;left:86.96398242713255%;transform:translate(-50%, -50%) rotate(68.90040165199045deg) ;z-index:5"
-      >
-        <a href="/tags/ALL/">ALL</a>
-      </div>
-    
-    <div class="site-title">
-      <a href="/">
-        Cooper Yang
-      </a>
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-11-14
+        </div>
+        <a class="post-title" href="/2017/11/14/hexo的原理/" target="_blank" title="hexo的原理">hexo的原理</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/JS/" target="_blank">JS</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/工具/" target="_blank">工具</a>
+            
+        </div>
     </div>
-  </div>
-  
-  <div class="subtitle">
-    A FrontEnd Engineer
-  </div>
-  
+    <div class="post-desc">
+        hexo的原理
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-11-13
+        </div>
+        <a class="post-title" href="/2017/11/13/项目功能模块开发流程/" target="_blank" title="项目功能模块开发流程">项目功能模块开发流程</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/JS/" target="_blank">JS</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/开发/" target="_blank">开发</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        项目功能模块开发流程
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-11-10
+        </div>
+        <a class="post-title" href="/2017/11/10/ubb表情逻辑/" target="_blank" title="js模拟UBB表情发送">js模拟UBB表情发送</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/JS/" target="_blank">JS</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/工具/" target="_blank">工具</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/UBB/" target="_blank">UBB</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        js模拟UBB表情发送
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-11-02
+        </div>
+        <a class="post-title" href="/2017/11/02/深入了解call,bind,apply原理/" target="_blank" title="深入理解 call，apply 和 bind">深入理解 call，apply 和 bind</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/js/" target="_blank">js</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        深入理解 call，apply 和 bind
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-11-01
+        </div>
+        <a class="post-title" href="/2017/11/01/node自动重启工具/" target="_blank" title="Node自动重启工具 nodemon">Node自动重启工具 nodemon</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/js/" target="_blank">js</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/node/" target="_blank">node</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        Node自动重启工具 nodemon
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-10-31
+        </div>
+        <a class="post-title" href="/2017/10/31/Promise的基本用法/" target="_blank" title="Promise 的基础用法">Promise 的基础用法</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/JS/" target="_blank">JS</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/语法/" target="_blank">语法</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/工具/" target="_blank">工具</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        Promise 的基础用法
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-10-30
+        </div>
+        <a class="post-title" href="/2017/10/30/git常用命令/" target="_blank" title="git 常用命令">git 常用命令</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/工具/" target="_blank">工具</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/git/" target="_blank">git</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        git 常用命令
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-10-29
+        </div>
+        <a class="post-title" href="/2017/10/29/git创建，查看，删除，切换分支/" target="_blank" title="git 创建、查看、删除、切换分支问题">git 创建、查看、删除、切换分支问题</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/工具/" target="_blank">工具</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/git/" target="_blank">git</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        git 创建、查看、删除、切换分支问题
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-10-16
+        </div>
+        <a class="post-title" href="/2017/10/16/js获取光标位置/" target="_blank" title="js获取光标位置">js获取光标位置</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/js/" target="_blank">js</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        js获取光标位置
+    </div>
+</article>
+
+
+
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2017-07-20
+        </div>
+        <a class="post-title" href="/2017/07/20/初级前端必知/" target="_blank" title="初级前端必学">初级前端必学</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/前端/" target="_blank">前端</a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/ALL/" target="_blank">ALL</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        初级前端必学
+    </div>
+</article>
+
+
+
+    
+    
+</div>
+<!-- 分页开始 -->
+
+<div id="btn-pager">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
 </div>
 
 
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
 
-<div class="start-container">
-
-
-  <span class="start">
-    <a href="/archives">
-      浏览博客
-      <span class="arrow">→</span>
-    </a>
-  </span>
-</div>
-
-
-  <div class="search-mask">
-    <div class="search-dialog">
-        <div class="search-title">
-          搜索
-          <div class="close">×</div>
-        </div>
-        <input type="text" autocomplete="off"
-               name="search" placeholder="Search for Posts" id="local-search-input">
-        <span class="down">↓</span>
-        <hr />
-        <div id="local-search-result">
-          <ul class="archive">
-          
-          
-              <li>
-                <a class="archive-title" href="/2017/11/14/hexo的原理/">hexo的原理</a>
-                <time class="archive-date">2017-11-14</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/11/13/项目功能模块开发流程/">项目功能模块开发流程</a>
-                <time class="archive-date">2017-11-13</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/11/10/ubb表情逻辑/">js模拟UBB表情发送</a>
-                <time class="archive-date">2017-11-10</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/11/02/深入了解call,bind,apply原理/">深入理解 call，apply 和 bind</a>
-                <time class="archive-date">2017-11-02</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/11/01/node自动重启工具/">Node自动重启工具 nodemon</a>
-                <time class="archive-date">2017-11-01</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/10/31/Promise的基本用法/">Promise 的基础用法</a>
-                <time class="archive-date">2017-10-31</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/10/30/git常用命令/">git 常用命令</a>
-                <time class="archive-date">2017-10-30</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/10/29/git创建，查看，删除，切换分支/">git 创建、查看、删除、切换分支问题</a>
-                <time class="archive-date">2017-10-29</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/10/16/js获取光标位置/">js获取光标位置</a>
-                <time class="archive-date">2017-10-16</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/07/20/初级前端必知/">初级前端必学</a>
-                <time class="archive-date">2017-07-20</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/07/06/20180706-硬连接和软连接/">硬连接和软连接</a>
-                <time class="archive-date">2017-07-06</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/07/06/箭头函数/">箭头函数</a>
-                <time class="archive-date">2017-07-06</time>
-              </li>
-          
-              <li>
-                <a class="archive-title" href="/2017/07/05/20180705-开源前端面试题/">前端求职面试问题</a>
-                <time class="archive-date">2017-07-05</time>
-              </li>
-          
-          </ul>
-          
-            <div class="top">↑</div>
-          
-        </div>
     </div>
-  </div>
-
-<footer>
-  <div class="footer-container">
-    <div>
-      Powered by <a href="https://github.com/chunqiuyiyu/hexo-theme-samljen">Samljen</a> ❤ Thanks to <a href="https://hexo.io/">Hexo</a> & <a href="https://choo.io/">Choo</a>
-    </div>
-    <div>
-      &copy; 2018
-      <a class="author" href='/'>
-        Cooper Yang
-      </a>. All Right Reserved. 
-    </div>
-  </div>
 </footer>
-<script src="/js/utils.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
 
-    </div>
-  </body>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
 </html>
