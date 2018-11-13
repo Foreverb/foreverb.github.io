@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-13T05:37:03.757Z</updated>
+  <updated>2018-11-13T08:45:45.142Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo的原理</title>
+    <link href="http://yoursite.com/2017/11/14/hexo%E7%9A%84%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2017/11/14/hexo的原理/</id>
+    <published>2017-11-13T16:00:00.000Z</published>
+    <updated>2018-11-13T08:45:45.142Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>Hexo 是用来生成 HTML 的，github pages 用来展示 HTML（根据上面的介绍，我们可以理解我们还可以使用 coding 的 pages 服务，如果自己有服务器的话，可以上传到自己的服务器）。</p><p><img src="https://user-gold-cdn.xitu.io/2017/8/12/1a5437eb122fc14fc88b1920aed5dcca?imageslim" alt="image"></p><p>在 Hexo 的官网，我们可以直观的看到对 Hexo 的介绍：快速、简洁且高效的博客框架</p><p>在 Hexo 的文档中，我们可以找到官方对 Hexo 的定义：</p><blockquote><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p></blockquote><h2 id="Hexo-的工作原理"><a href="#Hexo-的工作原理" class="headerlink" title="Hexo 的工作原理"></a>Hexo 的工作原理</h2><p>这里我们来分析一下 Hexo 每次部署的流程</p><p>hexo g：生成静态文件。将我们的数据和界面相结合生成静态文件的过程。会遍历主题文件中的 source 文件夹（js、css、img 等静态资源），然后建立索引，然后根据索引生成 pubild 文件夹中，此时的 publid 文件是由 html、 js、css、img 建立的纯静态文件可以通过 index.html 作为入口访问你的博客。</p><p>hexo d：部署文件。部署主要是根据在 _config.yml 中配置的 git 仓库或者 coding 的地址，将 public 文件上传至 github 或者 coding 中。然后再根据上面的 github 提供的 pages 服务呈现出页面。当然你也可以直接将你生成的 public 文件上传至你自己的服务器上。</p><h2 id="Hexo-的模板引擎"><a href="#Hexo-的模板引擎" class="headerlink" title="Hexo 的模板引擎"></a>Hexo 的模板引擎</h2><blockquote><p>模板引擎的作用，就是将界面与数据分离。最简单的原理是将模板内容中指定的地方替换成数据，实现业务代码与逻辑代码分离。</p></blockquote><p>我们可以注意到，在 Hexo 中，source 文件夹和 themes 文件夹是在同级的，我们就可以将 source 文件夹理解为数据库，而主题文件夹相当于 界面。然后我们 hexo g 就将我们的数据和界面相结合生成静态文件 public。</p><p>Hexo 的模板引擎是默认使用 ejs 编写的。hexo首先会解析 md 文件，然后根据 layout 判断布局类型，再调用其他的文件，这样每一块的内容都是独立的，提高代码的复用性。最终会生成一个 html 页面。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>非要说 Hexo 是什么的话，我觉得就是生成静态页面的工具，可以将我们使用 markdown 编写的内容与主题模板相结合，生成 HTML 静态文件。并且可以和 github 的 pages 或者其他可以将静态页面展现出来的服务（例如 coding 的 pages 服务）相结合，一键部署。</p><p>再深入一点讲 Hexo 的原理的话，那就应该是使用 yaml 语言 做配置文件，使用 ejs 或者 swig 作为主题模板，与使用 markdown 书写的内容结合，生成静态 HTML 文件。</p><h2 id="hexo的常用命令"><a href="#hexo的常用命令" class="headerlink" title="hexo的常用命令"></a>hexo的常用命令</h2><h3 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g #安装</span><br><span class="line">npm update hexo -g #更新</span><br><span class="line">hexo init #初始化</span><br></pre></td></tr></table></figure><h3 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish [layout] &lt;title&gt; #发表草稿。</span><br></pre></td></tr></table></figure><h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;name&quot; #新建文章</span><br><span class="line">hexo g #生成静态网页</span><br><span class="line">hexo p #发表草稿。</span><br><span class="line">hexo s #启动服务</span><br><span class="line">hexo d #部署网站 参数：-g 部署之前先生成静态文件。</span><br></pre></td></tr></table></figure><h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>Hexo 3.0 把服务器独立成了个别模块，您必须先安装才能使用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-server --save #安装服务</span><br><span class="line"></span><br><span class="line">hexo s #启动服务</span><br><span class="line">hexo server -p 5000 #更改端口</span><br><span class="line">hexo s -s #静态模式</span><br><span class="line">hexo s -i 192.168.1.1 #自定义ip</span><br><span class="line"></span><br><span class="line">hexo clean #清除缓存</span><br></pre></td></tr></table></figure><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure><p>两者作用完全相同。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hexo&quot;&gt;&lt;a href=&quot;#Hexo&quot; class=&quot;headerlink&quot; title=&quot;Hexo&quot;&gt;&lt;/a&gt;Hexo&lt;/h1&gt;&lt;p&gt;Hexo 是用来生成 HTML 的，github pages 用来展示 HTML（根据上面的介绍，我们可以理解我们还可以使用
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>项目功能模块开发流程</title>
+    <link href="http://yoursite.com/2017/11/13/%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/"/>
+    <id>http://yoursite.com/2017/11/13/项目功能模块开发流程/</id>
+    <published>2017-11-12T16:00:00.000Z</published>
+    <updated>2018-11-13T08:45:30.286Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>首先在开始项目或者独立的功能模块之前，我们必须要清楚自己的目标、要做什么、要做成什么样的，拟定好目标之后就可以继续下一步</p><h2 id="技术文档"><a href="#技术文档" class="headerlink" title="技术文档"></a>技术文档</h2><p>当你开始着手一个项目或者模块开发时不要急着写代码，因为你不知道你该做什么，也不知道该怎么做。所以这时候技术文档就起到了一定的作用：帮你理清思路。</p><p>那么技术文档该怎么写呢？技术文档的格式是什么样的呢？</p><blockquote><p>技术文档内需要写的是你的思路、想法、技术相关的api。写文档的时候你可以将你的项目分层，分成不同层次，然后在开发的时候可以根据不同的层次进行开发。对于文档的格式的话，我本人认为也没有什么特定的格式，你只需要将你要做的事情从大到小的一一列举出来，只要能帮你理清思路、能够从头到尾的解释清你开发的东西是什么，那么这篇文档就是成功的。</p></blockquote><p>文档写完后又改干嘛呢？那肯定是将文字抽象出来，将其转化为我们大脑能够容易理解一点的东西：画图。</p><h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><p>无论是做静态页面还是整个项目，画图也是必须的，图画能使我们大脑记的更深刻。我们也知道，图是我们的思维逻辑抽象出来的，我把图画好，那么逻辑应该是没有问题的</p><h3 id="画图工具"><a href="#画图工具" class="headerlink" title="画图工具"></a>画图工具</h3><p>xmind、思维脑图、时序图。。。其它的不一一列举</p><h3 id="图怎么画"><a href="#图怎么画" class="headerlink" title="图怎么画"></a>图怎么画</h3><p>画图是帮我们理清思维逻辑，比如写静态页面之前，我们画图需要画的就是从最外层画起、从大到小。那么做整个项目或者是功能模块该怎么画呢？其实不然，也是和画静态页面的图类似。</p><ul><li>先画相关页面的图</li><li>然后画交互图</li><li>最后通过xmind将其中所有详细步骤包括相关api<ul><li>分层开发，一般为界面交互，前端处理，后端处理</li><li>界面交互方法、事件</li><li>前端一般处理的是数据类型、数据流转等</li><li>后端只管接收数据、转发数据处理</li></ul></li></ul><p>画完图后那么该做什么呢？因为这只是项目功能模块开发流程，所以你可以开心对着自己的流程图进行开发了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;p&gt;首先在开始项目或者独立的功能模块之前，我们必须要清楚自己的目标、要做什么、要做成什么样的，拟定好目标之后就可以继续下一步&lt;/p&gt;
+&lt;h2 i
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="开发" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>js模拟UBB表情发送</title>
@@ -31,36 +86,6 @@
       
         &lt;p&gt;最近本人在用react开发一个在线视频聊天的项目的时候碰到了一个难题：发送带有表情的消息，或许对于大部分人来说算不上什么，&lt;br&gt;但作为前端小白的我，挨过这个坎其实也不易。&lt;/p&gt;
 &lt;p&gt;无论做什么事情，思路不清逻辑不顺的话，不说百分之百，反正一般人独立解决问题的话应该会有
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="UBB" scheme="http://yoursite.com/tags/UBB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>项目功能模块开发流程</title>
-    <link href="http://yoursite.com/2017/11/10/%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/"/>
-    <id>http://yoursite.com/2017/11/10/项目功能模块开发流程/</id>
-    <published>2017-11-09T16:00:00.000Z</published>
-    <updated>2018-11-13T08:41:15.205Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>首先在开始项目或者独立的功能模块之前，我们必须要清楚自己的目标、要做什么、要做成什么样的，拟定好目标之后就可以继续下一步</p><h2 id="技术文档"><a href="#技术文档" class="headerlink" title="技术文档"></a>技术文档</h2><p>当你开始着手一个项目或者模块开发时不要急着写代码，因为你不知道你该做什么，也不知道该怎么做。所以这时候技术文档就起到了一定的作用：帮你理清思路。</p><p>那么技术文档该怎么写呢？技术文档的格式是什么样的呢？</p><blockquote><p>技术文档内需要写的是你的思路、想法、技术相关的api。写文档的时候你可以将你的项目分层，分成不同层次，然后在开发的时候可以根据不同的层次进行开发。对于文档的格式的话，我本人认为也没有什么特定的格式，你只需要将你要做的事情从大到小的一一列举出来，只要能帮你理清思路、能够从头到尾的解释清你开发的东西是什么，那么这篇文档就是成功的。</p></blockquote><p>文档写完后又改干嘛呢？那肯定是将文字抽象出来，将其转化为我们大脑能够容易理解一点的东西：画图。</p><h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><p>无论是做静态页面还是整个项目，画图也是必须的，图画能使我们大脑记的更深刻。我们也知道，图是我们的思维逻辑抽象出来的，我把图画好，那么逻辑应该是没有问题的</p><h3 id="画图工具"><a href="#画图工具" class="headerlink" title="画图工具"></a>画图工具</h3><p>xmind、思维脑图、时序图。。。其它的不一一列举</p><h3 id="图怎么画"><a href="#图怎么画" class="headerlink" title="图怎么画"></a>图怎么画</h3><p>画图是帮我们理清思维逻辑，比如写静态页面之前，我们画图需要画的就是从最外层画起、从大到小。那么做整个项目或者是功能模块该怎么画呢？其实不然，也是和画静态页面的图类似。</p><ul><li>先画相关页面的图</li><li>然后画交互图</li><li>最后通过xmind将其中所有详细步骤包括相关api<ul><li>分层开发，一般为界面交互，前端处理，后端处理</li><li>界面交互方法、事件</li><li>前端一般处理的是数据类型、数据流转等</li><li>后端只管接收数据、转发数据处理</li></ul></li></ul><p>画完图后那么该做什么呢？因为这只是项目功能模块开发流程，所以你可以开心对着自己的流程图进行开发了</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;p&gt;首先在开始项目或者独立的功能模块之前，我们必须要清楚自己的目标、要做什么、要做成什么样的，拟定好目标之后就可以继续下一步&lt;/p&gt;
-&lt;h2 i
       
     
     </summary>
