@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://yoursite.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://yoursite.com">
+<meta name="author" content="Cooper Yang">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>硬连接和软连接 - Cooper Yang</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="">
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="说">说</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">说IT</h1>
+        <h3 class="cover-siteTitle">用代码摇滚这个世界</h3>
+        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/Foreverb" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+        
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2018-07-06">2018-07-06</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">硬连接和软连接</h2>
+            <div class="post-meta">
+                本文总共1579个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="Inode"><a href="#Inode" class="headerlink" title="Inode"></a>Inode</h1><ol>
+<li>inode（即索引节点号）是Linux系统识别文件的唯一标识。</li>
+<li>系统是通过inode来查找正确的文件数据块，并不是通过文件名。</li>
+</ol>
+<h4 id="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"><a href="#Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。" class="headerlink" title="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"></a>Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。</h4><p>元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。</p>
+<h1 id="硬链接和软链接"><a href="#硬链接和软链接" class="headerlink" title="硬链接和软链接"></a>硬链接和软链接</h1><p>在Linux系统为了解决文件共享问题，使用两种方式：hard link（硬链接）和soft link（软链接），链接不仅仅可以共享文件，还有方便管理、隐藏路径、节省空间等好处。</p>
+<h2 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h2><h3 id="若是使用同一个inode对应多个文件，则使用的就是硬链接。"><a href="#若是使用同一个inode对应多个文件，则使用的就是硬链接。" class="headerlink" title="若是使用同一个inode对应多个文件，则使用的就是硬链接。"></a>若是使用同一个inode对应多个文件，则使用的就是硬链接。</h3><p>硬链接可以使用link和ln创建</p>
+<p>语法：ln filename [linkname ]</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link data link</span><br><span class="line">ln data link</span><br></pre></td></tr></table></figure>
+<ol>
+<li>只能和已存在的文件建立硬链接</li>
+</ol>
+<h4 id="我们在-app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建"><a href="#我们在-app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建" class="headerlink" title="我们在/app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建"></a>我们在/app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建</h4><ol start="2">
+<li>文件的inode相同和文件属性，只是文件名不同</li>
+</ol>
+<h4 id="我们在-app目录下创建一个data的源文件，并通过stat-命令查看文件属性，然后创建硬链接link，ll-i-查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件"><a href="#我们在-app目录下创建一个data的源文件，并通过stat-命令查看文件属性，然后创建硬链接link，ll-i-查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件" class="headerlink" title="我们在/app目录下创建一个data的源文件，并通过stat 命令查看文件属性，然后创建硬链接link，ll -i 查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件"></a>我们在/app目录下创建一个data的源文件，并通过stat 命令查看文件属性，然后创建硬链接link，ll -i 查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件</h4><ol start="3">
+<li>不能跨文件系统建立硬链接</li>
+</ol>
+<h4 id="在-dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接"><a href="#在-dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接" class="headerlink" title="在/dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接"></a>在/dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接</h4><ol start="4">
+<li>硬链接创建后链接数会增加</li>
+</ol>
+<h4 id="我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件"><a href="#我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件" class="headerlink" title="我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件"></a>我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件</h4><ol start="5">
+<li>不能对目录创建硬链接</li>
+</ol>
+<h4 id="在-app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建"><a href="#在-app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建" class="headerlink" title="在/app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建"></a>在/app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建</h4><ol start="6">
+<li>删除一个硬链接文件并不影响其他有相同 inode 号的文件数据</li>
+</ol>
+<h4 id="在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了"><a href="#在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了" class="headerlink" title="在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了"></a>在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了</h4><h1 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h1><h2 id="软链接的特性"><a href="#软链接的特性" class="headerlink" title="软链接的特性"></a>软链接的特性</h2><ol>
+<li><p>软链接其实存放的就是源文件的路径，所以如果文件的内容数据是另一个文件的路径时，这个文件就是软链接。</p>
+</li>
+<li><p>软链接有自己独立的inode和文件属性，这点和硬链接有本质的区别</p>
+</li>
+</ol>
+<p>语法：ln -s filename [linkname ]</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link -s data link</span><br><span class="line">ln -s data link</span><br></pre></td></tr></table></figure>
+<ol>
+<li>软链接可对不存在文件建立链接</li>
+</ol>
+<h4 id="在-app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示"><a href="#在-app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示" class="headerlink" title="在/app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示"></a>在/app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示</h4><ol start="2">
+<li>软链接有自己的inode和属性</li>
+</ol>
+<h4 id="在目录下建立文件soft，之后对soft设置软链接slink，通过stat-命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同"><a href="#在目录下建立文件soft，之后对soft设置软链接slink，通过stat-命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同" class="headerlink" title="在目录下建立文件soft，之后对soft设置软链接slink，通过stat 命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同"></a>在目录下建立文件soft，之后对soft设置软链接slink，通过stat 命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同</h4><ol start="3">
+<li>软链接可跨文件系统建立</li>
+</ol>
+<h4 id="在-dev目录下建立test文件目录用于实验，然后设置软链接testlink"><a href="#在-dev目录下建立test文件目录用于实验，然后设置软链接testlink" class="headerlink" title="在/dev目录下建立test文件目录用于实验，然后设置软链接testlink"></a>在/dev目录下建立test文件目录用于实验，然后设置软链接testlink</h4><ol start="4">
+<li>软链接可以对目录文件建立</li>
+</ol>
+<h4 id="接着直接以-app-testdir为目标文件，和-dev-test目录文件，建立软链接"><a href="#接着直接以-app-testdir为目标文件，和-dev-test目录文件，建立软链接" class="headerlink" title="接着直接以/app/testdir为目标文件，和/dev/test目录文件，建立软链接"></a>接着直接以/app/testdir为目标文件，和/dev/test目录文件，建立软链接</h4><ol start="5">
+<li>软链接创建不会增加链接数</li>
+</ol>
+<h4 id="建立了软链接，而链接数还是1没有改变"><a href="#建立了软链接，而链接数还是1没有改变" class="headerlink" title="建立了软链接，而链接数还是1没有改变"></a>建立了软链接，而链接数还是1没有改变</h4><ol start="6">
+<li>删除软链接并不影响源文件，但删除源文件软链接就会变成死链接，若链接指向的路径文件被重新建立，则链接恢复</li>
+</ol>
+<h4 id="在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"><a href="#在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据" class="headerlink" title="在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"></a>在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据</h4><h2 id="其他相关命令"><a href="#其他相关命令" class="headerlink" title="其他相关命令"></a>其他相关命令</h2><p>使用find 命令可以查找链接文件</p>
+<ol>
+<li>查找目录文件下相同inode的文件</li>
+</ol>
+<h4 id="find-dirs-inum-inode"><a href="#find-dirs-inum-inode" class="headerlink" title="find /dirs inum inode"></a>find /dirs inum inode</h4><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>硬链接本质上就是同一个文件的不同文件名。软链接就是独立的文件，不过文件中存放的是源文件的路径。</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/Linux/">Linux</a>
+            
+            <a href="/tags/shell/">shell</a>
+            
+            <a href="/tags/文件系统/">文件系统</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
