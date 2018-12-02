@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://yoursite.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<!-- 
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+ -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://yoursite.com">
+<meta name="author" content="Cooper Yang">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>硬连接和软连接 - Cooper Yang</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="">
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="说">说</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">说IT</h1>
+        <h3 class="cover-siteTitle">用代码摇滚这个世界</h3>
+        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/Foreverb" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+        
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">Input Search key Words Here</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="Input Search key Words Here" />
+        <button type="submit" class="search-form-submit" title="Search"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2018-12-02">2018-12-02</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">硬连接和软连接</h2>
+            <div class="post-meta">
+                本文总共3170个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="FormData用法详解"><a href="#FormData用法详解" class="headerlink" title="FormData用法详解"></a>FormData用法详解</h1><p>FormData 对象：</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/203/933/2039338818-5a28f425ab032_articlex" alt="image"></p>
+<h2 id="创建一个formData对象实例的方式"><a href="#创建一个formData对象实例的方式" class="headerlink" title="创建一个formData对象实例的方式"></a>创建一个formData对象实例的方式</h2><ol>
+<li>创建一个空对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var formData = new FormData();//通过append方法添加数据</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用已有表单来初始化对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//表单示例</span><br><span class="line">&lt;form id=&quot;myForm&quot; action=&quot;&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;名字</span><br><span class="line">    &lt;input type=&quot;password&quot; name=&quot;psw&quot;&gt;密码</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">//方法示例</span><br><span class="line">// 获取页面已有的一个form表单</span><br><span class="line">var form = document.getElementById(&quot;myForm&quot;);</span><br><span class="line">// 用表单来初始化</span><br><span class="line">var formData = new FormData(form);</span><br><span class="line">// 我们可以根据name来访问表单中的字段</span><br><span class="line">var name = formData.get(&quot;name&quot;); // 获取名字</span><br><span class="line">var psw = formData.get(&quot;psw&quot;); // 获取密码</span><br><span class="line">// 当然也可以在此基础上，添加其他数据</span><br><span class="line">formData.append(&quot;token&quot;,&quot;kshdfiwi3rh&quot;);</span><br></pre></td></tr></table></figure>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><p>formData里面存储的数据是以健值对的形式存在的，key是唯一的，一个key可能对应多个value。<br>如果是使用表单初始化，每一个表单字段对应一条数据，它们的HTML name属性即为key值，它们value属性对应value值。</p>
+<p>1.获取值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//通过get(key)/getAll(key)来获取对应的value</span><br><span class="line">formData.get(&quot;name&quot;); // 获取key为name的第一个值</span><br><span class="line">formData.get(&quot;name&quot;); // 返回一个数组，获取key为name的所有值</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>添加数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//通过append(key, value)来添加数据，如果指定的key不存在则会新增一条数据，如果key存在，则添加到数据的末尾</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v2&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v3&quot;);</span><br></pre></td></tr></table></figure>
+<p>获取值时方式及结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">formData.get(&quot;k1&quot;); // &quot;v1&quot;</span><br><span class="line">formData.getAll(&quot;k1&quot;); // [&quot;v1&quot;,&quot;v2&quot;,&quot;v3&quot;]</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>设置修改数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//set(key, value)来设置修改数据，如果指定的key不存在则会新增一条，如果存在，则会修改对应的value值</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.set(&quot;k1&quot;, &quot;1&quot;);</span><br><span class="line">formData.getAll(&quot;k1&quot;); // [&quot;1&quot;]</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>判断是否存在对应数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//has(key)来判断是否对应的key值</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.append(&quot;k2&quot;,null);</span><br><span class="line"></span><br><span class="line">formData.has(&quot;k1&quot;); // true</span><br><span class="line">formData.has(&quot;k2&quot;); // true</span><br><span class="line">formData.has(&quot;k3&quot;); // false</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>删除数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//delete(key)删除数据</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v2&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.delete(&quot;k1&quot;);</span><br><span class="line"></span><br><span class="line">formData.getAll(&quot;k1&quot;); // []</span><br></pre></td></tr></table></figure>
+<h2 id="JQuery实例"><a href="#JQuery实例" class="headerlink" title="JQuery实例"></a>JQuery实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//添加数据方式见上二。</span><br><span class="line">//processData: false, contentType: false,多用来处理异步上传二进制文件。</span><br><span class="line"> $.ajax(&#123;</span><br><span class="line">    url: &apos;xxx&apos;,</span><br><span class="line">    type: &apos;POST&apos;,</span><br><span class="line">    data: formData,                    // 上传formdata封装的数据</span><br><span class="line">    dataType: &apos;JSON&apos;,</span><br><span class="line">    cache: false,                      // 不缓存</span><br><span class="line">    processData: false,                // jQuery不要去处理发送的数据</span><br><span class="line">    contentType: false,                // jQuery不要去设置Content-Type请求头</span><br><span class="line">    success:function (data) &#123;           //成功回调</span><br><span class="line">        console.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>附：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 将以base64的图片url数据转换为Blob文件格式</span><br><span class="line"> * @param urlData 用url方式表示的base64图片</span><br><span class="line"> */</span><br><span class="line">function convertBase64UrlToBlob(urlData) &#123;</span><br><span class="line">    var bytes = window.atob(urlData.split(&apos;,&apos;)[1]); //去掉url的头，并转换为byte</span><br><span class="line">    //处理异常,将ascii码小于0的转换为大于0</span><br><span class="line">    var ab = new ArrayBuffer(bytes.length);</span><br><span class="line">    var ia = new Uint8Array(ab);</span><br><span class="line">    for(var i = 0; i &lt; bytes.length; i++) &#123;</span><br><span class="line">        ia[i] = bytes.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return new Blob([ab], &#123;</span><br><span class="line">        type: &apos;image/png&apos;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>内容摘自 <a href="https://segmentfault.com/a/1190000006716454" target="_blank" rel="noopener">https://segmentfault.com/a/1190000006716454</a></p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/文件系统/">文件系统</a>
+            
+            <a href="/tags/js/">js</a>
+            
+            <a href="/tags/ajax/">ajax</a>
+            
+            <a href="/tags/FormData/">FormData</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
