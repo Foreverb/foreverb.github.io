@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-04T11:16:15.158Z</updated>
+  <updated>2018-12-04T11:16:11.215Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,37 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>通用上传组件设计</title>
-    <link href="http://yoursite.com/2018/12/04/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://yoursite.com/2018/12/04/通用上传组件设计/</id>
-    <published>2018-12-03T16:00:00.000Z</published>
-    <updated>2018-12-04T11:16:15.158Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文摘自<br><a href="http://webooxx.com/2018/12/03/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/，感谢博主！！！" target="_blank" rel="noopener">http://webooxx.com/2018/12/03/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/，感谢博主！！！</a></p><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1.jpg" alt="image"></p><h2 id="测试源码"><a href="#测试源码" class="headerlink" title="测试源码"></a>测试源码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">dir</span>=<span class="string">"ltr"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Demo演示<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">id</span>=<span class="string">'fileIpt'</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">required</span> <span class="attr">name</span>=<span class="string">"thumbnail"</span> <span class="attr">class</span>=<span class="string">"upload_img"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">'image'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  let upload_img = document.getElementsByClassName('upload_img')[0];</span></span><br><span class="line"><span class="undefined">  upload_img.onchange = function(e)&#123;</span></span><br><span class="line"><span class="undefined">    let msg = [</span></span><br><span class="line"><span class="undefined">                '文件: '+e.target.files[0].name,</span></span><br><span class="line"><span class="undefined">                '类型: '+e.target.files[0].type,</span></span><br><span class="line"><span class="undefined">                '大小: '+ (( e.target.files[0].size / 102.4 )&gt;&gt;0)/10 + 'KB',</span></span><br><span class="line"><span class="undefined">            ]</span></span><br><span class="line"><span class="undefined">            alert( msg );</span></span><br><span class="line"><span class="undefined">    let oData = new FormData();</span></span><br><span class="line"><span class="undefined">    oData.append('thumbnail',e.target.files[0])</span></span><br><span class="line"><span class="undefined">    // debugger</span></span><br><span class="line"><span class="undefined">    let xhr = new XMLHttpRequest();</span></span><br><span class="line"><span class="undefined">    xhr.open("POST", "https://140.82.16.201:19999/xxxx", true);</span></span><br><span class="line"><span class="undefined">    xhr.send(oData);</span></span><br><span class="line"><span class="undefined">    xhr.onload = function (oEvent) &#123;</span></span><br><span class="line"><span class="undefined">        if (xhr.status == 200 &amp;&amp; xhr.readyState == 4) &#123;</span></span><br><span class="line"><span class="undefined">          console.log(xhr.responseText);</span></span><br><span class="line"><span class="undefined">          let image = document.createElement('img');</span></span><br><span class="line"><span class="undefined">          image.setAttribute('src',xhr.responseText);</span></span><br><span class="line"><span class="undefined">          document.getElementsByTagName('body')[0].appendChild(image);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="初步验证"><a href="#初步验证" class="headerlink" title="初步验证"></a>初步验证</h2><ul><li>确认 input.file的onchange事件会被触发</li><li>确认可以获取到用户选择的文件和信息</li></ul><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/test%20%E4%B8%8B%E5%8D%887.00.45.jpg" alt="image"></p><h2 id="验证使用Ajax提交"><a href="#验证使用Ajax提交" class="headerlink" title="验证使用Ajax提交"></a>验证使用Ajax提交</h2><ul><li>确认数据可以通过Ajax方式提交</li></ul><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/ajax.jpg" alt="image"></p><h2 id="查看最终结果图"><a href="#查看最终结果图" class="headerlink" title="查看最终结果图"></a>查看最终结果图</h2><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/app.jpg" alt="image"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;本文摘自&lt;br&gt;&lt;a href=&quot;http://webooxx.com/2018/12/03/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/，感谢博主！！！&quot; target=
-      
-    
-    </summary>
-    
-    
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
-    
-      <category term="ajax" scheme="http://yoursite.com/tags/ajax/"/>
-    
-      <category term="FormData" scheme="http://yoursite.com/tags/FormData/"/>
-    
-      <category term="文件上传" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-      <category term="fs" scheme="http://yoursite.com/tags/fs/"/>
-    
-  </entry>
   
   <entry>
     <title>JS特效-黑客帝国矩阵</title>
@@ -78,6 +47,38 @@
   </entry>
   
   <entry>
+    <title>通用上传组件设计</title>
+    <link href="http://yoursite.com/2018/12/04/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://yoursite.com/2018/12/04/通用上传组件设计/</id>
+    <published>2018-12-03T16:00:00.000Z</published>
+    <updated>2018-12-04T11:17:59.734Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文摘自:</p><p><a href="http://webooxx.com/2018/12/03/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/" target="_blank" rel="noopener">http://webooxx.com/2018/12/03/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/</a></p><p>感谢博主！！！</p><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1.jpg" alt="image"></p><h2 id="测试源码"><a href="#测试源码" class="headerlink" title="测试源码"></a>测试源码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">dir</span>=<span class="string">"ltr"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Demo演示<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">id</span>=<span class="string">'fileIpt'</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">required</span> <span class="attr">name</span>=<span class="string">"thumbnail"</span> <span class="attr">class</span>=<span class="string">"upload_img"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">'image'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  let upload_img = document.getElementsByClassName('upload_img')[0];</span></span><br><span class="line"><span class="undefined">  upload_img.onchange = function(e)&#123;</span></span><br><span class="line"><span class="undefined">    let msg = [</span></span><br><span class="line"><span class="undefined">                '文件: '+e.target.files[0].name,</span></span><br><span class="line"><span class="undefined">                '类型: '+e.target.files[0].type,</span></span><br><span class="line"><span class="undefined">                '大小: '+ (( e.target.files[0].size / 102.4 )&gt;&gt;0)/10 + 'KB',</span></span><br><span class="line"><span class="undefined">            ]</span></span><br><span class="line"><span class="undefined">            alert( msg );</span></span><br><span class="line"><span class="undefined">    let oData = new FormData();</span></span><br><span class="line"><span class="undefined">    oData.append('thumbnail',e.target.files[0])</span></span><br><span class="line"><span class="undefined">    // debugger</span></span><br><span class="line"><span class="undefined">    let xhr = new XMLHttpRequest();</span></span><br><span class="line"><span class="undefined">    xhr.open("POST", "https://140.82.16.201:19999/xxxx", true);</span></span><br><span class="line"><span class="undefined">    xhr.send(oData);</span></span><br><span class="line"><span class="undefined">    xhr.onload = function (oEvent) &#123;</span></span><br><span class="line"><span class="undefined">        if (xhr.status == 200 &amp;&amp; xhr.readyState == 4) &#123;</span></span><br><span class="line"><span class="undefined">          console.log(xhr.responseText);</span></span><br><span class="line"><span class="undefined">          let image = document.createElement('img');</span></span><br><span class="line"><span class="undefined">          image.setAttribute('src',xhr.responseText);</span></span><br><span class="line"><span class="undefined">          document.getElementsByTagName('body')[0].appendChild(image);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="初步验证"><a href="#初步验证" class="headerlink" title="初步验证"></a>初步验证</h2><ul><li>确认 input.file的onchange事件会被触发</li><li>确认可以获取到用户选择的文件和信息</li></ul><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/test%20%E4%B8%8B%E5%8D%887.00.45.jpg" alt="image"></p><h2 id="验证使用Ajax提交"><a href="#验证使用Ajax提交" class="headerlink" title="验证使用Ajax提交"></a>验证使用Ajax提交</h2><ul><li>确认数据可以通过Ajax方式提交</li></ul><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/ajax.jpg" alt="image"></p><h2 id="查看最终结果图"><a href="#查看最终结果图" class="headerlink" title="查看最终结果图"></a>查看最终结果图</h2><p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/app.jpg" alt="image"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本文摘自:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://webooxx.com/2018/12/03/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/&quot; target=&quot;_b
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="ajax" scheme="http://yoursite.com/tags/ajax/"/>
+    
+      <category term="FormData" scheme="http://yoursite.com/tags/FormData/"/>
+    
+      <category term="文件上传" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+      <category term="fs" scheme="http://yoursite.com/tags/fs/"/>
+    
+  </entry>
+  
+  <entry>
     <title>FormData用法详解</title>
     <link href="http://yoursite.com/2018/12/02/FormData%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
     <id>http://yoursite.com/2018/12/02/FormData用法详解/</id>
@@ -99,11 +100,11 @@
     
       <category term="js" scheme="http://yoursite.com/tags/js/"/>
     
-      <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
-    
       <category term="ajax" scheme="http://yoursite.com/tags/ajax/"/>
     
       <category term="FormData" scheme="http://yoursite.com/tags/FormData/"/>
+    
+      <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
@@ -302,9 +303,9 @@
     </summary>
     
     
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -327,9 +328,9 @@
     </summary>
     
     
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="node" scheme="http://yoursite.com/tags/node/"/>
     
@@ -441,9 +442,9 @@
     </summary>
     
     
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -522,11 +523,11 @@
     </summary>
     
     
+      <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
-    
-      <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
