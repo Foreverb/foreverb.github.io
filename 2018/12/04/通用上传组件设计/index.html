@@ -161,7 +161,7 @@
             </div>
             <h2 class="post-title">通用上传组件设计</h2>
             <div class="post-meta">
-                本文总共1126个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共1150个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
@@ -169,9 +169,16 @@
 <h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>这是一个通用的、文件上传功能公用的组件，在业务逻辑中，必要的时候（需要上传的时候）调用fileUpload的API</p>
 <p>该组件的返回值是一个Promise对象，值是上传的文件后得到的相应的路径</p>
 <h2 id="怎么用的"><a href="#怎么用的" class="headerlink" title="怎么用的"></a>怎么用的</h2><p>这个组件分为三大模块</p>
-<h3 id="客户端应用（app）"><a href="#客户端应用（app）" class="headerlink" title="客户端应用（app）"></a>客户端应用（app）</h3><p>这部分主要讲的是该组件（fileUpload）怎么调用。</p>
+<ol>
+<li>客户端应用（app）</li>
+</ol>
+<p>这部分主要讲的是该组件（fileUpload）怎么调用。</p>
 <p>fileUpload中传入一个参数，这个参数是必须的，值是服务端地址，返回值是Promise对象，值是上传的文件后得到的相应的路径</p>
-<h3 id="上传组件服务端"><a href="#上传组件服务端" class="headerlink" title="上传组件服务端"></a>上传组件服务端</h3><p>处理文件上传到的服务端，里面包含了两个接口</p>
+<ol start="2">
+<li>上传组件服务端</li>
+<li>上传组件客户端</li>
+</ol>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><h3 id="上传组件服务端"><a href="#上传组件服务端" class="headerlink" title="上传组件服务端"></a>上传组件服务端</h3><p>处理文件上传到的服务端，里面包含了两个接口</p>
 <ol>
 <li>/xxxx</li>
 </ol>
@@ -206,9 +213,10 @@
 <li>ajax提交</li>
 <li>ajax返回完成后执行Promise.resolve（xhr.responseText）</li>
 </ol>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>客户端应用 -&gt; 上传组件客户端 —&gt; 上传组件服务端 -&gt; 客户端应用</p>
+<hr>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>客户端应用 -&gt; 上传组件客户端 —&gt; 上传组件服务端 -&gt; 客户端应用</p>
 <p>客户端应用（app）调用上传组件客户端的api，而该api返回的Promise对象的值是其于服务端发送请求后得到的数据，然后客户端应用又接收到了该数据，形成了一个闭环</p>
-<h2 id="初步验证"><a href="#初步验证" class="headerlink" title="初步验证"></a>初步验证</h2><p><a href="http://webooxx.com/ddemo/fileUpload/fileupload1.html" target="_blank" rel="noopener">初步验证</a></p>
+<h2 id="开发验证"><a href="#开发验证" class="headerlink" title="开发验证"></a>开发验证</h2><p><a href="http://webooxx.com/ddemo/fileUpload/fileupload1.html" target="_blank" rel="noopener">开发验证</a></p>
 <ul>
 <li>确认API调用方式</li>
 <li>确认 file input 可以被主动触发点击</li>
