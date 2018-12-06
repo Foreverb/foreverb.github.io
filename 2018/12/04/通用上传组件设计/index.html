@@ -161,7 +161,7 @@
             </div>
             <h2 class="post-title">通用上传组件设计</h2>
             <div class="post-meta">
-                本文总共1150个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共1624个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
@@ -180,7 +180,7 @@
 </ol>
 <h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><h3 id="上传组件服务端"><a href="#上传组件服务端" class="headerlink" title="上传组件服务端"></a>上传组件服务端</h3><p>处理文件上传到的服务端，里面包含了两个接口</p>
 <ol>
-<li>/xxxx</li>
+<li>上传 /upload</li>
 </ol>
 <p>这个接口是上传文件的接口，文件通过ajax上传时，post的第一个参数就是这个接口</p>
 <h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><ol>
@@ -191,7 +191,7 @@
 </ol>
 <hr>
 <ol start="2">
-<li>/file/$path$</li>
+<li>下载 /file/$path$</li>
 </ol>
 <h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><p>这个接口是读取文件的接口，当客户端接收到服务端返回的新的路径的时候，客户端会根据这个新的路径再次向服务端发起请求，获取该路径对应的图片</p>
 <h3 id="上传组件客户端"><a href="#上传组件客户端" class="headerlink" title="上传组件客户端"></a>上传组件客户端</h3><p>该部分主要作用是提供一个接口：fileUpload，其返回的是一个Promise对象，该对象的值是上传的文件后得到的相应的路径</p>
@@ -216,20 +216,26 @@
 <hr>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>客户端应用 -&gt; 上传组件客户端 —&gt; 上传组件服务端 -&gt; 客户端应用</p>
 <p>客户端应用（app）调用上传组件客户端的api，而该api返回的Promise对象的值是其于服务端发送请求后得到的数据，然后客户端应用又接收到了该数据，形成了一个闭环</p>
-<h2 id="开发验证"><a href="#开发验证" class="headerlink" title="开发验证"></a>开发验证</h2><p><a href="http://webooxx.com/ddemo/fileUpload/fileupload1.html" target="_blank" rel="noopener">开发验证</a></p>
-<ul>
-<li>确认API调用方式</li>
-<li>确认 file input 可以被主动触发点击</li>
-<li>确认可以获取到用户选择的文件</li>
-</ul>
-<p><img src="http://webooxx.com/ddemo/fileUpload/fileupload1.png" alt="image"></p>
-<h2 id="验证使用Ajax提交"><a href="#验证使用Ajax提交" class="headerlink" title="验证使用Ajax提交"></a>验证使用Ajax提交</h2><ul>
-<li>确认数据可以通过Ajax方式提交（更灵活，可以设置回调）</li>
-</ul>
-<p><img src="http://webooxx.com/ddemo/fileUpload/fileupload2.png" alt="image"></p>
+<h2 id="开发验证"><a href="#开发验证" class="headerlink" title="开发验证"></a>开发验证</h2><p>a. 初步验证,文件获取测试（最终确认api的调用方式、fileinput 可以被js设置&amp;触发点击、js可以获取用户的文件数据）</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/test%20%E4%B8%8B%E5%8D%887.00.45.jpg" alt="image"></p>
+<p>从这张图可以看出，通过点击fileinput，根据alert的内容，可以确认获取到了文件和文件属性之类的</p>
+<hr>
+<p>b. 验证文件通过Ajax提交（最终确认可以用ajax将文件内容发送到服务端）</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/ajax.jpg" alt="image"></p>
+<p>c. 验证服务端文件获取（最终确认ajax发送到服务端的内容可以被获取，fileinput 的name与服务端获取内容的关系）</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/first.jpg" alt="image"></p>
+<p>服务端代码：log出req.file</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/ok.jpg" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">multer.single(‘file’), //适用于单文件上传</span><br><span class="line">multer.array(‘file’,num), //适用于多文件上传，num为最多上传个数，上传文件的数量可以小于num,</span><br><span class="line">multer.fields(fields), //适用于混合上传，比如A类文件1个，B类文件2个。官方API有详细说明。</span><br></pre></td></tr></table></figure>
+<p>从这则资料，可以知道，input.file的name与服务端multer.single(‘file’)中的参数对应，只是为了服务端获取文件</p>
+<p>d. 验证文件写入（最终确认文件按照代码所示，写入到了指定文件）</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/files.jpg" alt="image"></p>
+<p>e. 验证读取模块（最终确认文件写入路径可以被反向的读取出来，阐述下写入路径和读取路径的关系）</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/src.jpg" alt="image"></p>
 <hr>
 <p>课外知识：multer（中间件）</p>
 <p>Multer 在解析完请求体后，会向 request 对象添加一个body对象和一个file或者files对象（上传多个文件时使用files对象）。其中body对象包含所提交表单中的文本字段（如果有），而file（或files）对象中包含通过表单上传的文件。  </p>
+<hr>
 
         </div>
         <div class="post-tool">
