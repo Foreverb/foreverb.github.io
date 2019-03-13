@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/03/13/webpack/</loc>
+    
+    <lastmod>2019-03-13T08:58:29.028Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/03/11/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%A5%E9%97%A8/</loc>
     
     <lastmod>2019-03-11T06:32:54.897Z</lastmod>
