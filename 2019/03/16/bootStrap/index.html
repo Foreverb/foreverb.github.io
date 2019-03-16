@@ -50,7 +50,7 @@
 <link rel="shortcut icon" href="/images/favicon.png">
 
 
-<title>node自动重启工具 nodemon - Cooper Yang</title>
+<title>bootstrap - Cooper Yang</title>
 
 <meta name="keywords" content="">
 
@@ -155,30 +155,251 @@
                 </a>
                 <p><span class="label">作者</span>
                     <a href="" target="_blank"></a>
-                    <span title="最后编辑于2018-11-01">2018-11-01</span>
+                    <span title="最后编辑于2019-03-16">2019-03-16</span>
                 </p>
                 <p></p>
             </div>
-            <h2 class="post-title">Node自动重启工具 nodemon</h2>
+            <h2 class="post-title">bootStrap</h2>
             <div class="post-meta">
-                本文总共752个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共2248个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h3 id="为什么要使用"><a href="#为什么要使用" class="headerlink" title="为什么要使用"></a>为什么要使用</h3><p>在编写调试Node.js项目，修改代码后，需要频繁的手动close掉，然后再重新启动，非常繁琐。现在，我们可以使用nodemon这个工具，它的作用是监听代码文件的变动，当代码改变之后，自动重启。</p>
-<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm/cnpm install -g nodemon</span><br></pre></td></tr></table></figure>
-<p>安装在全局。</p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>编写代码 app.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&quot;express&quot;)</span><br><span class="line"></span><br><span class="line">var app = express()</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;,function(req,res) &#123;</span><br><span class="line">    res.send(&quot;hello world&quot;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000,function()&#123;</span><br><span class="line">    console.log(&apos;server is running&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>这里使用了express框架。</p>
-<p>传统的方法，我们使用node app.js命令，程序将启动。其实，我们刚才下载的nodemon工具也可以用来启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon app.js</span><br></pre></td></tr></table></figure>
-<p>我们访问3000端口，可以看到hellloworld。</p>
-<p>我们现在尝试修改一下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.get(&apos;/&apos;,function(req,res) &#123;</span><br><span class="line">    res.send(&quot;hello 杨古波&quot;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>保存之后，我们可以看到命令行中，输出了以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[nodemon] restarting due to changes...</span><br><span class="line">[nodemon] starting `node app.js`</span><br></pre></td></tr></table></figure>
-<p>我们只需要刷新浏览器，就可以看到改动后的内容。</p>
+            <h2 id="初始"><a href="#初始" class="headerlink" title="初始"></a>初始</h2><ul>
+<li>引入内置css</li>
+</ul>
+<link rel="stylesheet" herf="bootstrap.css">
+
+<ul>
+<li><p>引入jq</p>
+<script src="jquery-1.11.1.js"></script>
+</li>
+<li><p>引入内置js</p>
+<script src="bootstrap.js"></script>
+
+</li>
+</ul>
+<hr>
+<h2 id="bootstrap栅格系统"><a href="#bootstrap栅格系统" class="headerlink" title="bootstrap栅格系统"></a>bootstrap栅格系统</h2><h3 id="容器（className）"><a href="#容器（className）" class="headerlink" title="容器（className）"></a>容器（className）</h3><pre><code>-- container-fluid
+
+    》流体
+
+-- container
+
+    》固定
+
+    》1170
+
+    》750
+
+    》auto
+</code></pre><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>- 分12列（className）
+
+    》row
+
+    》col
+
+    col-lg-3
+
+    col-md-3
+
+    col-sm-3
+
+    cll-sx-3
+
+- 阈值
+
+    》 1200 &gt;=
+
+    》 992 &gt;=
+
+    》 768 &gt;=
+
+    》 768 &lt;=
+</code></pre><ul>
+<li>列偏移</li>
+</ul>
+<pre><code>col-[ lg|md|sm|sx ]-offest-【1-12】
+</code></pre><ul>
+<li>列排序</li>
+</ul>
+<pre><code>col-[ lg|md|sm|sx ]-[ push | pull ]-[ 1-12 ]
+
+push 往后排
+
+pull 往前排
+</code></pre><h3 id="响应式工具"><a href="#响应式工具" class="headerlink" title="响应式工具"></a>响应式工具</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>针对不同设备展示或隐藏页面内容</li>
+</ul>
+<h4 id="可见类"><a href="#可见类" class="headerlink" title="可见类"></a>可见类</h4><ul>
+<li>visibile-<em>-</em></li>
+</ul>
+<p>可选项</p>
+<blockquote>
+<p>lg md sm sx</p>
+</blockquote>
+<blockquote>
+<p>block inline inline-block</p>
+</blockquote>
+<h4 id="不可见类"><a href="#不可见类" class="headerlink" title="不可见类"></a>不可见类</h4><ul>
+<li>hidden-*</li>
+</ul>
+<blockquote>
+<p>lg md sm sx</p>
+</blockquote>
+<p>打印类</p>
+<ul>
+<li>visible-prient-*  hidden-prient</li>
+</ul>
+<h3 id="Glyphicons字体图标"><a href="#Glyphicons字体图标" class="headerlink" title="Glyphicons字体图标"></a>Glyphicons字体图标</h3><ul>
+<li>好处<ul>
+<li>减少请求</li>
+<li>容易控制</li>
+<li>例子：淘宝</li>
+</ul>
+</li>
+<li>用法</li>
+</ul>
+<p>添加class：“glyphucons glyphicons-图标名”</p>
+<pre><code>- font-face
+- 字体路径
+</code></pre><ul>
+<li>自制图标</li>
+</ul>
+<p>百度搜索：“把图标转化成web字体”</p>
+<h3 id="预定义样式风格"><a href="#预定义样式风格" class="headerlink" title="预定义样式风格"></a>预定义样式风格</h3><ul>
+<li>primary（首选项）</li>
+<li>success（成功）</li>
+<li>info（一般信息）</li>
+<li>warning（警告）</li>
+<li>danger（危险）</li>
+</ul>
+<p>button样式风格</p>
+<blockquote>
+<p>class=”btn btn-[primary|success|info|warning|danger]”</p>
+</blockquote>
+<p>字体样式风格</p>
+<blockquote>
+<p>class=”text-[primary|success|info|warning|danger]”</p>
+</blockquote>
+<p>背景样式风格</p>
+<blockquote>
+<p>class=”bg-[primary|success|info|warning|danger]”</p>
+</blockquote>
+<p>警告框样式风格</p>
+<blockquote>
+<p>class=”alert alert-[primary|success|info|warning|danger]”</p>
+</blockquote>
+<p>面板样式风格</p>
+<blockquote>
+<p>class=”panel panel-[primary|success|info|warning|danger]”</p>
+</blockquote>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><ul>
+<li>基类<ul>
+<li>btn</li>
+</ul>
+</li>
+<li>样式<ul>
+<li>btn-default（默认）</li>
+<li>btn-link（链接）</li>
+</ul>
+</li>
+<li>大小<ul>
+<li>btn-*【lg|sm|sx】</li>
+</ul>
+</li>
+<li>状态<ul>
+<li>active</li>
+<li>disabled</li>
+</ul>
+</li>
+<li>种类<ul>
+<li>a、input、button</li>
+</ul>
+</li>
+<li>块级<ul>
+<li>btn-block</li>
+</ul>
+</li>
+<li>按钮组<ul>
+<li>btn-group</li>
+<li>btn-group-justified</li>
+<li>btn-group-vertical</li>
+</ul>
+</li>
+<li>箭头<ul>
+<li>caret   向下</li>
+<li>dropup  向上</li>
+</ul>
+</li>
+</ul>
+<h3 id="下拉菜单"><a href="#下拉菜单" class="headerlink" title="下拉菜单"></a>下拉菜单</h3><ul>
+<li>属性<ul>
+<li>data-*</li>
+<li>aria-*</li>
+<li>role</li>
+</ul>
+</li>
+<li>open</li>
+<li>drop-down-menu-right</li>
+<li>dropdown-header</li>
+<li>divider   分割线</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">下拉</span><br><span class="line"></span><br><span class="line">class=&quot;data-toggle&quot;</span><br><span class="line">data-toggle=&quot;dropdown&quot;</span><br><span class="line"></span><br><span class="line">加给点击的目标元素</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">判断移动端还是pc端</span><br><span class="line"></span><br><span class="line">pc</span><br><span class="line"></span><br><span class="line">window.navigator.userAgent.toLowerCase().indexOf(&apos;mobile&apos;) == -1</span><br><span class="line"></span><br><span class="line">mobile</span><br><span class="line"></span><br><span class="line">window.navigator.userAgent.toLowerCase().indexOf(&apos;mobile&apos;) != -1</span><br></pre></td></tr></table></figure>
+<h3 id="标签页"><a href="#标签页" class="headerlink" title="标签页"></a>标签页</h3><ul>
+<li>头部<ul>
+<li>nav</li>
+<li>nav-tabs</li>
+<li>nav-justified</li>
+<li>nav-tabs-justified</li>
+<li>nav-pills</li>
+<li>nav-stacked</li>
+</ul>
+</li>
+<li>内容<ul>
+<li>tab-content</li>
+<li>tab-pane</li>
+<li>data-toggle=’tab’</li>
+<li>herf对应id</li>
+<li>淡入淡出  fade</li>
+</ul>
+</li>
+</ul>
+<h3 id="导航条"><a href="#导航条" class="headerlink" title="导航条"></a>导航条</h3><p>除第二个，其他全是加给容器（nav）</p>
+<ul>
+<li>navbar navbar-default     默认</li>
+<li>nav navbar-nav    菜单    （子集）</li>
+<li>navbar-inverse</li>
+<li>navbar-static-top</li>
+<li>navbar-fixed-top</li>
+<li>navbar-fixed-bottom</li>
+</ul>
+<hr>
+<ul>
+<li>navbar-header</li>
+<li>mavbar-brand          logo</li>
+<li>navbar-left           左浮动  菜单（子集）</li>
+<li>navbar-right          右浮动  菜单（子集）</li>
+<li>navbar-btn</li>
+<li>navbar-link</li>
+<li>navbar-text</li>
+<li>navbar-form</li>
+</ul>
+<hr>
+<ul>
+<li>响应式导航条<ul>
+<li>navbar-toggle</li>
+<li>collapse navbar-collapse      添加到隐藏对象上</li>
+</ul>
+</li>
+<li>滚动监听<ul>
+<li>data-spy = “scroll”           </li>
+<li>data-target = { id }          隐藏对象的id</li>
+<li>data-offest = “距离”</li>
+</ul>
+</li>
+</ul>
 
         </div>
         <div class="post-tool">
@@ -191,9 +412,9 @@
             
             <a href="/tags/前端/">前端</a>
             
-            <a href="/tags/js/">js</a>
+            <a href="/tags/工具/">工具</a>
             
-            <a href="/tags/node/">node</a>
+            <a href="/tags/bootStrap/">bootStrap</a>
             
         </div>
         
