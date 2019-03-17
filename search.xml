@@ -66,6 +66,29 @@
     </entry>
     
     <entry>
+      <title>flex布局</title>
+      <link href="/2019/03/01/flex%E5%B8%83%E5%B1%80/"/>
+      <url>/2019/03/01/flex%E5%B8%83%E5%B1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="http-flexboxfroggy-com"><a href="#http-flexboxfroggy-com" class="headerlink" title="http://flexboxfroggy.com/"></a><a href="http://flexboxfroggy.com/" target="_blank" rel="noopener">http://flexboxfroggy.com/</a></h1><h1 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h1><h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">flex-direction</span><br><span class="line"></span><br><span class="line">flex设置主轴方向</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">row     横向（由左向右）</span><br><span class="line"></span><br><span class="line">row-reverse   横向（由右向左）  </span><br><span class="line"></span><br><span class="line">column  纵向（由上至下）</span><br><span class="line"></span><br><span class="line">column-reverse  纵向（由下至上）</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-wrap</span><br><span class="line"></span><br><span class="line">属性用于指定弹性盒子的子元素换行方式。</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box&#123;</span><br><span class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nowrap 是flex-wrap的 默认值，弹性容器为单行。该情况下弹性子项可能会溢出容器    </span><br><span class="line"></span><br><span class="line">wrap 就是当子元素宽度总和超过了父级，那么子级就会换行</span><br><span class="line"></span><br><span class="line">wrap-reverse  就是当子元素宽度总和超过了父级，那么该换行的子级就会与不该换行的子级交换位置</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-flow</span><br><span class="line"></span><br><span class="line">是flex-direction和flex-wrap复合属性</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">justify-content</span><br><span class="line"></span><br><span class="line">富裕空间分布（横向）</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">space-between   富裕空间 平均分配在 每两个元素之间</span><br><span class="line"></span><br><span class="line">space-around    富裕空间 每个元素两侧</span><br><span class="line"></span><br><span class="line">center      元素从主轴中间 位置显示,富裕空间在主轴两侧</span><br><span class="line"></span><br><span class="line">flex-start  元素从主轴开始位置显示,富裕空间在主轴结束位置</span><br><span class="line"></span><br><span class="line">flex-end    元素从主轴结束位置显示,富裕空间在主轴开始位置</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">align-items</span><br><span class="line"></span><br><span class="line">富裕空间分布（纵向）</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">center      元素在侧轴中间显示,富裕空间在侧轴两侧</span><br><span class="line"></span><br><span class="line">flex-start   元素在侧轴开始位置显示,富裕空间在侧轴结束位置</span><br><span class="line"></span><br><span class="line">flex-end     元素在侧轴结束位置显示,富裕空间在侧轴开始位置</span><br><span class="line"></span><br><span class="line">baseline    元素在侧轴 根据基线对齐</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">align-content</span><br><span class="line"></span><br><span class="line">属性在弹性容器内的各项没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）。</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注意：容器内必须有多行的项目，该属性才能渲染出效果。</span><br><span class="line">···</span><br></pre></td></tr></table></figure><hr><h2 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">order</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  order: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-grow</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex-grow: &lt;number&gt;; /* default 0 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</span><br><span class="line"></span><br><span class="line">如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-shrink</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</span><br><span class="line"></span><br><span class="line">如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</span><br><span class="line"></span><br><span class="line">负值对该属性无效。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-basis</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex-basis: &lt;length&gt; | auto; /* default auto */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</span><br><span class="line"></span><br><span class="line">它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</span><br><span class="line"></span><br><span class="line">建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">align-self</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</span><br><span class="line"></span><br><span class="line">···</span><br></pre></td></tr></table></figure><pre><code>$.ajax({    //jquery的ajax格式    type: &quot;POST&quot;,    url: &quot;ajax.php&quot;,    dataType: &quot;json&quot;,    data:{&quot;val1&quot;:&quot;abc&quot;,&quot;val2&quot;:123,&quot;val3&quot;:&quot;456&quot;,},    beforeSend: function () {        //some js code    },    success: function () {        console.log(msg);    },    error: function () {        console.log(&quot;error&quot;);    }})</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> flex </tag>
+            
+            <tag> 布局 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>浏览器同源策略及Cookie的作用域</title>
       <link href="/2018/12/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E5%8F%8ACookie%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
       <url>/2018/12/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E5%8F%8ACookie%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
@@ -198,29 +221,6 @@
     </entry>
     
     <entry>
-      <title>JS特效-黑客帝国矩阵</title>
-      <link href="/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/"/>
-      <url>/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</url>
-      
-        <content type="html"><![CDATA[<p>简直不是我等凡人能理解的。。js代码仅有 308 个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(s=window.screen,w=q.width=s.width,h=q.height=s.height,m=Math.random,p=[],i=0;i&lt;256;p[i++]=1);setInterval(&apos;9Style=\&apos;rgba(0,0,0,.05)\&apos;9Rect(0,0,w,h)9Style=\&apos;#0F0\&apos;;p.map(function(v,i)&#123;9Text(String.fromCharCode(3e4+m()*33),i*10,v);p[i]=v&gt;758+m()*1e4?0:v+10&#125;)&apos;.split(9).join(&apos;;q.getContext(\&apos;2d\&apos;).fill&apos;),33)</span><br></pre></td></tr></table></figure><p><a href="http://webooxx.com/rdemo/matrix.html" target="_blank" rel="noopener">效果预览</a></p><p>本文摘自<br><a href="http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/" target="_blank" rel="noopener">http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</a></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> js </tag>
-            
-            <tag> 一行代码 </tag>
-            
-            <tag> 特效 </tag>
-            
-            <tag> 黑客帝国 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>通用上传组件设计</title>
       <link href="/2018/12/04/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
       <url>/2018/12/04/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/</url>
@@ -246,6 +246,29 @@
     </entry>
     
     <entry>
+      <title>JS特效-黑客帝国矩阵</title>
+      <link href="/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/"/>
+      <url>/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</url>
+      
+        <content type="html"><![CDATA[<p>简直不是我等凡人能理解的。。js代码仅有 308 个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(s=window.screen,w=q.width=s.width,h=q.height=s.height,m=Math.random,p=[],i=0;i&lt;256;p[i++]=1);setInterval(&apos;9Style=\&apos;rgba(0,0,0,.05)\&apos;9Rect(0,0,w,h)9Style=\&apos;#0F0\&apos;;p.map(function(v,i)&#123;9Text(String.fromCharCode(3e4+m()*33),i*10,v);p[i]=v&gt;758+m()*1e4?0:v+10&#125;)&apos;.split(9).join(&apos;;q.getContext(\&apos;2d\&apos;).fill&apos;),33)</span><br></pre></td></tr></table></figure><p><a href="http://webooxx.com/rdemo/matrix.html" target="_blank" rel="noopener">效果预览</a></p><p>本文摘自<br><a href="http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/" target="_blank" rel="noopener">http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 一行代码 </tag>
+            
+            <tag> 特效 </tag>
+            
+            <tag> 黑客帝国 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>FormData用法详解</title>
       <link href="/2018/12/02/FormData%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
       <url>/2018/12/02/FormData%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
@@ -256,13 +279,13 @@
       
         <tags>
             
-            <tag> 文件系统 </tag>
-            
             <tag> js </tag>
             
             <tag> ajax </tag>
             
             <tag> FormData </tag>
+            
+            <tag> 文件系统 </tag>
             
         </tags>
       
@@ -281,9 +304,9 @@
             
             <tag> 前端 </tag>
             
-            <tag> 工具 </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> 工具 </tag>
             
             <tag> 问题 </tag>
             
@@ -415,9 +438,9 @@
       
         <tags>
             
-            <tag> 前端 </tag>
-            
             <tag> js </tag>
+            
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -434,9 +457,9 @@
       
         <tags>
             
-            <tag> 前端 </tag>
-            
             <tag> js </tag>
+            
+            <tag> 前端 </tag>
             
             <tag> node </tag>
             
@@ -459,9 +482,9 @@
             
             <tag> JS </tag>
             
-            <tag> 工具 </tag>
-            
             <tag> 语法 </tag>
+            
+            <tag> 工具 </tag>
             
         </tags>
       
@@ -520,9 +543,9 @@
       
         <tags>
             
-            <tag> 前端 </tag>
-            
             <tag> js </tag>
+            
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -548,27 +571,6 @@
     </entry>
     
     <entry>
-      <title>硬连接和软连接</title>
-      <link href="/2018/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/"/>
-      <url>/2018/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Inode"><a href="#Inode" class="headerlink" title="Inode"></a>Inode</h1><ol><li>inode（即索引节点号）是Linux系统识别文件的唯一标识。</li><li>系统是通过inode来查找正确的文件数据块，并不是通过文件名。</li></ol><h4 id="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"><a href="#Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。" class="headerlink" title="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"></a>Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。</h4><p>元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。</p><h1 id="硬链接和软链接"><a href="#硬链接和软链接" class="headerlink" title="硬链接和软链接"></a>硬链接和软链接</h1><p>在Linux系统为了解决文件共享问题，使用两种方式：hard link（硬链接）和soft link（软链接），链接不仅仅可以共享文件，还有方便管理、隐藏路径、节省空间等好处。</p><h2 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h2><h3 id="若是使用同一个inode对应多个文件，则使用的就是硬链接。"><a href="#若是使用同一个inode对应多个文件，则使用的就是硬链接。" class="headerlink" title="若是使用同一个inode对应多个文件，则使用的就是硬链接。"></a>若是使用同一个inode对应多个文件，则使用的就是硬链接。</h3><p>硬链接可以使用link和ln创建</p><p>语法：ln filename [linkname ]</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link data link</span><br><span class="line">ln data link</span><br></pre></td></tr></table></figure><ol><li>只能和已存在的文件建立硬链接</li></ol><h4 id="我们在-app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建"><a href="#我们在-app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建" class="headerlink" title="我们在/app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建"></a>我们在/app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建</h4><ol start="2"><li>文件的inode相同和文件属性，只是文件名不同</li></ol><h4 id="我们在-app目录下创建一个data的源文件，并通过stat-命令查看文件属性，然后创建硬链接link，ll-i-查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件"><a href="#我们在-app目录下创建一个data的源文件，并通过stat-命令查看文件属性，然后创建硬链接link，ll-i-查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件" class="headerlink" title="我们在/app目录下创建一个data的源文件，并通过stat 命令查看文件属性，然后创建硬链接link，ll -i 查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件"></a>我们在/app目录下创建一个data的源文件，并通过stat 命令查看文件属性，然后创建硬链接link，ll -i 查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件</h4><ol start="3"><li>不能跨文件系统建立硬链接</li></ol><h4 id="在-dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接"><a href="#在-dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接" class="headerlink" title="在/dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接"></a>在/dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接</h4><ol start="4"><li>硬链接创建后链接数会增加</li></ol><h4 id="我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件"><a href="#我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件" class="headerlink" title="我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件"></a>我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件</h4><ol start="5"><li>不能对目录创建硬链接</li></ol><h4 id="在-app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建"><a href="#在-app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建" class="headerlink" title="在/app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建"></a>在/app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建</h4><ol start="6"><li>删除一个硬链接文件并不影响其他有相同 inode 号的文件数据</li></ol><h4 id="在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了"><a href="#在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了" class="headerlink" title="在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了"></a>在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了</h4><h1 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h1><h2 id="软链接的特性"><a href="#软链接的特性" class="headerlink" title="软链接的特性"></a>软链接的特性</h2><ol><li><p>软链接其实存放的就是源文件的路径，所以如果文件的内容数据是另一个文件的路径时，这个文件就是软链接。</p></li><li><p>软链接有自己独立的inode和文件属性，这点和硬链接有本质的区别</p></li></ol><p>语法：ln -s filename [linkname ]</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link -s data link</span><br><span class="line">ln -s data link</span><br></pre></td></tr></table></figure><ol><li>软链接可对不存在文件建立链接</li></ol><h4 id="在-app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示"><a href="#在-app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示" class="headerlink" title="在/app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示"></a>在/app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示</h4><ol start="2"><li>软链接有自己的inode和属性</li></ol><h4 id="在目录下建立文件soft，之后对soft设置软链接slink，通过stat-命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同"><a href="#在目录下建立文件soft，之后对soft设置软链接slink，通过stat-命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同" class="headerlink" title="在目录下建立文件soft，之后对soft设置软链接slink，通过stat 命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同"></a>在目录下建立文件soft，之后对soft设置软链接slink，通过stat 命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同</h4><ol start="3"><li>软链接可跨文件系统建立</li></ol><h4 id="在-dev目录下建立test文件目录用于实验，然后设置软链接testlink"><a href="#在-dev目录下建立test文件目录用于实验，然后设置软链接testlink" class="headerlink" title="在/dev目录下建立test文件目录用于实验，然后设置软链接testlink"></a>在/dev目录下建立test文件目录用于实验，然后设置软链接testlink</h4><ol start="4"><li>软链接可以对目录文件建立</li></ol><h4 id="接着直接以-app-testdir为目标文件，和-dev-test目录文件，建立软链接"><a href="#接着直接以-app-testdir为目标文件，和-dev-test目录文件，建立软链接" class="headerlink" title="接着直接以/app/testdir为目标文件，和/dev/test目录文件，建立软链接"></a>接着直接以/app/testdir为目标文件，和/dev/test目录文件，建立软链接</h4><ol start="5"><li>软链接创建不会增加链接数</li></ol><h4 id="建立了软链接，而链接数还是1没有改变"><a href="#建立了软链接，而链接数还是1没有改变" class="headerlink" title="建立了软链接，而链接数还是1没有改变"></a>建立了软链接，而链接数还是1没有改变</h4><ol start="6"><li>删除软链接并不影响源文件，但删除源文件软链接就会变成死链接，若链接指向的路径文件被重新建立，则链接恢复</li></ol><h4 id="在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"><a href="#在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据" class="headerlink" title="在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"></a>在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据</h4><h2 id="其他相关命令"><a href="#其他相关命令" class="headerlink" title="其他相关命令"></a>其他相关命令</h2><p>使用find 命令可以查找链接文件</p><ol><li>查找目录文件下相同inode的文件</li></ol><h4 id="find-dirs-inum-inode"><a href="#find-dirs-inum-inode" class="headerlink" title="find /dirs inum inode"></a>find /dirs inum inode</h4><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>硬链接本质上就是同一个文件的不同文件名。软链接就是独立的文件，不过文件中存放的是源文件的路径。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> shell </tag>
-            
-            <tag> 文件系统 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>箭头函数</title>
       <link href="/2018/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
       <url>/2018/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
@@ -582,6 +584,27 @@
             <tag> 前端 </tag>
             
             <tag> JS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>硬连接和软连接</title>
+      <link href="/2018/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/"/>
+      <url>/2018/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Inode"><a href="#Inode" class="headerlink" title="Inode"></a>Inode</h1><ol><li>inode（即索引节点号）是Linux系统识别文件的唯一标识。</li><li>系统是通过inode来查找正确的文件数据块，并不是通过文件名。</li></ol><h4 id="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"><a href="#Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。" class="headerlink" title="Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。"></a>Linux系统中文件数据分为两类：metadata（元数据）和data（普通数据）。</h4><p>元数据存放的是文件的附加属性，例如大小、时间戳、所有者等。普通数据才是真正的数据内容。</p><h1 id="硬链接和软链接"><a href="#硬链接和软链接" class="headerlink" title="硬链接和软链接"></a>硬链接和软链接</h1><p>在Linux系统为了解决文件共享问题，使用两种方式：hard link（硬链接）和soft link（软链接），链接不仅仅可以共享文件，还有方便管理、隐藏路径、节省空间等好处。</p><h2 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h2><h3 id="若是使用同一个inode对应多个文件，则使用的就是硬链接。"><a href="#若是使用同一个inode对应多个文件，则使用的就是硬链接。" class="headerlink" title="若是使用同一个inode对应多个文件，则使用的就是硬链接。"></a>若是使用同一个inode对应多个文件，则使用的就是硬链接。</h3><p>硬链接可以使用link和ln创建</p><p>语法：ln filename [linkname ]</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link data link</span><br><span class="line">ln data link</span><br></pre></td></tr></table></figure><ol><li>只能和已存在的文件建立硬链接</li></ol><h4 id="我们在-app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建"><a href="#我们在-app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建" class="headerlink" title="我们在/app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建"></a>我们在/app目录下进行实验，当硬链接的源文件不存在时，硬链接无法创建</h4><ol start="2"><li>文件的inode相同和文件属性，只是文件名不同</li></ol><h4 id="我们在-app目录下创建一个data的源文件，并通过stat-命令查看文件属性，然后创建硬链接link，ll-i-查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件"><a href="#我们在-app目录下创建一个data的源文件，并通过stat-命令查看文件属性，然后创建硬链接link，ll-i-查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件" class="headerlink" title="我们在/app目录下创建一个data的源文件，并通过stat 命令查看文件属性，然后创建硬链接link，ll -i 查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件"></a>我们在/app目录下创建一个data的源文件，并通过stat 命令查看文件属性，然后创建硬链接link，ll -i 查看两者的inode相同，从ctime的变化也能确定硬链接就是用一个文件</h4><ol start="3"><li>不能跨文件系统建立硬链接</li></ol><h4 id="在-dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接"><a href="#在-dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接" class="headerlink" title="在/dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接"></a>在/dev目录下建立硬链接link，因为所在不同的文件系统，所以不能建立硬链接</h4><ol start="4"><li>硬链接创建后链接数会增加</li></ol><h4 id="我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件"><a href="#我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件" class="headerlink" title="我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件"></a>我们通过对link和data建立新的硬链接link2和link3，发现链数都有增长，由此也能看出硬链接实质上就是同一个文件</h4><ol start="5"><li>不能对目录创建硬链接</li></ol><h4 id="在-app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建"><a href="#在-app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建" class="headerlink" title="在/app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建"></a>在/app目录下创建dir1目录文件，尝试建立硬链接link4，创建失败。因为硬链接能针对目录创建</h4><ol start="6"><li>删除一个硬链接文件并不影响其他有相同 inode 号的文件数据</li></ol><h4 id="在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了"><a href="#在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了" class="headerlink" title="在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了"></a>在删除源文件data的之前，查看源文件和链接文件的数据是一致的。在删除data之后，其他的硬链接文件的内容不受影响，只是链接数减少了</h4><h1 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h1><h2 id="软链接的特性"><a href="#软链接的特性" class="headerlink" title="软链接的特性"></a>软链接的特性</h2><ol><li><p>软链接其实存放的就是源文件的路径，所以如果文件的内容数据是另一个文件的路径时，这个文件就是软链接。</p></li><li><p>软链接有自己独立的inode和文件属性，这点和硬链接有本质的区别</p></li></ol><p>语法：ln -s filename [linkname ]</p><p>示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">link -s data link</span><br><span class="line">ln -s data link</span><br></pre></td></tr></table></figure><ol><li>软链接可对不存在文件建立链接</li></ol><h4 id="在-app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示"><a href="#在-app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示" class="headerlink" title="在/app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示"></a>在/app的空目录中，建立软链接，目录下没有文件，但链接依旧能建立，找不到目标文件会有报错提示</h4><ol start="2"><li>软链接有自己的inode和属性</li></ol><h4 id="在目录下建立文件soft，之后对soft设置软链接slink，通过stat-命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同"><a href="#在目录下建立文件soft，之后对soft设置软链接slink，通过stat-命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同" class="headerlink" title="在目录下建立文件soft，之后对soft设置软链接slink，通过stat 命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同"></a>在目录下建立文件soft，之后对soft设置软链接slink，通过stat 命令查看soft和slink的文件属性，可以看出和之前硬链接的本质区别，不论是权限、inode、时间戳、大小、数据块都不同</h4><ol start="3"><li>软链接可跨文件系统建立</li></ol><h4 id="在-dev目录下建立test文件目录用于实验，然后设置软链接testlink"><a href="#在-dev目录下建立test文件目录用于实验，然后设置软链接testlink" class="headerlink" title="在/dev目录下建立test文件目录用于实验，然后设置软链接testlink"></a>在/dev目录下建立test文件目录用于实验，然后设置软链接testlink</h4><ol start="4"><li>软链接可以对目录文件建立</li></ol><h4 id="接着直接以-app-testdir为目标文件，和-dev-test目录文件，建立软链接"><a href="#接着直接以-app-testdir为目标文件，和-dev-test目录文件，建立软链接" class="headerlink" title="接着直接以/app/testdir为目标文件，和/dev/test目录文件，建立软链接"></a>接着直接以/app/testdir为目标文件，和/dev/test目录文件，建立软链接</h4><ol start="5"><li>软链接创建不会增加链接数</li></ol><h4 id="建立了软链接，而链接数还是1没有改变"><a href="#建立了软链接，而链接数还是1没有改变" class="headerlink" title="建立了软链接，而链接数还是1没有改变"></a>建立了软链接，而链接数还是1没有改变</h4><ol start="6"><li>删除软链接并不影响源文件，但删除源文件软链接就会变成死链接，若链接指向的路径文件被重新建立，则链接恢复</li></ol><h4 id="在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"><a href="#在-app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据" class="headerlink" title="在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据"></a>在/app目录下再创创建一个软链接slink2，在我们删除slink之后，源文件soft和slink2都没有受到影响，但当我们把soft文件删除后，slink2就变成了死链接，不再能显示数据</h4><h2 id="其他相关命令"><a href="#其他相关命令" class="headerlink" title="其他相关命令"></a>其他相关命令</h2><p>使用find 命令可以查找链接文件</p><ol><li>查找目录文件下相同inode的文件</li></ol><h4 id="find-dirs-inum-inode"><a href="#find-dirs-inum-inode" class="headerlink" title="find /dirs inum inode"></a>find /dirs inum inode</h4><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>硬链接本质上就是同一个文件的不同文件名。软链接就是独立的文件，不过文件中存放的是源文件的路径。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 文件系统 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> shell </tag>
             
         </tags>
       
