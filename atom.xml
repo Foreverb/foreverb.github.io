@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-26T10:10:04.564Z</updated>
+  <updated>2019-10-14T03:04:40.239Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>硬连接和软连接</title>
+    <link href="http://yoursite.com/2019/10/14/2019-10-14:redis%20%E5%9C%A8%20mac%20%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/10/14/2019-10-14:redis 在 mac 下的安装与使用/</id>
+    <published>2019-10-13T16:00:00.000Z</published>
+    <updated>2019-10-14T03:04:40.239Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h2><p>redis 本质上是一个高性能的 Key，Value 数据库；<br>支持存储的类型相对更多；（String、list、set、hash）；</p><blockquote><p>ps : 查询频率高，且查询的是相同的内容，就用 redis 做缓存；</p></blockquote><p>典型的非关系型数据库，不用写sql语句的数据库；(在高并发的时候对关系型数据库起到一个很好的补充作用)</p><h2 id="默认端口"><a href="#默认端口" class="headerlink" title="默认端口"></a>默认端口</h2><p>redis 的默认端口是 6379</p><h2 id="安装-redis"><a href="#安装-redis" class="headerlink" title="安装 redis"></a>安装 redis</h2><p><a href="https://redis.io/download" target="_blank" rel="noopener">官网下载</a>  下载 stable 版本，稳定版本。</p><ul><li>解压：tar zxvf redis-4.0.9.tar.gz</li><li>移动到： mv redis-4.0.9 /usr/local/</li><li>切换到：cd /usr/local/redis-4.0.9/</li><li>编译测试 sudo make test</li><li>编译安装 sudo make install</li></ul><h2 id="redis-的启动与停止"><a href="#redis-的启动与停止" class="headerlink" title="redis 的启动与停止"></a>redis 的启动与停止</h2><p>redis-server 和 redis-cli 位于 redis-4.0.9/src 目录下</p><ul><li>启动方式一：直接启动 Redis： redis-server ，成功后会看到下图：</li></ul><p><a href="https://img-blog.csdn.net/20180419163909844?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmFzb25fTV9Ibw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" rel="noopener">查看效果</a></p><ul><li><p>启动方式二：启动 Redis 并加载配置文件： redis-server /etc/redis.conf</p></li><li><p>打开redis客户端 redis-cli；如果有密码，可使用 auth yourpassword 做简单的密码登录</p></li><li><p>关闭方式一：在客户端执行 SHUTDOWN 可关闭 redis 服务</p></li><li><p>如果关闭不了就加一个参数，执行 SHUTDOWN NOSAVE 可关闭 redis 服务</p></li><li><p>关闭方式二：如果用了zsh，可以执行kill redis并按tab，结束 redis 进程，也可在活动监视器里结束掉进程。</p></li></ul><h2 id="redis-配置"><a href="#redis-配置" class="headerlink" title="redis 配置"></a>redis 配置</h2><p>这里只配置了后台启动和增加一个连接密码，需要的话可以看一下配置文档，每一个配置都有详细说明：</p><ul><li>拷贝 redis-4.0.9/redis.conf 到 /etc 目录</li><li>修改 redis.conf 配置文件<ul><li>requirepass yourpassword 添加密码，在第500行；</li><li>daemonize yes，设置后台启动，在第136行；</li></ul></li></ul><h2 id="客户端常用命令："><a href="#客户端常用命令：" class="headerlink" title="客户端常用命令："></a>客户端常用命令：</h2><p>命令 ———— ————————用途</p><p>set key value ————————-设置 key的值</p><p>get key ————————-获取 key 的值</p><p>exists key ————————-查看此 key 是否存在</p><p>keys * ————————-查看所有的 key</p><p>flushall ————————-消除所有的 key</p><p><a href="https://img-blog.csdn.net/20180419164115487?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmFzb25fTV9Ibw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" rel="noopener">查看效果</a></p><h2 id="安装时报错解决"><a href="#安装时报错解决" class="headerlink" title="安装时报错解决"></a>安装时报错解决</h2><p>进行了多次安装和卸载，重复安装没有卸载干净会报下面的错</p><p>==[exception]: Executing test client: couldn’t execute “src/redis-benchmark”:<br>make[1]: <strong><em> [test] Error 1 make: </em></strong> [test] Error 2==</p><p>解决这个错误，执行下面的语句即可</p><ul><li>make distclean</li><li>make</li><li>make test</li></ul><p>– end –</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;简介：&quot;&gt;&lt;a href=&quot;#简介：&quot; class=&quot;headerlink&quot; title=&quot;简介：&quot;&gt;&lt;/a&gt;简介：&lt;/h2&gt;&lt;p&gt;redis 本质上是一个高性能的 Key，Value 数据库；&lt;br&gt;支持存储的类型相对更多；（String、list、set、ha
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://yoursite.com/tags/redis/"/>
+    
+      <category term="mac" scheme="http://yoursite.com/tags/mac/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>vuex</title>
@@ -397,6 +424,36 @@
   </entry>
   
   <entry>
+    <title>JS特效-黑客帝国矩阵</title>
+    <link href="http://yoursite.com/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/"/>
+    <id>http://yoursite.com/2018/12/04/JS特效-黑客帝国矩阵/</id>
+    <published>2018-12-03T16:00:00.000Z</published>
+    <updated>2018-12-04T11:16:11.215Z</updated>
+    
+    <content type="html"><![CDATA[<p>简直不是我等凡人能理解的。。js代码仅有 308 个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(s=window.screen,w=q.width=s.width,h=q.height=s.height,m=Math.random,p=[],i=0;i&lt;256;p[i++]=1);setInterval(&apos;9Style=\&apos;rgba(0,0,0,.05)\&apos;9Rect(0,0,w,h)9Style=\&apos;#0F0\&apos;;p.map(function(v,i)&#123;9Text(String.fromCharCode(3e4+m()*33),i*10,v);p[i]=v&gt;758+m()*1e4?0:v+10&#125;)&apos;.split(9).join(&apos;;q.getContext(\&apos;2d\&apos;).fill&apos;),33)</span><br></pre></td></tr></table></figure><p><a href="http://webooxx.com/rdemo/matrix.html" target="_blank" rel="noopener">效果预览</a></p><p>本文摘自<br><a href="http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/" target="_blank" rel="noopener">http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;简直不是我等凡人能理解的。。js代码仅有 308 个字符&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="一行代码" scheme="http://yoursite.com/tags/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="特效" scheme="http://yoursite.com/tags/%E7%89%B9%E6%95%88/"/>
+    
+      <category term="黑客帝国" scheme="http://yoursite.com/tags/%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>通用上传组件设计</title>
     <link href="http://yoursite.com/2018/12/04/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
     <id>http://yoursite.com/2018/12/04/通用上传组件设计/</id>
@@ -424,36 +481,6 @@
       <category term="文件上传" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
       <category term="fs" scheme="http://yoursite.com/tags/fs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS特效-黑客帝国矩阵</title>
-    <link href="http://yoursite.com/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/"/>
-    <id>http://yoursite.com/2018/12/04/JS特效-黑客帝国矩阵/</id>
-    <published>2018-12-03T16:00:00.000Z</published>
-    <updated>2018-12-04T11:16:11.215Z</updated>
-    
-    <content type="html"><![CDATA[<p>简直不是我等凡人能理解的。。js代码仅有 308 个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(s=window.screen,w=q.width=s.width,h=q.height=s.height,m=Math.random,p=[],i=0;i&lt;256;p[i++]=1);setInterval(&apos;9Style=\&apos;rgba(0,0,0,.05)\&apos;9Rect(0,0,w,h)9Style=\&apos;#0F0\&apos;;p.map(function(v,i)&#123;9Text(String.fromCharCode(3e4+m()*33),i*10,v);p[i]=v&gt;758+m()*1e4?0:v+10&#125;)&apos;.split(9).join(&apos;;q.getContext(\&apos;2d\&apos;).fill&apos;),33)</span><br></pre></td></tr></table></figure><p><a href="http://webooxx.com/rdemo/matrix.html" target="_blank" rel="noopener">效果预览</a></p><p>本文摘自<br><a href="http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/" target="_blank" rel="noopener">http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;简直不是我等凡人能理解的。。js代码仅有 308 个字符&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
-    
-      <category term="一行代码" scheme="http://yoursite.com/tags/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
-    
-      <category term="特效" scheme="http://yoursite.com/tags/%E7%89%B9%E6%95%88/"/>
-    
-      <category term="黑客帝国" scheme="http://yoursite.com/tags/%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD/"/>
     
   </entry>
   
@@ -575,33 +602,6 @@
       <category term="原理" scheme="http://yoursite.com/tags/%E5%8E%9F%E7%90%86/"/>
     
       <category term="解析" scheme="http://yoursite.com/tags/%E8%A7%A3%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo的原理</title>
-    <link href="http://yoursite.com/2018/11/14/hexo%E7%9A%84%E5%8E%9F%E7%90%86/"/>
-    <id>http://yoursite.com/2018/11/14/hexo的原理/</id>
-    <published>2018-11-13T16:00:00.000Z</published>
-    <updated>2018-11-28T04:34:43.863Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>Hexo 是用来生成 HTML 的，github pages 用来展示 HTML（根据上面的介绍，我们可以理解我们还可以使用 coding 的 pages 服务，如果自己有服务器的话，可以上传到自己的服务器）。</p><p><img src="https://user-gold-cdn.xitu.io/2017/8/12/1a5437eb122fc14fc88b1920aed5dcca?imageslim" alt="image"></p><p>在 Hexo 的官网，我们可以直观的看到对 Hexo 的介绍：快速、简洁且高效的博客框架</p><p>在 Hexo 的文档中，我们可以找到官方对 Hexo 的定义：</p><blockquote><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p></blockquote><h2 id="Hexo-的工作原理"><a href="#Hexo-的工作原理" class="headerlink" title="Hexo 的工作原理"></a>Hexo 的工作原理</h2><p>这里我们来分析一下 Hexo 每次部署的流程</p><p>hexo g：生成静态文件。将我们的数据和界面相结合生成静态文件的过程。会遍历主题文件中的 source 文件夹（js、css、img 等静态资源），然后建立索引，然后根据索引生成 pubild 文件夹中，此时的 publid 文件是由 html、 js、css、img 建立的纯静态文件可以通过 index.html 作为入口访问你的博客。</p><p>hexo d：部署文件。部署主要是根据在 _config.yml 中配置的 git 仓库或者 coding 的地址，将 public 文件上传至 github 或者 coding 中。然后再根据上面的 github 提供的 pages 服务呈现出页面。当然你也可以直接将你生成的 public 文件上传至你自己的服务器上。</p><h2 id="Hexo-的模板引擎"><a href="#Hexo-的模板引擎" class="headerlink" title="Hexo 的模板引擎"></a>Hexo 的模板引擎</h2><blockquote><p>模板引擎的作用，就是将界面与数据分离。最简单的原理是将模板内容中指定的地方替换成数据，实现业务代码与逻辑代码分离。</p></blockquote><p>我们可以注意到，在 Hexo 中，source 文件夹和 themes 文件夹是在同级的，我们就可以将 source 文件夹理解为数据库，而主题文件夹相当于 界面。然后我们 hexo g 就将我们的数据和界面相结合生成静态文件 public。</p><p>Hexo 的模板引擎是默认使用 ejs 编写的。hexo首先会解析 md 文件，然后根据 layout 判断布局类型，再调用其他的文件，这样每一块的内容都是独立的，提高代码的复用性。最终会生成一个 html 页面。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>非要说 Hexo 是什么的话，我觉得就是生成静态页面的工具，可以将我们使用 markdown 编写的内容与主题模板相结合，生成 HTML 静态文件。并且可以和 github 的 pages 或者其他可以将静态页面展现出来的服务（例如 coding 的 pages 服务）相结合，一键部署。</p><p>再深入一点讲 Hexo 的原理的话，那就应该是使用 yaml 语言 做配置文件，使用 ejs 或者 swig 作为主题模板，与使用 markdown 书写的内容结合，生成静态 HTML 文件。</p><h2 id="hexo的常用命令"><a href="#hexo的常用命令" class="headerlink" title="hexo的常用命令"></a>hexo的常用命令</h2><h3 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g #安装</span><br><span class="line">npm update hexo -g #更新</span><br><span class="line">hexo init #初始化</span><br></pre></td></tr></table></figure><h3 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish [layout] &lt;title&gt; #发表草稿。</span><br></pre></td></tr></table></figure><h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;name&quot; #新建文章</span><br><span class="line">hexo g #生成静态网页</span><br><span class="line">hexo p #发表草稿。</span><br><span class="line">hexo s #启动服务</span><br><span class="line">hexo d #部署网站 参数：-g 部署之前先生成静态文件。</span><br></pre></td></tr></table></figure><h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>Hexo 3.0 把服务器独立成了个别模块，您必须先安装才能使用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-server --save #安装服务</span><br><span class="line"></span><br><span class="line">hexo s #启动服务</span><br><span class="line">hexo server -p 5000 #更改端口</span><br><span class="line">hexo s -s #静态模式</span><br><span class="line">hexo s -i 192.168.1.1 #自定义ip</span><br><span class="line"></span><br><span class="line">hexo clean #清除缓存</span><br></pre></td></tr></table></figure><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure><p>两者作用完全相同。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hexo&quot;&gt;&lt;a href=&quot;#Hexo&quot; class=&quot;headerlink&quot; title=&quot;Hexo&quot;&gt;&lt;/a&gt;Hexo&lt;/h1&gt;&lt;p&gt;Hexo 是用来生成 HTML 的，github pages 用来展示 HTML（根据上面的介绍，我们可以理解我们还可以使用
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
-      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
