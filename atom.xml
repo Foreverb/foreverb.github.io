@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Cooper Yang</title>
   
-  
+  <subtitle>A FrontEnd Engineer</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Cooper Yang</name>
     
   </author>
   
@@ -504,13 +504,13 @@
     </summary>
     
     
-      <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
-    
       <category term="js" scheme="http://yoursite.com/tags/js/"/>
     
       <category term="ajax" scheme="http://yoursite.com/tags/ajax/"/>
     
       <category term="FormData" scheme="http://yoursite.com/tags/FormData/"/>
+    
+      <category term="文件系统" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
