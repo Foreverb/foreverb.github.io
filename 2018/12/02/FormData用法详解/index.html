@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">FormData用法详解</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">FormData用法详解</h1>
+        <div class="stuff">
+            <span>十二月 02, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/FormData/">FormData</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/ajax/">ajax</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/js/">js</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/文件系统/">文件系统</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="FormData用法详解"><a href="#FormData用法详解" class="headerlink" title="FormData用法详解"></a>FormData用法详解</h1><p>FormData 对象：</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/203/933/2039338818-5a28f425ab032_articlex" alt="image"></p>
+<h2 id="创建一个formData对象实例的方式"><a href="#创建一个formData对象实例的方式" class="headerlink" title="创建一个formData对象实例的方式"></a>创建一个formData对象实例的方式</h2><ol>
+<li>创建一个空对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var formData = new FormData();//通过append方法添加数据</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用已有表单来初始化对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//表单示例</span><br><span class="line">&lt;form id=&quot;myForm&quot; action=&quot;&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;名字</span><br><span class="line">    &lt;input type=&quot;password&quot; name=&quot;psw&quot;&gt;密码</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">//方法示例</span><br><span class="line">// 获取页面已有的一个form表单</span><br><span class="line">var form = document.getElementById(&quot;myForm&quot;);</span><br><span class="line">// 用表单来初始化</span><br><span class="line">var formData = new FormData(form);</span><br><span class="line">// 我们可以根据name来访问表单中的字段</span><br><span class="line">var name = formData.get(&quot;name&quot;); // 获取名字</span><br><span class="line">var psw = formData.get(&quot;psw&quot;); // 获取密码</span><br><span class="line">// 当然也可以在此基础上，添加其他数据</span><br><span class="line">formData.append(&quot;token&quot;,&quot;kshdfiwi3rh&quot;);</span><br></pre></td></tr></table></figure>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><p>formData里面存储的数据是以健值对的形式存在的，key是唯一的，一个key可能对应多个value。<br>如果是使用表单初始化，每一个表单字段对应一条数据，它们的HTML name属性即为key值，它们value属性对应value值。</p>
+<p>1.获取值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//通过get(key)/getAll(key)来获取对应的value</span><br><span class="line">formData.get(&quot;name&quot;); // 获取key为name的第一个值</span><br><span class="line">formData.get(&quot;name&quot;); // 返回一个数组，获取key为name的所有值</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>添加数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//通过append(key, value)来添加数据，如果指定的key不存在则会新增一条数据，如果key存在，则添加到数据的末尾</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v2&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v3&quot;);</span><br></pre></td></tr></table></figure>
+<p>获取值时方式及结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">formData.get(&quot;k1&quot;); // &quot;v1&quot;</span><br><span class="line">formData.getAll(&quot;k1&quot;); // [&quot;v1&quot;,&quot;v2&quot;,&quot;v3&quot;]</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>设置修改数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//set(key, value)来设置修改数据，如果指定的key不存在则会新增一条，如果存在，则会修改对应的value值</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.set(&quot;k1&quot;, &quot;1&quot;);</span><br><span class="line">formData.getAll(&quot;k1&quot;); // [&quot;1&quot;]</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>判断是否存在对应数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//has(key)来判断是否对应的key值</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.append(&quot;k2&quot;,null);</span><br><span class="line"></span><br><span class="line">formData.has(&quot;k1&quot;); // true</span><br><span class="line">formData.has(&quot;k2&quot;); // true</span><br><span class="line">formData.has(&quot;k3&quot;); // false</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>删除数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//delete(key)删除数据</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v2&quot;);</span><br><span class="line">formData.append(&quot;k1&quot;, &quot;v1&quot;);</span><br><span class="line">formData.delete(&quot;k1&quot;);</span><br><span class="line"></span><br><span class="line">formData.getAll(&quot;k1&quot;); // []</span><br></pre></td></tr></table></figure>
+<h2 id="JQuery实例"><a href="#JQuery实例" class="headerlink" title="JQuery实例"></a>JQuery实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//添加数据方式见上二。</span><br><span class="line">//processData: false, contentType: false,多用来处理异步上传二进制文件。</span><br><span class="line"> $.ajax(&#123;</span><br><span class="line">    url: &apos;xxx&apos;,</span><br><span class="line">    type: &apos;POST&apos;,</span><br><span class="line">    data: formData,                    // 上传formdata封装的数据</span><br><span class="line">    dataType: &apos;JSON&apos;,</span><br><span class="line">    cache: false,                      // 不缓存</span><br><span class="line">    processData: false,                // jQuery不要去处理发送的数据</span><br><span class="line">    contentType: false,                // jQuery不要去设置Content-Type请求头</span><br><span class="line">    success:function (data) &#123;           //成功回调</span><br><span class="line">        console.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>附：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 将以base64的图片url数据转换为Blob文件格式</span><br><span class="line"> * @param urlData 用url方式表示的base64图片</span><br><span class="line"> */</span><br><span class="line">function convertBase64UrlToBlob(urlData) &#123;</span><br><span class="line">    var bytes = window.atob(urlData.split(&apos;,&apos;)[1]); //去掉url的头，并转换为byte</span><br><span class="line">    //处理异常,将ascii码小于0的转换为大于0</span><br><span class="line">    var ab = new ArrayBuffer(bytes.length);</span><br><span class="line">    var ia = new Uint8Array(ab);</span><br><span class="line">    for(var i = 0; i &lt; bytes.length; i++) &#123;</span><br><span class="line">        ia[i] = bytes.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return new Blob([ab], &#123;</span><br><span class="line">        type: &apos;image/png&apos;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>内容摘自 <a href="https://segmentfault.com/a/1190000006716454" target="_blank" rel="noopener">https://segmentfault.com/a/1190000006716454</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

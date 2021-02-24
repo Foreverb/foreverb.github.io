@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">浏览器同源策略及Cookie的作用域</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">浏览器同源策略及Cookie的作用域</h1>
+        <div class="stuff">
+            <span>十二月 22, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Cookie/">Cookie</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/web/">web</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/技巧/">技巧</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h4 id="浏览器同源策略及Cookie的作用域"><a href="#浏览器同源策略及Cookie的作用域" class="headerlink" title="浏览器同源策略及Cookie的作用域"></a><a href="https://www.cnblogs.com/liaojie970/p/7606168.html" target="_blank" rel="noopener">浏览器同源策略及Cookie的作用域</a></h4><p>所谓”同源”指的是”三个相同”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.协议相同</span><br><span class="line"></span><br><span class="line">2.域名相同</span><br><span class="line"></span><br><span class="line">3.端口相同</span><br></pre></td></tr></table></figure>
+<p>当着三个地方相同才算同源</p>
+<p>例如：<a href="http://www.example.com:8888/dir/page.html" target="_blank" rel="noopener">http://www.example.com:8888/dir/page.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">协议是http://</span><br><span class="line"></span><br><span class="line">域名是www.example.com</span><br><span class="line"></span><br><span class="line">端口是8888</span><br></pre></td></tr></table></figure>
+<p>采用同源策略的目的：是为了保证用户信息的安全，防止恶意的网站窃取数据。设想这样一种情况：A网站是一家银行，用户登录以后，又去浏览其他网站。</p>
+<p>如果其他网站可以读取A网站的 Cookie，会发生什么？如果 Cookie包含隐私（比如存款总额），这些信息就会泄漏。更可怕的是，Cookie 往往用来保存用</p>
+<p>户的登录状态，如果用户没有退出登录，其他网站就可以冒充用户，为所欲为。因为浏览器同时还规定，提交表单不受同源政策的限制。由此可见，”同源政策”是必需的，否则Cookie 可以共享，互联网就毫无安全可言了</p>
+<p>缺点：如果不是同源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(1)Cookie、LocalStorage和IndexDB 无法读取</span><br><span class="line"></span><br><span class="line">(2)DOM无法获得</span><br><span class="line"></span><br><span class="line">(3)AJAX请求不能发送</span><br></pre></td></tr></table></figure>
+<h4 id="Cookie的作用域："><a href="#Cookie的作用域：" class="headerlink" title="Cookie的作用域："></a>Cookie的作用域：</h4><p>Cookie有两个很重要的属性:Domain和Path，用来指示此Cookie的作用域：</p>
+<p>　　Domain告诉浏览器当前要添加的Cookie的域名归属，如果没有明确指明则默认为当前域名，比如通过访问<a href="http://www.vinceruan.info添加的Cookie的域名默认就是www.vinceruan.info,通过访问blog.vinceruan.info所生成的Cookie的域名就是blog.vinceruan.info" target="_blank" rel="noopener">www.vinceruan.info添加的Cookie的域名默认就是www.vinceruan.info,通过访问blog.vinceruan.info所生成的Cookie的域名就是blog.vinceruan.info</a></p>
+<p>　　Path告诉浏览器当前要添加的Cookie的路径归属，如果没有明确指明则默认为当前路径，比如通过访问<a href="http://www.vinceruan.info/java/hotspot.html添加的Cookie的默认路径就是/java/,通过blog.vinceruan.info/java/hotspot.html生成的Cookie的路径也是/java/" target="_blank" rel="noopener">www.vinceruan.info/java/hotspot.html添加的Cookie的默认路径就是/java/,通过blog.vinceruan.info/java/hotspot.html生成的Cookie的路径也是/java/</a></p>
+<p>浏览器提交的Cookie需要满足以下两点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.当前域名或者父域名下的Cookie；</span><br><span class="line">2.当前路径或父路径下的Cookie</span><br></pre></td></tr></table></figure>
+<p>要满足以上两个条件的Cookie才会被提交,例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cookie1 : [name=value,domain=.vinceruan.info path=/]</span><br><span class="line"></span><br><span class="line">cookie2 : [name=value,domain=blog.vinceruan.info path=/java/]</span><br><span class="line"></span><br><span class="line">cookie3 : [name=value,domain=WWW.vinceruan.info path=/]</span><br><span class="line"></span><br><span class="line">cookie4 : [name=value,domain=blog.vinceruan.info path=/]</span><br></pre></td></tr></table></figure>
+<p>当访问blog.vinceruan.info时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cookie1可以被提交，因为.vinceruan.info是blog.vinceruan.info的父域名，path路径也一致</span><br><span class="line"></span><br><span class="line">cookie2不能被提交，因为虽然domain是保持一致的，但是path不一致，当前访问的是/，但是cookie2的path是/java/</span><br><span class="line"></span><br><span class="line">cookie3不能被提交，因为虽然path是一致的，但是WWW.vinceruan.info不是blog.vinceruan.info的父域名</span><br><span class="line"></span><br><span class="line">cookie4可以被提交，因为domain和cookie都严格保持一致</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是:在浏览器看来.</p>
+<p><a href="http://www.vinceruan.info不是blog.vinceruan.info的父域名，而vinceruan.info才是blog.vinceruan.info的父域名，" target="_blank" rel="noopener">www.vinceruan.info不是blog.vinceruan.info的父域名，而vinceruan.info才是blog.vinceruan.info的父域名，</a></p>
+<p><a href="http://www.vinceruan.info也算是一个二级域名" target="_blank" rel="noopener">www.vinceruan.info也算是一个二级域名</a></p>
+<p>这点如果你提交过域名到DNS服务器商的应该会知道，一般我们需要显式提交<a href="http://www.vinceruan.info和vinceruan.info" target="_blank" rel="noopener">www.vinceruan.info和vinceruan.info</a>, 否则<a href="http://www.vinceruan.info==vinceruan.info是不成立的" target="_blank" rel="noopener">www.vinceruan.info==vinceruan.info是不成立的</a></p>
+<p>所以如果我们需要在所有二级域名下共享islogin=1的Cookie，用java代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Cookie c = new Cookie(&quot;isLogin&quot;,&quot;1&quot;);</span><br><span class="line"></span><br><span class="line">c.setDomain(&quot;.vinceruan.info&quot;);//注意是以号开头</span><br><span class="line"></span><br><span class="line">c.setPath(&quot;/&quot;);</span><br><span class="line"></span><br><span class="line">response.addCookie(c);</span><br></pre></td></tr></table></figure>
+<p>如果要在所有的二级域名下的/java/路径下共享silogin=1的Cookie,用java代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Cookie c = new Cookie(&quot;isLogin&quot;,&quot;1&quot;);</span><br><span class="line"></span><br><span class="line">c.setDomain(&quot;.vinceruan.info&quot;);//注意是以号开头</span><br><span class="line"></span><br><span class="line">c.setPath(&quot;/java/&quot;);</span><br><span class="line"></span><br><span class="line">response.addCookie(c);</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

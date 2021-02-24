@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">JavaScript开发者应懂的33个概念(一)</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">JavaScript开发者应懂的33个概念(一)</h1>
+        <div class="stuff">
+            <span>十二月 11, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端开发/">前端开发</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/基础知识/">基础知识</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>调用堆栈</li>
+<li>原始类型 </li>
+<li>值类型和引用类型</li>
+<li>隐式, 显式, 名义和鸭子类型</li>
+<li>== 与 ===, typeof 与 instanceof</li>
+<li>this, call, apply 和 bind</li>
+<li>函数作用域, 块级作用域和词法作用域</li>
+<li>闭包</li>
+<li>map, reduce, filter 等高阶函数</li>
+<li>表达式和语句</li>
+<li>变量提升</li>
+<li>Promise</li>
+<li>立即执行函数, 模块化, 命名空间</li>
+<li>递归</li>
+<li>算法</li>
+<li>数据结构</li>
+<li>消息队列和事件循环</li>
+<li>setTimeout, setInterval 和 requestAnimationFrame</li>
+<li>继承, 多态和代码复用</li>
+<li>按位操作符, 类数组对象和类型化数组</li>
+<li>DOM 树和渲染过程</li>
+<li>new 与构造函数, instanceof 与实例</li>
+<li>原型继承与原型链</li>
+<li>Object.create 和 Object.assign</li>
+<li>工厂函数和类</li>
+<li>设计模式</li>
+<li>Memoization</li>
+<li>纯函数, 函数副作用和状态变化</li>
+<li>耗性能操作和时间复杂度</li>
+<li>JavaScript 引擎</li>
+<li>二进制, 十进制, 十六进制, 科学记数法</li>
+<li>偏函数, 柯里化, Compose 和 Pipe</li>
+<li>代码整洁之道</li>
+</ul>
+<ol>
+<li>调用堆栈</li>
+</ol>
+<p>我的理解：首先我们需要理解代码执行的先后顺序，按照代码执行的先后顺序将将要执行的部分放入一个容器，<br>然后当这部分代码执行完之后，就在容器中删除这部分代码，最后接着执行代码中这部分代码后面的代码</p>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>一个调用堆栈，是一个解释的机制（如在Web浏览器中的JavaScript解释器）来跟踪其位置的调用多种脚本功能</p>
+<ul>
+<li>当脚本调用函数时，解释器将其添加到调用堆栈，然后开始执行该函数。</li>
+<li>该函数调用的任何函数都会进一步添加到调用堆栈中，并在到达其调用的位置运行。</li>
+<li>当前函数完成后，解释器将其从堆栈中取出并在最后一个代码清单中从中断处继续执行。</li>
+<li>如果堆栈占用的空间超过分配给它的空间，则会导致“堆栈溢出”错误。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function multiply(x, y) &#123;</span><br><span class="line">  return x * y;</span><br><span class="line">&#125;</span><br><span class="line">function printSquare(x) &#123;</span><br><span class="line">  var s = multiply(x, x);</span><br><span class="line">  console.log(s);</span><br><span class="line">&#125;</span><br><span class="line">printSquare(5);</span><br></pre></td></tr></table></figure>
+<p><a href="https://user-gold-cdn.xitu.io/2017/11/11/bc37a6231fca3b0aa3cd36369e866837?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" target="_blank" rel="noopener">image</a>;</p>
+<h4 id="堆栈溢出"><a href="#堆栈溢出" class="headerlink" title="堆栈溢出"></a>堆栈溢出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  foo();</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<p><a href="https://user-gold-cdn.xitu.io/2017/11/11/3925f8363d7a763e6474709ccddf7d96?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" target="_blank" rel="noopener">image</a></p>
+<h4 id="JavaScript-引擎"><a href="#JavaScript-引擎" class="headerlink" title="JavaScript 引擎"></a>JavaScript 引擎</h4><p>JavaScript 引擎说起来最流行的当然是谷歌的 V8 引擎了， V8 引擎使用在 Chrome 以及 Node 中，下面有个简单的图能说明他们的关系：</p>
+<p><a href="https://user-gold-cdn.xitu.io/2017/11/11/5d0653fff3ec904dbe210161f3ec9196?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" target="_blank" rel="noopener">image</a>;</p>
+<p>这个引擎主要由两部分组成:</p>
+<ul>
+<li>内存堆：这是内存分配发生的地方</li>
+<li>调用栈：这是你的代码执行时的地方</li>
+</ul>
+<ol start="2">
+<li>原始类型</li>
+</ol>
+<p>ECMAScript 有 5 种原始类型（primitive type），即 Undefined、Null、Boolean、Number 和 String。</p>
+<p>基本类型（基本数值、基本数据类型）是指非 对象 并且无方法的数据。</p>
+<p>在 JavaScript 中，共有6种基本数据类型：string，number，boolean，null，undefined，symbol (ECMAScript 2015新增)。</p>
+<ol start="3">
+<li>值类型和引用类型</li>
+</ol>
+<p>复杂数据类型全是引用类型，如：object，array</p>
+<p>string、boolean、number是值类型</p>
+<p>我的理解是，因为复杂数据类型在磁盘中所占的空间较大，所以像这种占空间较大的数据类型的值都是引用类型，而值类型一般所占空间不是特别大，所以这类的值将全部存储在磁盘中</p>
+<p>我对引用类型的理解：引用类型就相当于指针，指针指向的就是源数据的存储在磁盘中的地址</p>
+<ol start="4">
+<li>隐式, 显式, 名义和鸭子类型</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span> + <span class="string">''</span>)    <span class="comment">//隐式转换</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">1</span>)   <span class="comment">//显式转换</span></span><br></pre></td></tr></table></figure>
+<p>鸭子类型的通俗说法是：“如果它走起路来像鸭子，叫起来也是鸭子，那么它就是鸭子。”</p>
+<p>看起来像数组，那么它就是数组；看起来像对象，那么它就是对象。</p>
+<ol start="5">
+<li>== vs ===, typeof 与 instanceof</li>
+</ol>
+<p>JavaScript提供三种不同的值比较操作：</p>
+<ul>
+<li>严格相等 (“triple equals” 或 “identity”)，使用 === ,</li>
+<li>宽松相等 (“double equals”) ，使用 ==</li>
+<li>以及 Object.is （ECMAScript 2015/ ES6 新特性）</li>
+</ul>
+<p>typeof方法返回一个字符串，来表示数据的类型。</p>
+<h4 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h4><p>instanceof运算符可以用来判断某个构造函数的prototype属性是否存在于另外一个要检测对象的原型链上。</p>
+<p>instanceof 左操作数是一个类，右操作数是标识对象的类。如果左侧的对象是右侧类的实例，则返回true；如果左操作数不是对象，则返回false,如果右操作数不是函数，则抛出typeError。</p>
+<p>语法是object instanceof constructor</p>
+<ol start="6">
+<li>this, call, apply 和 bind</li>
+</ol>
+<h4 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h4><ul>
+<li>this 永远指向最后调用它的那个对象</li>
+</ul>
+<h4 id="怎么改变-this-的指向"><a href="#怎么改变-this-的指向" class="headerlink" title="怎么改变 this 的指向"></a>怎么改变 this 的指向</h4><ul>
+<li>使用 ES6 的箭头函数</li>
+<li>在函数内部使用 _this = this</li>
+<li>使用 apply、call、bind</li>
+<li>new 实例化一个对象</li>
+</ul>
+<p>call 的第二个参数是一个参数列表</p>
+<p>apply 的第二个参数必须是一个数组</p>
+<p>bind和call类似，但不会执行对应的函数</p>
+<p><a href="http://coopo.cc/2018/11/02/%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3call,bind,apply%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">apply、call、bind详细介绍</a></p>
+<ol start="7">
+<li>函数作用域, 块级作用域和词法作用域</li>
+</ol>
+<h4 id="什么是作用域"><a href="#什么是作用域" class="headerlink" title="什么是作用域"></a>什么是作用域</h4><p>作用域就是一套规则，用于确定在何处以及如何查找变量（标识符）的规则</p>
+<h4 id="作用域嵌套"><a href="#作用域嵌套" class="headerlink" title="作用域嵌套"></a>作用域嵌套</h4><p><a href="https://note.youdao.com/favicon.icohttps://user-gold-cdn.xitu.io/2018/5/16/16364a28627cc95b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" target="_blank" rel="noopener">image</a></p>
+<p><a href="https://user-gold-cdn.xitu.io/2018/5/16/16364a2862881338?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" target="_blank" rel="noopener">image</a></p>
+<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><p>所谓的词法作用域就是在你写代码时将变量和块作用域写在哪里来决定，也就是词法作用域是静态的作用域，在你书写代码时就确定了。</p>
+<p><a href="https://user-gold-cdn.xitu.io/2018/5/16/16364a28a034cb0e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" target="_blank" rel="noopener">image</a></p>
+<ol start="8">
+<li>闭包</li>
+</ol>
+<p>闭包是有权访问另外一个函数作用域中变量的函数，即在一个函数内部创建另外一个函数。这时就可以将闭包作为创建对象的构造函数，这样它既是闭包又是可实例对象的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function makeAdder(x) &#123;</span><br><span class="line">  return function(y) &#123;</span><br><span class="line">    return x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var add5 = makeAdder(5);</span><br><span class="line">var add10 = makeAdder(10);</span><br><span class="line"></span><br><span class="line">console.log(add5(2));  // 7</span><br><span class="line">console.log(add10(2)); // 12</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//创建</span><br><span class="line">var module = (function()&#123;</span><br><span class="line">                var privateName = &apos;inner&apos;;            //私有变量</span><br><span class="line">                var privateFunc = function()&#123;        //私有函数</span><br><span class="line">                    console.log(&apos;私有函数&apos;)</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                return &#123;                            </span><br><span class="line">                    name: &apos;rouwan&apos;,                    //公有属性</span><br><span class="line">                    sayName:function()&#123;                //公有函数</span><br><span class="line">                        console.log(this.name)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)()</span><br><span class="line">//使用</span><br><span class="line">module.sayName();    //&apos;rouwan&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="思考题目"><a href="#思考题目" class="headerlink" title="思考题目"></a>思考题目</h3><p>转载自<a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="noopener">阮一峰博客</a>，出自《JavaScript高级程序设计》</p>
+<h4 id="题目一"><a href="#题目一" class="headerlink" title="题目一"></a>题目一</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var name = &quot;The Window&quot;;</span><br><span class="line">　　var object = &#123;</span><br><span class="line">　　　　name : &quot;My Object&quot;,</span><br><span class="line">　　　　getNameFunc : function()&#123;</span><br><span class="line">　　　　　　return function()&#123;</span><br><span class="line">　　　　　　　　return this.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;;</span><br><span class="line">　　alert(object.getNameFunc()());</span><br><span class="line"></span><br><span class="line">运行结果：The  Window</span><br></pre></td></tr></table></figure>
+<p>解释：object.getNameFunc()这是属于方法调用，this指针指向的是object，可以用一个变量tmp引用它的结果，实际上tmp就是这个方法返回的那个匿名函数function(){return this.name;};，此时并没有执行内部代码，执行tmp()时，也就是object.getNameFunc()()时，this指针指向window，最终返回The Window。</p>
+<h3 id="题目二"><a href="#题目二" class="headerlink" title="题目二"></a>题目二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var name = &quot;The Window&quot;;</span><br><span class="line">　　var object = &#123;</span><br><span class="line">　　　　name : &quot;My Object&quot;,</span><br><span class="line">　　　　getNameFunc : function()&#123;</span><br><span class="line">　　　　　　var that = this;</span><br><span class="line">　　　　　　return function()&#123;</span><br><span class="line">　　　　　　　　return that.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;;</span><br><span class="line">　　alert(object.getNameFunc()());</span><br><span class="line"></span><br><span class="line">运行结果：My Object</span><br></pre></td></tr></table></figure>
+<p>解释：在调用getNameFunc()时，属于方法调用，那么this指针指向object，把它被that引用，那么返回的匿名函数中时刻保持对object的引用，很好理解。</p>
+<ol start="9">
+<li>map, reduce, filter 等高阶函数</li>
+</ol>
+<ul>
+<li>filter</li>
+</ul>
+<p>filter((item,index)=&gt;{ 筛选 })，数组的筛选功能</p>
+<ul>
+<li>map</li>
+</ul>
+<p>map((item,index)=&gt;{ 修改 })，根据函数的内容对数组进行修改</p>
+<ul>
+<li>reduce</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/reduce1.png" alt="image"><br><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/reduce2.png" alt="image"></p>
+<p>让数组的前项和后项做计算，并累计最终值</p>
+<p><a href="http://coopo.cc/2018/12/05/JS%E4%B8%ADreduce%E7%9A%84%E7%94%A8%E6%B3%95/" target="_blank" rel="noopener">详细使用</a>;</p>
+<ol start="10">
+<li>表达式和语句</li>
+</ol>
+<p>-表达式</p>
+<p>一个表达式返回一个值，可以在任何需要值的地方使用表达式，例如：作为函数调用时使用的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">myvar</span><br><span class="line"></span><br><span class="line">3 + x</span><br><span class="line"></span><br><span class="line">myfunc(&quot;a&quot;, &quot;b&quot;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>语句</li>
+</ul>
+<p>我们可以粗略的将一个语句描述为一个行为。循环结构和if语句就是语句的例子</p>
+<p>JavaScript需要编写一条语句时，均可以写入一个表达式。这样的语句称为表达式语句</p>
+<ol start="11">
+<li>变量提升</li>
+</ol>
+<p>JavaScript 中，函数及变量的声明都将被提升到函数的最顶部。</p>
+<p>JavaScript 中，变量可以在使用后声明，也就是变量可以先使用再声明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = 5; // 变量 x 设置为 5</span><br><span class="line"></span><br><span class="line">elem = document.getElementById(&quot;demo&quot;); // 查找元素</span><br><span class="line">elem.innerHTML = x;                     // 在元素中显示 x</span><br><span class="line"></span><br><span class="line">var x; // 声明 x</span><br></pre></td></tr></table></figure>
+<p>变量提升将会把：var x  提升到函数的最顶部</p>
+<ol start="12">
+<li>Promise</li>
+</ol>
+<p>一个 Promise 就是一个代表了异步操作最终完成或者失败的对象。大多数人都在使用由其他函数创建并返回的 Promise</p>
+<p>Promise 本质上是一个绑定了回调的对象，而不是将回调传进函数内部</p>
+<ul>
+<li><p>在 JavaScript 事件队列的当前运行完成之前，回调函数永远不会被调用。</p>
+</li>
+<li><p>通过 .then 形式添加的回调函数，甚至都在异步操作完成之后才被添加的函数，都会被调用，如上所示。</p>
+</li>
+<li><p>通过多次调用 .then，可以添加多个回调函数，它们会按照插入顺序并且独立运行。</p>
+</li>
+</ul>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>resolve</li>
+</ul>
+<p>成功的回调</p>
+<ul>
+<li>reject</li>
+</ul>
+<p>失败的回调</p>
+<ol start="13">
+<li>立即执行函数, 模块化, 命名空间</li>
+</ol>
+<p>匿名函数自执行（闭包），闭包可以形成私有变量和函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//创建</span><br><span class="line">var module = (function()&#123;</span><br><span class="line">                var privateName = &apos;inner&apos;;            //私有变量</span><br><span class="line">                var privateFunc = function()&#123;        //私有函数</span><br><span class="line">                    console.log(&apos;私有函数&apos;)</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                return &#123;                            </span><br><span class="line">                    name: &apos;rouwan&apos;,                    //公有属性</span><br><span class="line">                    sayName:function()&#123;                //公有函数</span><br><span class="line">                        console.log(this.name)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)()</span><br><span class="line">//使用</span><br><span class="line">module.sayName();    //&apos;rouwan&apos;</span><br></pre></td></tr></table></figure>
+<p>前端模块化，主要是解决两个问题——“命名空间冲突”，“文件依赖管理”。</p>
+<p>命名空间：各个模块的命名空间独立。A模块的变量x不会覆盖B模块的变量x。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

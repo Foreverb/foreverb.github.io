@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">小程序start</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">小程序start</h1>
+        <div class="stuff">
+            <span>三月 11, 2019</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/博客/">博客</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/小程序/">小程序</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><h2 id="App"><a href="#App" class="headerlink" title="App"></a>App</h2><p>小程序运行期间，之后运行一次</p>
+<p>程序销毁（过了一段时间没有运行，或手动删除了小程序，再次添加运行）之后，再次启动就好执行</p>
+<p>onLaunch</p>
+<p>每次在后台切换过来，就会执行</p>
+<p>onShow</p>
+<p>每次在切换到后台，就会执行</p>
+<p>onHide</p>
+<h2 id="Page"><a href="#Page" class="headerlink" title="Page"></a>Page</h2><p>页面加载的时候执行，只会执行一次</p>
+<p>onLoad</p>
+<p>页面第一次完成之后，只会执行一次</p>
+<p>onReady</p>
+<p>页面显示就会执行</p>
+<p>onShow</p>
+<p>页面隐藏就会执行</p>
+<p>onHide</p>
+<p>页面卸载的时候执行，只会执行一次</p>
+<p>onUnload</p>
+<p>结论：</p>
+<p>1、tab之间的切换，不会让页面重新加载，也就不会卸载只会隐藏</p>
+<p>2、在进行NavigatorTo，跳转到的那个目标页面会被加载（load），跳转之前的页面会被隐藏</p>
+<p>3、回退（NavigatorBack），目标页面会show（不是加载），回退之前的页面会被卸载（unload）</p>
+<h1 id="条件渲染和block"><a href="#条件渲染和block" class="headerlink" title="条件渲染和block"></a>条件渲染和block</h1><ul>
+<li>wx:for</li>
+<li>wx:if</li>
+<li>wx:elif</li>
+<li>wx:else</li>
+<li>wx:key</li>
+</ul>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><template name=""></template>
+
+<p>要想复用上面的模板，只需要在引用处的template标签中加”is”属性，值为被引用的模板“name”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;block&gt;&lt;/block&gt;</span><br><span class="line"></span><br><span class="line">&lt;import/&gt;</span><br><span class="line"></span><br><span class="line">&lt;include/&gt;</span><br><span class="line"></span><br><span class="line">&lt;veiw&gt;&lt;/veiw&gt;</span><br><span class="line"></span><br><span class="line">&lt;text&gt;&lt;/text&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>绑定事件</p>
+<ul>
+<li>bind:eventName=”eventFunction”</li>
+<li>catch:eventName=”eventFunction”</li>
+</ul>
+<p>catch绑定事件，可以阻止事件冒泡</p>
+<h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>单位 ：rpx</p>
+<p>屏幕最大宽度是750rpx</p>
+<p>font-size: 20pt</p>
+<h2 id="支持的选择器"><a href="#支持的选择器" class="headerlink" title="支持的选择器"></a>支持的选择器</h2><p>.class</p>
+<p>#id</p>
+<p>element</p>
+<p>element,element</p>
+<p>:after</p>
+<p>:before</p>
+<h1 id="辅助渲染（wxs）"><a href="#辅助渲染（wxs）" class="headerlink" title="辅助渲染（wxs）"></a>辅助渲染（wxs）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;wxs name=&quot;&quot;&gt;</span><br><span class="line">    定义函数</span><br><span class="line"></span><br><span class="line">    modul.export = &quot;functionName&quot;</span><br><span class="line">&lt;wxs&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="更新页面"><a href="#更新页面" class="headerlink" title="更新页面"></a>更新页面</h1><p>setData（{}）</p>
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p>展现形式</p>
+<p>例：<input>,<button></button>,<view></view></p>
+<p>类似于标签</p>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><p>navigator</p>
+<p>属性</p>
+<p>url     属性值：src</p>
+<p>open-type</p>
+<pre><code>属性值
+
+navigate        跳转到  === wx.navigateTo(OBJECT)
+
+redirect        重定向  === wx.redirectTo(OBJECT)
+
+switchTab       跳到某个Tab === wx.switchTab(OBJECT)
+
+navigateBack    回退    === wx.navigateBack(OBJECT)
+
+reLaunch        重加载 === wx.reLaunch(OBJECT)
+</code></pre><h1 id="授权与用户信息授权"><a href="#授权与用户信息授权" class="headerlink" title="授权与用户信息授权"></a>授权与用户信息授权</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;button</span><br><span class="line">  open-type=&quot;getUserInfo&quot;</span><br><span class="line">  bind:getuserinfo=&quot;onGetUserInfo&quot;</span><br><span class="line">&gt;获取用户信息&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button bind:tap=&quot;onTry&quot;&gt;</span><br><span class="line">  获取用户信息试试</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button</span><br><span class="line">  bind:tap=&quot;onAuthLocation&quot;</span><br><span class="line">&gt;授权位置&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button</span><br><span class="line">  bind:tap=&quot;onGetLocation&quot;</span><br><span class="line">&gt;获取位置</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button</span><br><span class="line">  bind:tap=&quot;onGetSetting&quot;</span><br><span class="line">&gt;获取授权信息</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;button</span><br><span class="line">  bind:tap=&quot;onGoToSetting&quot;</span><br><span class="line">&gt;打开授权信息相关面板</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">onGetUserInfo(e)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">  &#125;,</span><br><span class="line">  onTry(e)&#123;</span><br><span class="line">    wx.getUserInfo(&#123;</span><br><span class="line">      success: <span class="function"><span class="params">msg</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(msg,<span class="string">"success"</span>)</span><br><span class="line">      &#125;,</span><br><span class="line">      fail: <span class="function"><span class="params">e</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e,<span class="string">"fail"</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  onAuthLocation()&#123;</span><br><span class="line">    wx.authorize(&#123;</span><br><span class="line">      scope: <span class="string">"scope.userLocation"</span>,</span><br><span class="line">      success: <span class="function"><span class="params">msg</span>=&gt;</span><span class="built_in">console</span>.log(msg,<span class="string">'success'</span>),</span><br><span class="line">      fail: <span class="function"><span class="params">e</span>=&gt;</span><span class="built_in">console</span>.log(e,<span class="string">'fail'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  onGetLocation()&#123;</span><br><span class="line">    wx.getLocation(&#123;</span><br><span class="line">      success:<span class="function"><span class="params">msg</span>=&gt;</span><span class="built_in">console</span>.log(msg,<span class="string">'get success'</span>),</span><br><span class="line">      fail:<span class="function"><span class="params">e</span>=&gt;</span><span class="built_in">console</span>.log(e,<span class="string">'get fail'</span>),</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  onGetSetting()&#123;</span><br><span class="line">    wx.getSetting(&#123;</span><br><span class="line">      success:<span class="function"><span class="params">msg</span>=&gt;</span><span class="built_in">console</span>.log(msg),</span><br><span class="line">      fail:<span class="function"><span class="params">e</span>=&gt;</span><span class="built_in">console</span>.log(e)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  onGoToSetting()&#123;</span><br><span class="line">    wx.openSetting(&#123;</span><br><span class="line">      success:<span class="function">(<span class="params">msg</span>)=&gt;</span><span class="built_in">console</span>.log(msg,<span class="string">"open success"</span>),</span><br><span class="line">      fail:<span class="function">(<span class="params">e</span>)=&gt;</span><span class="built_in">console</span>.log(e,<span class="string">"open fail"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用缓存"><a href="#使用缓存" class="headerlink" title="使用缓存"></a>使用缓存</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//设置数据</span><br><span class="line">setStorage()&#123;</span><br><span class="line">    //异步设置/获取数据</span><br><span class="line">    // wx.setStorage(&#123;</span><br><span class="line">    //     key:&quot;name&quot;,</span><br><span class="line">    //     data:&#123;one:&apos;ygb&apos;&#125;,</span><br><span class="line">    //     success:()=&gt;&#123;</span><br><span class="line">    //         wx.getStorage(&#123;</span><br><span class="line">    //             key:&apos;name&apos;,</span><br><span class="line">    //             success:msg=&gt;&#123;</span><br><span class="line">    //                 console.log(msg)</span><br><span class="line">    //             &#125;</span><br><span class="line">    //         &#125;)</span><br><span class="line">    //     &#125;</span><br><span class="line">    // &#125;)</span><br><span class="line"></span><br><span class="line">    //同步设置/获取数据</span><br><span class="line">    wx.setStorageSync(&quot;names&quot;,&quot;ygb2&quot;);</span><br><span class="line"></span><br><span class="line">    let nm = wx.getStorageSync(&apos;names&apos;);</span><br><span class="line"></span><br><span class="line">    console.log(nm);</span><br><span class="line">&#125;,</span><br><span class="line">//删除数据</span><br><span class="line">removeStorage()&#123;</span><br><span class="line">    wx.removeStorageSync(&apos;names&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

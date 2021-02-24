@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">博客界面崩溃问题（无样式）</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">博客界面崩溃问题（无样式）</h1>
+        <div class="stuff">
+            <span>十一月 28, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/博客/">博客</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/工具/">工具</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/问题/">问题</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="博客界面崩溃问题（无样式）"><a href="#博客界面崩溃问题（无样式）" class="headerlink" title="博客界面崩溃问题（无样式）"></a>博客界面崩溃问题（无样式）</h1><p>作为程序猿我相信很多小伙伴都有属于自己的技术型博客，博客相当于日记本，要天天更新它才能显示它的新颖和价值</p>
+<h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><p>本人最近发现我的博客每当更新内容之后博客界面就会出现异常情况：无样式，排列布局很混乱。类似于这样</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/blog.jpg" alt="image"></p>
+<h2 id="猜想"><a href="#猜想" class="headerlink" title="猜想"></a>猜想</h2><p>没错，刚一开始我是一脸懵逼的，为什么一会没问题，一会又蹦出个没样式的问题呢？</p>
+<p>于是我并没有想太多，直接去查看我github中存储我博客中所有文件的库，发现我css样式是15天前更新的</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/github.jpg" alt="image"></p>
+<p>我就想是不是我所有css样式都没有更新上去，但假如就算没更新上去也有以前的css啊</p>
+<p>虽然没有得到什么结果，但我没有放弃。我立即去问了一下我技术大佬的哥怎么回事，他给出了一个猜想：是不是没有清除浏览器的缓存。于是我便去清除了一下chrome的缓存，依然无样式，事实证明这个猜想不成立。</p>
+<p>于是我陷入了死胡同……</p>
+<p>无意间我打开控制台发现了重大的关键信息：</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/wrong.jpg" alt="image"></p>
+<p>我立马提着这个问题去见了度娘，发现了这个报错的原因：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERR_CERT_COMMON_NAME_INVALID就是用一个错误的域名访问了某个节点的https资源。</span><br></pre></td></tr></table></figure>
+<h2 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h2><p>虽然并没有得到问题的根本所在，但这个结果又让我重新奋起，理清头绪重新来过。</p>
+<p>根据上面得到的信息，我去看了一下我博客的源码，发现css引用的路径都是类似于这种：”/css/SimpleStyle.min.css”</p>
+<p>也就是说我博客引用取的css样式路径是这样的：<a href="http://coopo.cc//css/SimpleStyle.min.css" target="_blank" rel="noopener">http://coopo.cc//css/SimpleStyle.min.css</a></p>
+<p>在这之后我并没有做其他的是，而是回忆了一下一般一个完整的URL地址包括哪些内容?于是我在控制台输入了location，回车，展开发现了以下关键内容：</p>
+<ul>
+<li>hash</li>
+<li>host</li>
+<li>hostname</li>
+<li>href</li>
+<li>origin</li>
+<li>pathname</li>
+<li>port</li>
+<li>protocol</li>
+<li>search</li>
+</ul>
+<p>衍生知识结束后我立即做出了猜想：是不是我的css样式路径有问题？</p>
+<p>于是我在控制台中，试着打开报错的css文件，发现一下问题</p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/main.jpg" alt="image"></p>
+<p>哎呀我去，这不是强制打开https网站才会出现的提示嘛，于是我做了以下操作：点击高级 -&gt; 点击（继续前往coopo.cc（不安全））；</p>
+<p>发现可以看到css的源码，但是作为小白的我依然得不到什么结论。最后当我发现问题根本所在的时候，发现我的逻辑思维能力还是解决问题能力都好弱（弱鸡）</p>
+<p>我本想再次尝试重新分析问题，然后刷新一下页面，发现博客界面竟然正常显示，也有样式。哎呀，这好比写代码，在键盘上一顿乱敲，无意间得到了结果。这时我心里好像有一万只草泥马在奔腾。</p>
+<p>我知道，这不算解决问题，问题也并没有解决，于是…</p>
+<p>我又去请教我的大神老哥，他给出了一下提示：</p>
+<p>1.打开Safari浏览器再次查看控制台可能问题就清晰了</p>
+<p>2.你博客请求的css文件的url的协议名是https</p>
+<h2 id="再次猜想"><a href="#再次猜想" class="headerlink" title="再次猜想"></a>再次猜想</h2><p>不可能啊，我的域名是<a href="http://coopo.cc" target="_blank" rel="noopener">http://coopo.cc</a> ; 就算是里面的引用的文件路径的协议名应该也是http啊，为什么会变为https：难道是我请求css文件的时候升级了协议（http-&gt;https）;</p>
+<h2 id="证明猜想"><a href="#证明猜想" class="headerlink" title="证明猜想"></a>证明猜想</h2><p>打开控制台，发现还真是：Upgrade-Insecure-Requests: 1，我查了一下这段请求头中的字段是什么意思</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">该指令用于让浏览器自动升级请求从http到https,用于大量包含</span><br><span class="line">http资源的http网页直接升级到https而不会报错.简洁的来讲,</span><br><span class="line">就相当于在http和https之间起的一个过渡作用.</span><br></pre></td></tr></table></figure>
+<p>猜想成立…</p>
+<p>然而我在代码中并没有写任何关于升级协议的代码啊，于是我再次打开源代码，发现了其中包含了这段标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;upgrade-insecure-requests&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>再次搜索这段代码是干什么用的，得到一个结果：</p>
+<p>在html的头部加入meta使得所有的资源请求由http请求转成https请求</p>
+<p>感觉这次不会再出错了，我于是立即删掉这段代码重新部署了一下我的博客，在浏览器地址栏中输入：<a href="http://coopo.cc" target="_blank" rel="noopener">http://coopo.cc</a></p>
+<p><img src="https://raw.githubusercontent.com/Foreverb/foreverb.github.io/master/images/blg.jpg" alt="image"></p>
+<p>问题解决了，欧耶！！！</p>
+<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>回想一下，原来我一直都在绕圈子。</p>
+<p>当我在点击信任css文件查看其源码的时候，我应该看一下地址栏的；</p>
+<ul>
+<li>地址栏中该css文件是以https开头的</li>
+</ul>
+<p>我应该推测到我请求的是以http为协议名的css文件，而我却只有访问以https为协议名的css路径才能查看得到其源码</p>
+<p>也就是说我请求css文件的时候，浏览器将我的http协议升级成了https协议</p>
+<p>然后查看控制台中http报文中的内容我相信我应该可以独立解决这个问题。</p>
+<p>当然这只是我解决问题之后的想法，问题当然只有碰到过，解决过才会感到简单</p>
+<h3 id="大胆猜想，小心证明"><a href="#大胆猜想，小心证明" class="headerlink" title="大胆猜想，小心证明"></a>大胆猜想，小心证明</h3>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

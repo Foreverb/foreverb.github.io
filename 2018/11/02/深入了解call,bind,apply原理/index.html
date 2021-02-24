@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">深入理解 call，apply 和 bind</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">深入理解 call，apply 和 bind</h1>
+        <div class="stuff">
+            <span>十一月 02, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/js/">js</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>转自：<a href="http://www.cnblogs.com/onepixel/p/5143863.html" target="_blank" rel="noopener">http://www.cnblogs.com/onepixel/p/5143863.html</a></p>
+<p>在JavaScript 中，call、apply 和 bind 是 Function 对象自带的三个方法，这三个方法的主要作用是改变函数中的 this 指向，从而可以达到<code>移花接木</code>的效果。本文将对这三个方法进行详细的讲解，并列出几个经典应用场景。</p>
+<h2 id="1、call-thisArgs-args…"><a href="#1、call-thisArgs-args…" class="headerlink" title="1、call(thisArgs [,args…])"></a>1、call(thisArgs [,args…])</h2><p>该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。thisArgs 的取值有以下四种情况：</p>
+<ul>
+<li>不传，或者传null,undefined， 函数中的 this 指向 window 对象</li>
+<li>传递另一个函数的函数名，函数中的 this 指向这个函数的引用</li>
+<li>传递字符串、数值或布尔类型等基础类型，函数中的 this - 指向其对应的包装对象，如 String、Number、Boolean</li>
+<li>传递一个对象，函数中的 this 指向这个对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    console.log(this);//输出函数a中的this对象</span><br><span class="line">&#125;</span><br><span class="line">function b()&#123;&#125;//定义函数b</span><br><span class="line"></span><br><span class="line">var obj = &#123;name:&apos;onepixel&apos;&#125;;//定义对象obj</span><br><span class="line"></span><br><span class="line">a.call();//window</span><br><span class="line">a.call(null);//window</span><br><span class="line">a.call(undefined);//window</span><br><span class="line">a.call(1);//Number</span><br><span class="line">a.call(&apos;&apos;);//String</span><br><span class="line">a.call(true);//Boolean</span><br><span class="line">a.call(b);// function b()&#123;&#125;</span><br><span class="line">a.call(obj);//Object</span><br></pre></td></tr></table></figure>
+<p>这是call 的核心功能，它允许你在一个对象上调用该对象没有定义的方法，并且这个方法可以访问该对象中的属性，至于这样做有什么好处，我待会再讲，我们先看一个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;</span><br><span class="line"></span><br><span class="line">    name:&apos;onepixel&apos;,//定义a的属性</span><br><span class="line"></span><br><span class="line">    say:function()&#123;//定义a的方法</span><br><span class="line">        console.log(&quot;Hi,I&apos;m function a!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function b(name)&#123;</span><br><span class="line">    console.log(&quot;Post params: &quot;+ name);</span><br><span class="line">    console.log(&quot;I&apos;m &quot;+this.name);</span><br><span class="line">    this.say();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b.call(a,&apos;test&apos;);</span><br><span class="line">&gt;&gt;</span><br><span class="line">Postparams: test</span><br><span class="line">I&apos;m onepixel</span><br><span class="line">I&apos;m function a!</span><br></pre></td></tr></table></figure>
+<p>当执行b.call 时，字符串<code>test</code>作为参数传递给了函数b,由于call的作用，函数b中的this指向了对象a, 因此相当于调用了对象a上的函数b,而实际上a中没有定义b 。</p>
+<h2 id="2、apply-thisArgs-args"><a href="#2、apply-thisArgs-args" class="headerlink" title="2、apply(thisArgs [,args[]])"></a>2、apply(thisArgs [,args[]])</h2><p>apply 和 call 的唯一区别是第二个参数的传递方式不同，apply 的第二个参数必须是一个数组，而 call 允许传递一个参数列表。值得你注意的是，虽然 apply 接收的是一个参数数组，但在传递给调用函数时，却是以参数列表的形式传递，我们看个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function b(x,y,z)&#123;</span><br><span class="line">    console.log(x,y,z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b.apply(null,[1,2,3]);// 1 2 3</span><br></pre></td></tr></table></figure>
+<p>apply 的这个特性很重要，我们会在下面的应用场景中提到这个特性。</p>
+<h2 id="3、bind-thisArgs-args…"><a href="#3、bind-thisArgs-args…" class="headerlink" title="3、bind(thisArgs [,args…])"></a>3、bind(thisArgs [,args…])</h2><p>bind是ES5 新增的一个方法，它的传参和call类似，但又和 call/apply 有着显著的不同，即调用 call 或 apply 都会自动执行对应的函数，而 bind 不会执行对应的函数，只是返回了对函数的引用。粗略一看，bind 似乎比call/apply 要落后一些，那ES5为什么还要引入bind 呢？</p>
+<p>其实，ES5引入 bind 的真正目的是为了弥补 call/apply 的不足，由于 call/apply 会对目标函数自动执行，从而导致它无法在事件绑定函数中使用，因为事件绑定函数不需要我们手动执行，它是在事件被触发时由JS 内部自动执行的。而 bind 在实现改变函数 this 的同时又不会自动执行目标函数，因此可以完美的解决上述问题，看一个例子就能明白：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;name:&apos;onepixel&apos;&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 给document添加click事件监听，并绑定onClick函数</span><br><span class="line"> * 通过bind方法设置onClick的this为obj，并传递参数p1,p2</span><br><span class="line"> */</span><br><span class="line">document.addEventListener(&apos;click&apos;,onClick.bind(obj,&apos;p1&apos;,&apos;p2&apos;),false);</span><br><span class="line"></span><br><span class="line">//当点击网页时触发并执行</span><br><span class="line">function onClick(a,b)&#123;</span><br><span class="line">    console.log(</span><br><span class="line">            this.name,//onepixel</span><br><span class="line">            a,//p1</span><br><span class="line">            b //p2</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当点击网页时，onClick 被触发执行，输出onepixel p1 p2, 说明 onClick 中的 this 被 bind 改变成了obj 对象，为了对 bind 进行深入的理解，我们来看一下 bind 的 polyfill 实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">if (!Function.prototype.bind) &#123;</span><br><span class="line">    Function.prototype.bind = function (oThis) &#123;</span><br><span class="line">        var aArgs = Array.prototype.slice.call(arguments, 1),</span><br><span class="line">            fToBind =this,// this在这里指向的是目标函数</span><br><span class="line">            fBound = function () &#123;</span><br><span class="line">                return fToBind.apply(</span><br><span class="line">                    // 如果外部执行var obj = new fBound(),则将obj作为最终的this，放弃使用oThis</span><br><span class="line">                    this instanceof fToBind</span><br><span class="line">                            ?this  // 此时的this就是new出的obj</span><br><span class="line">                            : oThis ||this,// 如果传递的oThis无效，就将fBound的调用者作为this</span><br><span class="line"></span><br><span class="line">                    // 将通过bind传递的参数和调用时传递的参数进行合并，并作为最终的参数传递</span><br><span class="line">                    aArgs.concat(Array.prototype.slice.call(arguments)));</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">        // 将目标函数的原型对象拷贝到新函数中，因为目标函数有可能被当作构造函数使用</span><br><span class="line">        fBound.prototype =this.prototype;</span><br><span class="line"></span><br><span class="line">        // 返回fBond的引用，由外部按需调用</span><br><span class="line">        return fBound;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="一旦函数通过bind传递了有效的this对象，则该函数在运行期的this将指向这个对象，即使通过call或apply来试图改变this的指向也是徒劳的。"><a href="#一旦函数通过bind传递了有效的this对象，则该函数在运行期的this将指向这个对象，即使通过call或apply来试图改变this的指向也是徒劳的。" class="headerlink" title="一旦函数通过bind传递了有效的this对象，则该函数在运行期的this将指向这个对象，即使通过call或apply来试图改变this的指向也是徒劳的。"></a>一旦函数通过bind传递了有效的this对象，则该函数在运行期的this将指向这个对象，即使通过call或apply来试图改变this的指向也是徒劳的。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 实现数组的去重功能</span><br><span class="line">Array.prototype.unique = function(fn) &#123;</span><br><span class="line">        var rst = [];</span><br><span class="line">        var tmp = &#123;&#125;;</span><br><span class="line">        this.forEach(function(val) &#123;</span><br><span class="line">            // 使用call来改变fn的this指向，这里传window</span><br><span class="line">            var key =&apos;uniq&apos; + (typeof fn ===&apos;function&apos; ? fn.call(window, val) : val);</span><br><span class="line">            if (!tmp.hasOwnProperty(key)) &#123;</span><br><span class="line">                rst.push(val);</span><br><span class="line">                tmp[key] =null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,this);</span><br><span class="line"></span><br><span class="line">        return rst;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对象数组去重</span><br><span class="line">var arr = [</span><br><span class="line">    &#123; id: 2 &#125;, &#123; id: 4 &#125;, &#123; id: 3 &#125;, &#123; id: 3 &#125;, &#123; id: 4 &#125;, &#123; id: 6 &#125;</span><br><span class="line">]</span><br><span class="line">arr.unique(function(v) &#123;</span><br><span class="line">     console.log(this)// 使用bind传递了Array,则this一定是Array,而不会是window</span><br><span class="line">     return v.id</span><br><span class="line">&#125;.bind(Array));</span><br></pre></td></tr></table></figure>
+<h2 id="4、应用场景一：继承"><a href="#4、应用场景一：继承" class="headerlink" title="4、应用场景一：继承"></a>4、应用场景一：继承</h2><p>大家知道，JavaScript中没有诸如Java、C# 等高级语言中的extend 关键字，因此JS 中没有继承的概念，如果一定要继承的话，call 和 apply 可以实现这个功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Animal(name,weight)&#123;</span><br><span class="line">   this.name = name;</span><br><span class="line">   this.weight = weight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Cat()&#123;</span><br><span class="line">    Animal.call(this,&apos;cat&apos;,&apos;50&apos;);</span><br><span class="line">  //Animal.apply(this,[&apos;cat&apos;,&apos;50&apos;]);</span><br><span class="line"></span><br><span class="line">   this.say = function()&#123;</span><br><span class="line">      console.log(&quot;I am &quot; +this.name+&quot;,my weight is &quot; +this.weight);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var cat =new Cat();</span><br><span class="line">cat.say();//I am cat,my weight is 50</span><br></pre></td></tr></table></figure>
+<p>当通过new 运算符产生了cat 时，Cat中的 this 就指向了cat对象(关于new运算符的讲解，请参考JS构造函数和new运算符，而继承的关键是在于Cat中执行了Animal.call(this,’cat’,’50’) 这句话，在call中将this作为thisArgs参数传递，于是Animal 方法中的 this 就指向了Cat中的 this，而 cat 中的 this 指向的是 cat 对象，所以Animal 中的 this 指向的就是 cat 对象，在 Animal 中定义了name 和 weight 属性，就相当于在 cat 中定义了这些属性，因此 cat 对象便拥有了Animal 中定义的属性，从而达到了继承的目的。</p>
+<h2 id="5、应用场景二：移花接木"><a href="#5、应用场景二：移花接木" class="headerlink" title="5、应用场景二：移花接木"></a>5、应用场景二：移花接木</h2><p>在讲下面的内容之前，我们首先来认识一下JavaScript 中的一个非标准专业术语：ArrayLike (类数组/伪数组)</p>
+<p>ArrayLike 对象即拥有数组的一部分行为，在DOM 中早已表现出来，而jQuery 的崛起让ArrayLike 在JavaScript 中大放异彩。ArrayLike 对象的精妙在于它和JS 原生的 Array 类似，但是它是自由构建的，它来自开发者对JavaScript 对象的扩展，也就是说：对于它的原型(prototype)我们可以自由定义，而不会污染到JS原生的Array。</p>
+<p>ArrayLike 对象在JS中被广泛使用，比如DOM 中的NodeList, 函数中的arguments 都是类数组对象，这些对象像数组一样存储着每一个元素，但它没有操作数组的方法，而我们可以通过call 将数组的某些方法<code>移接</code>到ArrayLike 对象，从而达到操作其元素的目的。比如我们可以这样遍历函数中的arguments:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">    // 检测arguments是否为Array的实例</span><br><span class="line">    console.log(</span><br><span class="line">            arguments instanceof Array,//false</span><br><span class="line">            Array.isArray(arguments) //false</span><br><span class="line">    );</span><br><span class="line">    // 判断arguments是否有forEach方法</span><br><span class="line">    console.log(arguments.forEach);//undefined</span><br><span class="line"></span><br><span class="line">    // 将数组中的forEach应用到arguments上</span><br><span class="line">    Array.prototype.forEach.call(arguments,function(item)&#123;</span><br><span class="line">        console.log(item);// 1 2 3 4</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">test(1,2,3,4);</span><br></pre></td></tr></table></figure>
+<p>除此之外，对于apply 而言，我们上面提到了它独有的一个特性，即apply 接收的是数组，在传递给调用函数的时候是以参数列表传递的。 这个特性让apply 看起来比call 略胜一筹，比如有这样一个场景：给定一个数组[1,3,4,7]，然后求数组中的最大元素，而我们知道，数组中并没有获取最大值的方法，一般情况下，你需要通过编写代码来实现。而我们知道，Math 对象中有一个获取最大值的方法，即Math.max()， max方法需要传递一个参数列表，然后返回这些参数中的最大值。而apply 不仅可以将Math 对象的max 方法应用到其他对象上，还可以将一个数组转化为参数列表传递给max,看代码就能一目了然：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [2,3,1,5,4];</span><br><span class="line"></span><br><span class="line">Math.max.apply(null,arr);// 5</span><br></pre></td></tr></table></figure>
+<p>以上便是 call 和 apply 比较经典的几个应用场景，熟练掌握这些技巧，并把这些特性应用到你的实际项目中，会使你的代码看起来更加耐人寻味！</p>
+<hr>
+<p>原创发布 @一像素  博客园 2016.01</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

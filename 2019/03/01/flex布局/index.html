@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">flex布局</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">flex布局</h1>
+        <div class="stuff">
+            <span>三月 01, 2019</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/flex/">flex</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/博客/">博客</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/布局/">布局</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="http-flexboxfroggy-com"><a href="#http-flexboxfroggy-com" class="headerlink" title="http://flexboxfroggy.com/"></a><a href="http://flexboxfroggy.com/" target="_blank" rel="noopener">http://flexboxfroggy.com/</a></h1><h1 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h1><h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">flex-direction</span><br><span class="line"></span><br><span class="line">flex设置主轴方向</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">row     横向（由左向右）</span><br><span class="line"></span><br><span class="line">row-reverse   横向（由右向左）  </span><br><span class="line"></span><br><span class="line">column  纵向（由上至下）</span><br><span class="line"></span><br><span class="line">column-reverse  纵向（由下至上）</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-wrap</span><br><span class="line"></span><br><span class="line">属性用于指定弹性盒子的子元素换行方式。</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box&#123;</span><br><span class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nowrap 是flex-wrap的 默认值，弹性容器为单行。该情况下弹性子项可能会溢出容器    </span><br><span class="line"></span><br><span class="line">wrap 就是当子元素宽度总和超过了父级，那么子级就会换行</span><br><span class="line"></span><br><span class="line">wrap-reverse  就是当子元素宽度总和超过了父级，那么该换行的子级就会与不该换行的子级交换位置</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-flow</span><br><span class="line"></span><br><span class="line">是flex-direction和flex-wrap复合属性</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">justify-content</span><br><span class="line"></span><br><span class="line">富裕空间分布（横向）</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">space-between   富裕空间 平均分配在 每两个元素之间</span><br><span class="line"></span><br><span class="line">space-around    富裕空间 每个元素两侧</span><br><span class="line"></span><br><span class="line">center      元素从主轴中间 位置显示,富裕空间在主轴两侧</span><br><span class="line"></span><br><span class="line">flex-start  元素从主轴开始位置显示,富裕空间在主轴结束位置</span><br><span class="line"></span><br><span class="line">flex-end    元素从主轴结束位置显示,富裕空间在主轴开始位置</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">align-items</span><br><span class="line"></span><br><span class="line">富裕空间分布（纵向）</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">center      元素在侧轴中间显示,富裕空间在侧轴两侧</span><br><span class="line"></span><br><span class="line">flex-start   元素在侧轴开始位置显示,富裕空间在侧轴结束位置</span><br><span class="line"></span><br><span class="line">flex-end     元素在侧轴结束位置显示,富裕空间在侧轴开始位置</span><br><span class="line"></span><br><span class="line">baseline    元素在侧轴 根据基线对齐</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">align-content</span><br><span class="line"></span><br><span class="line">属性在弹性容器内的各项没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）。</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.box &#123;</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注意：容器内必须有多行的项目，该属性才能渲染出效果。</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="项目的属性"><a href="#项目的属性" class="headerlink" title="项目的属性"></a>项目的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">order</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  order: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-grow</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex-grow: &lt;number&gt;; /* default 0 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</span><br><span class="line"></span><br><span class="line">如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-shrink</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</span><br><span class="line"></span><br><span class="line">如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</span><br><span class="line"></span><br><span class="line">负值对该属性无效。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex-basis</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex-basis: &lt;length&gt; | auto; /* default auto */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</span><br><span class="line"></span><br><span class="line">它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">flex</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</span><br><span class="line"></span><br><span class="line">建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">align-self</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">.item &#123;</span><br><span class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</span><br><span class="line"></span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<pre><code>$.ajax({    //jquery的ajax格式
+    type: &quot;POST&quot;,
+    url: &quot;ajax.php&quot;,
+    dataType: &quot;json&quot;,
+    data:{&quot;val1&quot;:&quot;abc&quot;,&quot;val2&quot;:123,&quot;val3&quot;:&quot;456&quot;,},
+    beforeSend: function () {
+        //some js code
+    },
+    success: function () {
+        console.log(msg);
+    },
+    error: function () {
+        console.log(&quot;error&quot;);
+    }
+})
+</code></pre>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

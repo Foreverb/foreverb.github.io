@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">express文件上传中间件Multer最新使用说明</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">express文件上传中间件Multer最新使用说明</h1>
+        <div class="stuff">
+            <span>十二月 06, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/express/">express</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/fs/">fs</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/中间件/">中间件</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/文件上传/">文件上传</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>本文转自：</p>
+<p><a href="http://cnodejs.org/topic/564f32631986c7df7e92b0db" target="_blank" rel="noopener">http://cnodejs.org/topic/564f32631986c7df7e92b0db</a></p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>multer是express官方推荐的文件上传中间件，它是在busboy的基础上开发的。目前multer的最新版本为：~1.1.0。本文所有代码段均使用此版本。multer的官方地址：<a href="https://github.com/expressjs/multer" target="_blank" rel="noopener">GitHub</a></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在nodejs下的package.json中添加multer依赖，运行加载依赖库。新建multerUtil.js,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> var  multer=require(&apos;multer&apos;);</span><br><span class="line"> var storage = multer.diskStorage(&#123;</span><br><span class="line">     //设置上传后文件路径，uploads文件夹会自动创建。</span><br><span class="line">        destination: function (req, file, cb) &#123;</span><br><span class="line">            cb(null, &apos;./public/uploads&apos;)</span><br><span class="line">       &#125;,</span><br><span class="line">     //给上传文件重命名，获取添加后缀名</span><br><span class="line">      filename: function (req, file, cb) &#123;</span><br><span class="line">          var fileFormat = (file.originalname).split(&quot;.&quot;);</span><br><span class="line">          cb(null, file.fieldname + &apos;-&apos; + Date.now() + &quot;.&quot; + fileFormat[fileFormat.length - 1]);</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;);  </span><br><span class="line">     //添加配置文件到muler对象。</span><br><span class="line">     var upload = multer(&#123;</span><br><span class="line">          storage: storage</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">	//如需其他设置，请参考multer的limits,使用方法如下。</span><br><span class="line">   //var upload = multer(&#123;</span><br><span class="line">  //    storage: storage,</span><br><span class="line">  //    limits:&#123;&#125;</span><br><span class="line">  // &#125;);</span><br><span class="line"></span><br><span class="line"> //导出对象</span><br><span class="line">module.exports = upload;</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>testController.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var muilter = require(&apos;./multerUtil&apos;);</span><br><span class="line">        //multer有single()中的名称必须是表单上传字段的name名称。</span><br><span class="line"> var upload=muilter.single(&apos;file&apos;);       	   </span><br><span class="line">      exports.dataInput = function (req, res) &#123;</span><br><span class="line">      upload(req, res, function (err) &#123;</span><br><span class="line">        //添加错误处理</span><br><span class="line">    if (err) &#123;</span><br><span class="line">         return  console.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">        //文件信息在req.file或者req.files中显示。</span><br><span class="line">    console.log(req);</span><br><span class="line">  &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>app.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var testController=require(&apos;./testController&apos;);</span><br><span class="line">app.post(&apos;/dataInpute&apos;,testController.dataInput);</span><br></pre></td></tr></table></figure>
+<h2 id="其他说明"><a href="#其他说明" class="headerlink" title="其他说明"></a>其他说明</h2><p>1.文件上传有以下方法</p>
+<ul>
+<li>muilter.single(‘file’)</li>
+</ul>
+<p>适用于单文件上传</p>
+<ul>
+<li>muilter.array(‘file’,num),</li>
+</ul>
+<p>适用于多文件上传，num为最多上传个数，上传文件的数量可以小于num,</p>
+<p>muilter.fields(fields),</p>
+<p>适用于混合上传，比如A类文件1个，B类文件2个。官方API有详细说明。</p>
+<p>2.file为上传字段名称，当使用form表单submit方式上传时，必须与表单上传的name属性保持一致。</p>
+<p>表单记得加上enctype=‘multipart/form-data’</p>
+<p>3.对上传文件大小限制，名称限制等均可在limits中加上，具体可加属性，请参考官方api。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

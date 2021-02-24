@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="简介：redis 本质上是一个高性能的 Key，Value 数据库；支持存储的类型相对更多；（String、list、set、hash）；
+
+ps : 查询频率高，且查询的是相同的内容，就用 red,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">React的设计模式和最佳实践解读(一)</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">React的设计模式和最佳实践解读(一)</h1>
+        <div class="stuff">
+            <span>十二月 15, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JS/">JS</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/react/">react</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第-1-章-React-基础"><a href="#第-1-章-React-基础" class="headerlink" title="第 1 章 React 基础"></a>第 1 章 React 基础</h1><h2 id="1-1-声明式编程"><a href="#1-1-声明式编程" class="headerlink" title="1.1 声明式编程"></a>1.1 声明式编程</h2><p>命令式编程描述代码如何工作，而声明式编程则表明想要实现什 么目的。</p>
+<p>例 ···</p>
+<p>与命令式世界极其相似的一个真实示例就是去酒吧喝啤酒并对服务员做出以下指示:</p>
+<ul>
+<li>从架子上拿一个玻璃杯;</li>
+<li>将杯子放到酒桶前;</li>
+<li>按下酒桶开关，将杯子倒满;</li>
+<li>把杯子递给我。</li>
+</ul>
+<p>但在声明式世界中，你只需要说:“请给我一杯啤酒。”</p>
+<p>···</p>
+<p>命令式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">toLowerCase([&apos;FOO&apos;, &apos;BAR&apos;]) // [&apos;foo&apos;, &apos;bar&apos;]</span><br><span class="line">const toLowerCase = input =&gt; &#123;</span><br><span class="line">      const output = []</span><br><span class="line">      for (let i = 0; i &lt; input.length; i++) &#123;</span><br><span class="line">        output.push(input[i].toLowerCase())</span><br><span class="line">      &#125;</span><br><span class="line">      return output</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>声明式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toLowerCase([&apos;FOO&apos;, &apos;BAR&apos;]) // [&apos;foo&apos;, &apos;bar&apos;]</span><br><span class="line">const toLowerCase = input =&gt; input.map(</span><br><span class="line">      value =&gt; value.toLowerCase()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>声明式优点</p>
+<ol>
+<li>简洁、易读，这对注重可维护性的大型代码库来说非常重要。</li>
+<li>声明式编程中无须使用变量，也不用在执行过程中持续更新变量的值。事实上，声明式编程往往避免了创建和修改状态。</li>
+<li>开发人员只需要描述他们想要实现什么目的，无须列出实现效果的 所有步骤。</li>
+<li>声明式编程方式使得 React很容易使用，因此最终的代码也很简单，这样产生的 bug 也更少， 可维护性也更强。</li>
+</ol>
+<h2 id="1-2-React元素"><a href="#1-2-React元素" class="headerlink" title="1.2 React元素"></a>1.2 React元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      type: Title,</span><br><span class="line">      props: &#123;</span><br><span class="line">        color: &apos;red&apos;,</span><br><span class="line">        children: &apos;Hello, Title!&apos;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>元素最重要的属性是 type，另一个比较特殊的属性是 children，它是可选的，用于表示<br>元素的直接后代。当然，元素还具有其他一些属性。</p>
+<p>type 属性很重要，因为它告诉 React 如何处理元素本身。实际上，如果 type 属性是字符串，<br>那么元素就表示 DOM 节点;如果 type 属性是函数，那么元素就是组件。</p>
+<p>DOM 元素和组件可以互相嵌套，以表示整个渲染树:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    &#123;</span><br><span class="line">      type: Title,</span><br><span class="line">      props: &#123;</span><br><span class="line">        color: &apos;red&apos;,</span><br><span class="line">        children: &#123;</span><br><span class="line">          type: &apos;h1&apos;,</span><br><span class="line">          props: &#123;</span><br><span class="line">            children: &apos;Hello, H1!&apos;</span><br><span class="line">          &#125;</span><br><span class="line">&#125; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当元素的 type 属性是函数时，React 会调用它，传入 props 来取回底层元素。React 会一直 对返回结果递归地执行相同的操作，直到取回完整的 DOM 节点树，然后就可以将它渲染到屏幕。 这个过程称作一致性比较，React DOM 和 React Native 都利用它在各自的平台上创建 UI。</p>
+<h2 id="1-3-忘掉所学的一切"><a href="#1-3-忘掉所学的一切" class="headerlink" title="1.3 忘掉所学的一切"></a>1.3 忘掉所学的一切</h2><h4 id="耦合的定义"><a href="#耦合的定义" class="headerlink" title="耦合的定义"></a>耦合的定义</h4><p>它们(css)定义在不同的文件中，但模板引用了样式文件，而且 CSS 选 择器也遵循了文档标记结构，因此，几乎不可能在不影响其他文件的前提下修改某个文件。</p>
+<h5 id="React-的最终目标是将创建组件所用到的每项技术都封装起来，并根据它们的领域和功能进-行关注点分离"><a href="#React-的最终目标是将创建组件所用到的每项技术都封装起来，并根据它们的领域和功能进-行关注点分离" class="headerlink" title="React 的最终目标是将创建组件所用到的每项技术都封装起来，并根据它们的领域和功能进 行关注点分离"></a>React 的最终目标是将创建组件所用到的每项技术都封装起来，并根据它们的领域和功能进 行关注点分离</h5><p>以下示例展示了 React 文档中的一个样式对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var divStyle = &#123;</span><br><span class="line">  color: &apos;white&apos;,</span><br><span class="line">  backgroundImage: &apos;url(&apos; + imgUrl + &apos;)&apos;, WebkitTransition: &apos;all&apos;, // 注意此处大写的&apos;W&apos; msTransition: &apos;all&apos; // &apos;ms&apos;是唯一小写的厂商前缀</span><br><span class="line">&#125;;</span><br><span class="line">ReactDOM.render()&#123;</span><br><span class="line">    &lt;div style=&#123;divStyle&#125;&gt; hello word ! &lt;/div&gt;</span><br><span class="line">    mountNode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-常见误解"><a href="#1-4-常见误解" class="headerlink" title="1.4 常见误解"></a>1.4 常见误解</h2><h4 id="安装react-cli"><a href="#安装react-cli" class="headerlink" title="安装react-cli"></a>安装react-cli</h4><p>CLI 工具只需要 Node.js/npm 环境，然后就可以全局安装:</p>
+<p>npm install -g create-react-app</p>
+<p>安装好这个可执行程序后，就可以向它传递文件夹名称来创建应用了。</p>
+<p>create-react-app hello-world</p>
+<p>最后，执行 cd hello-world</p>
+<p>命令进入应用的文件夹，接着运行以下命令: npm start</p>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><ul>
+<li>声明式编程：只关注目的是什么</li>
+<li>命令式编程：需要描述代码如何工作的</li>
+<li>耦合的定义：模块与模块之间互不影响</li>
+<li>安装react脚手架</li>
+</ul>
+<h1 id="第-2-章-整理代码"><a href="#第-2-章-整理代码" class="headerlink" title="第 2 章 - 整理代码"></a>第 2 章 - 整理代码</h1><ul>
+<li>JSX 是什么，为什么要使用 JSX。</li>
+<li>Babel 是什么，怎样利用它来编写现代 JavaScript 代码。</li>
+<li>JSX 的主要特性以及其与 HTML 之间的区别。</li>
+<li>编写优雅且可维护的 JSX 代码的最佳实践。</li>
+<li>代码检查(尤其是 ESLint)怎样使得多个应用或团队的 JavaScript 代码风格保持一致。</li>
+<li>函数式编程的基础，以及为何遵循函数范式可以使得我们写出更好的 React 组件。</li>
+</ul>
+<h2 id="2-1-JSX"><a href="#2-1-JSX" class="headerlink" title="2.1 - JSX"></a>2.1 - JSX</h2><p>React 提供了两种定义元素的方式。一种是使用 JavaScript 函数，另一种是使用类似 XML 的 JSX 语法。</p>
+<p>虽然JSX看起来像HTML，但它实际上只是一种更灵敏的方式React.createElement()来编写声明</p>
+<p>因为JSX是JavaScript，我们不能使用JavaScript保留字。这包括class和像for。</p>
+<h2 id="2-1-1-Babel"><a href="#2-1-1-Babel" class="headerlink" title="2.1.1 - Babel"></a>2.1.1 - Babel</h2><h3 id="Babel是什么"><a href="#Babel是什么" class="headerlink" title="Babel是什么"></a>Babel是什么</h3><p>它只是一个将源文件转译成输出文件的工具，配置后才能使用一些转换规则。</p>
+<p>为了在代码中使用 JSX(及 ES2015 的特性)，我们需要安装 Babel。</p>
+<p>abel 可以将 ES2015 的 JavaScript 代码编译成 ES5 的，也可以将 JSX 编译成 JavaScript 函数。<br>这个过程称为转译，因为它将源代码编译成另一份新源代码，而不是可执行文件。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>npm install –global babel-cli</p>
+<p>安装完成后，可以运行以下命令来编译任何 JavaScript 文件。</p>
+<p>babel source.js -o output.js</p>
+<p>Babel 如此强大的原因之一在于可以灵活配置。</p>
+<h3 id="预设配置"><a href="#预设配置" class="headerlink" title="预设配置"></a>预设配置</h3><p>npm install –global babel-preset-es2015</p>
+<p>babel-preset-react</p>
+<p>安装完成后，在根文件夹下创建名为.babelrc 的配置文件，并写入以下代码来告诉 Babel 使 用这些预设配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [</span><br><span class="line">   &quot;es2015&quot;,</span><br><span class="line">   &quot;react&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-1-2-Hello，World"><a href="#2-1-2-Hello，World" class="headerlink" title="2.1.2 - Hello，World!"></a>2.1.2 - Hello，World!</h2><p>创建 div 元素:</p>
+<p>React.createElement(‘div’)</p>
+<p>以下是 JSX 写法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div /&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-1-3-DOM-元素与-React-组件"><a href="#2-1-3-DOM-元素与-React-组件" class="headerlink" title="2.1.3 - DOM 元素与 React 组件"></a>2.1.3 - DOM 元素与 React 组件</h2><p>有了 JSX 后，我们既可以创建 HTML 元素，也可以创建 React 元素;唯一的区别在于它们是否以大写字母开头。</p>
+<p>例如，渲染 HTML 按钮元素时使用<button>，而渲染 Button 组件时使用</button><button>。</button></p>
+<p>前一个按钮会转译为以下代码:</p>
+<p>React.createELement(‘button’)</p>
+<p>后一个按钮会转译为以下代码:</p>
+<p>React.createElement(Button)</p>
+<p>以上区别在于，前一个调用传入了字符串形式的 DOM元素类型，而后者传入了组件本身，这也意味着该组件要存在于当前作用域。</p>
+<h2 id="2-1-4-属性"><a href="#2-1-4-属性" class="headerlink" title="2.1.4 - 属性"></a>2.1.4 - 属性</h2><p>JSX 可以非常方便地书写包含属性的 DOM 元素或 React 组件。实际上，用 XML 设置元素属性就很简单。</p>
+<pre><code>&lt;img src=&quot;https://facebook.github.io/react/img/logo.svg&quot; alt=&quot;React.js&quot; /&gt;
+
+JavaScript 的等效写法如下所示:
+
+React.createElement(&quot;img&quot;, {
+  src: &quot;https://facebook.github.io/react/img/logo.svg&quot;,
+  alt: &quot;React.js&quot;
+});
+</code></pre><h2 id="2-1-5-子元素"><a href="#2-1-5-子元素" class="headerlink" title="2.1.5 子元素"></a>2.1.5 子元素</h2><p>JSX 允许定义子元素来描述元素树，并构建复杂的 UI。</p>
+<p>类似 XML 的 JSX 代码拥有更好的可读性和可维护性</p>
+<p>JSX 的妙处在于没有限制只能将元素嵌套为其他元素的子元素，还可以使用函数或变量这样 的 JavaScript 表达式。</p>
+<p>要想这样做，只需要用双花括号括起表达式即可:</p>
+<div><br>  Hello, {variable}.<br>  I’m a {function()}.<br></div>
+
+<p>同理，这也适用于非字符串属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&#123;this.makeHref()&#125;&gt;Click me!&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-1-6-JSX-与-HTML-的区别"><a href="#2-1-6-JSX-与-HTML-的区别" class="headerlink" title="2.1.6 JSX 与 HTML 的区别"></a>2.1.6 JSX 与 HTML 的区别</h2><h3 id="1-属性"><a href="#1-属性" class="headerlink" title="1. 属性"></a>1. 属性</h3><p>我们要始终牢记，JSX 不是一门标准语言，需要转译成 JavaScript。由于这一点，有些属性无法使用。</p>
+<p>比如，我们需要用 className 取代 class，用 htmlFor 取代for:</p>
+<label classname="awesome-label" htmlfor="name">
+
+<p>这是因为 class 和 for 都是 JavaScript 的保留字。</p>
+<h3 id="2-样式"><a href="#2-样式" class="headerlink" title="2. 样式"></a>2. 样式</h3><p>非常明显的区别之一就是样式属性的工作原理。我们将在第 7 章中介绍更多细节，目前只需 要了解其工作原理即可。</p>
+<p>与 HTML 不同，样式属性期望传入 JavaScript 对象，而不是 CSS 字符串，而且样式名的写法 为驼峰式命名法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&#123;&#123; backgroundColor: &apos;red&apos; &#125;&#125; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-根元素"><a href="#3-根元素" class="headerlink" title="3. 根元素"></a>3. 根元素</h3><p>JSX 和 HTML 之间还有一个很重要的区别值得一提，因为 JSX 元素会转换为 JavaScript 函数， 但 JavaScript 不允许返回两个函数，因此如果有多个同级元素，需要强制将它们封装在一个父元 素中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div /&gt;</span><br><span class="line">&lt;div /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上述代码会导致以下错误:</p>
+<p>Adjacent JSX elements must be wrapped in an enclosing tag</p>
+<p>而以下写法就是有效的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div /&gt;</span><br><span class="line">    &lt;div /&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-空格"><a href="#4-空格" class="headerlink" title="4. 空格"></a>4. 空格</h3><p>JSX 不是 HTML 这个是事实，尽管它的语 法很像 XML。</p>
+<p>JSX 处理文本和元素间的空格的方式与 HTML 不同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">      &lt;span&gt;foo&lt;/span&gt;</span><br><span class="line">      bar</span><br><span class="line">      &lt;span&gt;baz&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>浏览器解析 HTML 时，以上代码会显示 foo bar baz</p>
+<p>而 JSX 会将同一份代码渲染为 foobarbaz，这是因为嵌套的三行代码转译成了 div 元素的 独立子元素，没有将空格计算在内<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div&gt;</span><br><span class="line">      &lt;span&gt;foo&lt;/span&gt;</span><br><span class="line">      &#123;&apos; &apos;&#125;</span><br><span class="line">      bar</span><br><span class="line">      &#123;&apos; &apos;&#125;</span><br><span class="line">      &lt;span&gt;baz&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>JavaScript 表达式封装了空字符串来强制编译器在元素间插入空格</p>
+<h2 id="5-布尔值属性"><a href="#5-布尔值属性" class="headerlink" title="5. 布尔值属性"></a>5. 布尔值属性</h2><p>在 JSX 中定义布尔值属性前，如果设置某个属性却 没有赋值，那么 JSX 会默认其值是 true，这种行为类似 HTML 的 disabled 属性。</p>
+<p>这意味着如果要将属性值设置为 false，则需要显式地声明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;button disabled /&gt;</span><br><span class="line"></span><br><span class="line">React.createElement(&quot;button&quot;, &#123; disabled: true &#125;);</span><br><span class="line">---</span><br><span class="line">&lt;button disabled=&#123;false&#125; /&gt;</span><br><span class="line"></span><br><span class="line">React.createElement(&quot;button&quot;, &#123; disabled: false &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="2-1-9-常见模式"><a href="#2-1-9-常见模式" class="headerlink" title="2.1.9 常见模式"></a>2.1.9 常见模式</h2><ol>
+<li>多行书写</li>
+</ol>
+<p>应该倾向于使用 JSX 而不是 createElement 方法， 主要原因之一便是 JSX 的语法很像 XML，而且对称的开闭标签可以完美地表示节点树。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;Header /&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Main content=&#123;...&#125; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>如果出现子节点不是元素，而是文本或变量这样的例外情况，那么应该和父节点的标签写在 同一行，并避免产生混淆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div&gt;</span><br><span class="line">      &lt;Alert&gt;&#123;message&#125;&lt;/Alert&gt;</span><br><span class="line">      &lt;Button&gt;Close&lt;/Button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>多行书写元素时，一定要记得用括号封装它们。JSX 本质上会替换成函数，由于自动分号插 入机制的存在，另起一行的函数可能会导致意外结果。</p>
+<p>以下示例可以正常运行，因为 div 元素和返回在同一行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return &lt;div /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>但接下来的示例就失效了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">return</span><br><span class="line">  &lt;div /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>因为它会转换为以下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">return;</span><br><span class="line">React.createElement(&quot;div&quot;, null);</span><br></pre></td></tr></table></figure></p>
+<p>  因此你需要将代码语句包裹在括号内:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return (</span><br><span class="line">  &lt;div /&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>多个属性的书写</li>
+</ol>
+<p>一种方案是将所有属性写在同一 行，但这样会使得一行代码变得特别长，我们不希望代码出现这种情况</p>
+<p>常见的解决方案是一行书写一个属性，同时缩进一个层级，并保持结尾括号和开始标签 对齐:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button</span><br><span class="line">  foo=&quot;bar&quot;</span><br><span class="line">  veryLongPropertyName=&quot;baz&quot;</span><br><span class="line">  onSomething=&#123;this.handleSomething&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>条件语句</li>
+</ol>
+<p>尽量简洁</p>
+<p>三元运算符</p>
+<p>对象的 getter 方法</p>
+<p>render-if<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save render-if</span><br></pre></td></tr></table></figure></p>
+<p>react-only-if</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save react-only-if</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>循环</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">      &#123;users.map(user =&gt;&lt;li&gt;&#123;user.name&#125;&lt;/li&gt;)&#125;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>控制语句</li>
+</ol>
+<p>我们的目的是从组件中移除==所有逻辑==，尤其是渲染方法中的。但有时需要根据应 用的状态来显示或隐藏元素，经常还需要遍历集合与数组</p>
+<p>Babel 插件: jsx-control-statements。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save jsx-control-statements</span><br></pre></td></tr></table></figure>
+<p>安装完成后，将它添加到.babelrc 文件中的 Babel 插件列表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;plugins&quot;: [&quot;jsx-control-statements&quot;]</span><br></pre></td></tr></table></figure></p>
+<p>接着就可以使用这个插件提供的语法了，Babel 会将它连同普通的 JSX 语法一同转译。</p>
+<p>以下是使用该插件编写的条件语句:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;If condition=&#123;this.canShowSecretData&#125;&gt;</span><br><span class="line">  &lt;SecretData /&gt;</span><br><span class="line">&lt;/If&gt;</span><br></pre></td></tr></table></figure>
+<p>它会转译为三元表达式，如下所示:</p>
+<p>{canShowSecretData ? <secretdata> : null}</secretdata></p>
+<p>If 组件非常有用，但如果渲染方法中需要嵌套条件，那么它很容易变得混乱且难以理解。</p>
+<p>查看以下 Choose 组件的代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Choose&gt;</span><br><span class="line">  &lt;When condition=&#123;...&#125;&gt;</span><br><span class="line">    &lt;span&gt;if&lt;/span&gt;</span><br><span class="line">  &lt;/When&gt;</span><br><span class="line">  &lt;When condition=&#123;...&#125;&gt;</span><br><span class="line">    &lt;span&gt;else if&lt;/span&gt;</span><br><span class="line">  &lt;/When&gt;</span><br><span class="line">  &lt;Otherwise&gt;</span><br><span class="line">    &lt;span&gt;else&lt;/span&gt;</span><br><span class="line">  &lt;/Otherwise&gt;</span><br><span class="line">&lt;/Choose&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  注意!上述代码会转译为多个三元表达式。</p>
+<p>最后，我们介绍一个可以轻松实现循环的组件(记住，我们所提到的并非真实的组件，而只 是语法糖):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;For each=&quot;user&quot; of=&#123;this.props.users&#125;&gt;</span><br><span class="line">    &lt;li&gt;&#123;user.name&#125;&lt;/li&gt;</span><br><span class="line">  &lt;/For&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
+<p>linter(一种代码检查工具)</p>
+<p>为了避免代码检查时报错， 我们需要安装另一个插件:eslintplugin-jsx-control-statements</p>
+<ol start="6">
+<li>次级渲染</li>
+</ol>
+<p>我们总是希望组件可以足够小，渲染方法也要简单明了</p>
+<h2 id="2-2-ESLint"><a href="#2-2-ESLint" class="headerlink" title="2.2 ESLint"></a>2.2 ESLint</h2><h3 id="2-2-1-安装"><a href="#2-2-1-安装" class="headerlink" title="2.2.1 安装"></a>2.2.1 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --global eslint</span><br><span class="line"></span><br><span class="line">eslint source.js</span><br></pre></td></tr></table></figure>
+<p>输出结果会告诉我们文件中是否有错。</p>
+<p>安装后首次运行不会看到任何报错，因为它各方面都需要配置，一开始并不包含任何默认规则。</p>
+<h3 id="2-2-2-配置"><a href="#2-2-2-配置" class="headerlink" title="2.2.2 配置"></a>2.2.2 配置</h3><p>可以使用位于项目根目录的.eslintrc 文件来配置 ESLint。</p>
+<p>略略略略略略略略略。。。。。</p>
+<h3 id="2-2-3-React-插件"><a href="#2-2-3-React-插件" class="headerlink" title="2.2.3 React 插件"></a>2.2.3 React 插件</h3><h3 id="2-2-4-Airbnb-的配置"><a href="#2-2-4-Airbnb-的配置" class="headerlink" title="2.2.4 Airbnb 的配置"></a>2.2.4 Airbnb 的配置</h3><hr>
+<h2 id="2-3-函数式编程基础"><a href="#2-3-函数式编程基础" class="headerlink" title="2.3 函数式编程基础"></a>2.3 函数式编程基础</h2><p>除了编写 JSX 时遵循最佳实践，并使用 linter 来加强代码一致性以更早发现错误</p>
+<p>保持代码简洁的另一个方法是:遵循函数式编程风格。</p>
+<h3 id="2-3-1-一等对象"><a href="#2-3-1-一等对象" class="headerlink" title="2.3.1 一等对象"></a>2.3.1 一等对象</h3><p>JavaScript 的函数是一等对象，这意味着它们可以赋给变量，也可以作为参数传递给其他函数。</p>
+<h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><p>==高阶函数==接受一个函数作为参数，也可以传入其他参数， 最后返回另一个函数。返回的函数通常会添加一些增强的特殊行为</p>
+<p>一个两数相加的函数在增强后先打印所有参数，再接着执行原先的逻辑:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const add = (x, y) =&gt; x + y</span><br><span class="line">    const log = func =&gt; (...args) =&gt; &#123;</span><br><span class="line">      console.log(...args)</span><br><span class="line">      return func(...args)</span><br><span class="line">    &#125;</span><br><span class="line">    const logAdd = log(add)</span><br></pre></td></tr></table></figure>
+<p>理解这个概念非常重要，因为 React 领域的一个常用模式是使用==高阶组件==，将组件当作函数， 并为它们增加一些常用行为。</p>
+<h3 id="2-3-2-纯粹性"><a href="#2-3-2-纯粹性" class="headerlink" title="2.3.2 纯粹性"></a>2.3.2 纯粹性</h3><p>编写纯粹函数是函数式编程的一个重要方面。</p>
+<p>函数的纯粹性到底指什么呢?</p>
+<p>==纯粹函数==( 纯函数 )是指它不产生副作用，也就是说它不会改变自身作用域以外的任何东西。</p>
+<p>举例来说，如果函数改变了应用状态、修改了上层作用域定义的变量，或者与 DOM 这样的 外部实体发生了交互，那么该函数就是非纯粹函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const add = (x, y) =&gt; x + y</span><br></pre></td></tr></table></figure>
+<p>它可以运行多次，并且总能得到同样的结果，因为没有将数据存储在其他地方，也没有修改 任何东西。</p>
+<p>非纯粹函数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let x = 0</span><br><span class="line">const add = y =&gt; (x = x + y)</span><br></pre></td></tr></table></figure></p>
+<p>执行 add(1)两次，但得到了两个不同的结果。第一次是 1，而第二次是 2，尽管我们是用同 样的参数调用同一个函数。出现这种情况的原因在于每次执行都修改了全局状态。</p>
+<h3 id="2-3-3-不可变性"><a href="#2-3-3-不可变性" class="headerlink" title="2.3.3 不可变性"></a>2.3.3 不可变性</h3><p>在函数式编程中，函数不会修改变量值，而是创建新的变量，赋新值后再返回变量。操作数据的这种<br>方式称为==不可变性==。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const add3 = arr =&gt; arr.push(3)</span><br><span class="line">const myArr = [1, 2]</span><br><span class="line">add3(myArr) // [1, 2, 3]</span><br><span class="line">add3(myArr) // [1, 2, 3, 3]</span><br></pre></td></tr></table></figure></p>
+<p>上述代码中的函数没有遵循不可变性，因为它修改了给定数组的值。另外，调用这个函数两 次会得到不同结果。</p>
+<p>可以用 concat 方法改写以上函数，使其满足不可变性。concat 方法会返回新数组，而且 不会修改原数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const add3 = arr =&gt; arr.concat(3)</span><br><span class="line">const myArr = [1, 2]</span><br><span class="line">const result1 = add3(myArr) // [1, 2, 3]</span><br><span class="line">const result2 = add3(myArr) // [1, 2, 3]</span><br></pre></td></tr></table></figure></p>
+<p>此时即便运行该函数两次，myArr 仍然保有初始值。</p>
+<h3 id="2-3-4-柯里化"><a href="#2-3-4-柯里化" class="headerlink" title="2.3.4 柯里化"></a>2.3.4 柯里化</h3><p>柯里化过程就是将多参数函数转换成单参数函数，这些单 参数函数的返回值也是函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const add = (x, y) =&gt; x + y</span><br></pre></td></tr></table></figure></p>
+<p>将其定义为以下写法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const add = x =&gt; y =&gt; x + y</span><br></pre></td></tr></table></figure></p>
+<p>然后按以下方式使用它:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const add1 = add(1)</span><br><span class="line">add1(2) // 3</span><br><span class="line">add1(3) // 4</span><br></pre></td></tr></table></figure></p>
+<p>这种函数写法相当方便，因为传入第一个参数后，第一个值被保留起来，返回的第二个函数 可以多次复用。</p>
+<h3 id="2-3-5-组合"><a href="#2-3-5-组合" class="headerlink" title="2.3.5 组合"></a>2.3.5 组合</h3><p>函数(和组件)可以结合<br>产生新函数，从而提供更高级的功能与属性。</p>
+<p>思考以下函数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const add = (x, y) =&gt; x + y</span><br><span class="line">const square = x =&gt; x * x</span><br></pre></td></tr></table></figure></p>
+<p>这两个函数可以组合创建一个新函数，用于两数相加，再对结果求平方:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const addAndSquare = (x, y) =&gt; square(add(x, y))</span><br></pre></td></tr></table></figure>
+<p>遵循这个范式就可以编写小而简单、易于测试的纯粹函数，然后再将它们组合起来使用。</p>
+<h3 id="2-3-6-函数式编程与-UI"><a href="#2-3-6-函数式编程与-UI" class="headerlink" title="2.3.6 函数式编程与 UI"></a>2.3.6 函数式编程与 UI</h3><p>如何用函数式编程构建 UI，这也正是使用 React 的目的。</p>
+<p>可以将 UI 看作传入应用状态的函数，如下所示: UI = f(state)</p>
+<p>我们希望这是一个幂等函数，即传入相同的应用状态时会返回同样的 UI。</p>
+<p>组件可以组合形成最后的 UI，这也正是函数式编程的特性之一。</p>
+<h2 id="2-4-小结"><a href="#2-4-小结" class="headerlink" title="2.4 小结"></a>2.4 小结</h2><p>本章介绍了大量有关 JSX 工作原理的内容，以及如何在组件中正确使用 JSX。我们从基础语法入手，奠定扎实基础以掌握 JSX 及其特性。</p>
+<p>第二部分将介绍 ESLint 及其插件如何帮助我们更快发现错误，以及怎样在代码库中强制推行一致的风格指南。</p>
+<p>最后，我们介绍了函数式编程的基础，以理解开发 React 应用所需要的重要概念。</p>
+</label>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
