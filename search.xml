@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title>原型链和继承</title>
+      <link href="/2020/03/02/%E5%86%B2%E5%88%BA%E9%98%BF%E9%87%8C%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
+      <url>/2020/03/02/%E5%86%B2%E5%88%BA%E9%98%BF%E9%87%8C%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
+      
+        <content type="html"><![CDATA[<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>js对象独有的<strong>proto</strong>属性，当访问一个对象的属性是，如果对象内不存在这个属性，会去它的<strong>proto</strong>属性所指向的对象（父对象）里找，直到null</p><hr><p>函数yang：function yang(){};</p><p>let a = new yang();</p><p>a.__proto === yang.prototype;</p><p>yang.prototype.constructor = function yang(){}</p><hr><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//给函数yang的原型上面添加一个name属性</span><br><span class="line">yang.prototype.name = &apos;ygb&apos;;</span><br><span class="line"></span><br><span class="line">// 继承函数原型中的name属性</span><br><span class="line">let h1 = new yang();</span><br><span class="line">console.log(h1.name)  =&gt;   &apos;ygb&apos;;</span><br><span class="line"></span><br><span class="line">let h2 = new yang();</span><br><span class="line"></span><br><span class="line">//这里修改的不是原型对象的name属性，而是给h2自己新增了一个name属性，进行了赋值</span><br><span class="line">h2.name = &apos;zzz&apos;;</span><br><span class="line">console.log(h2.name)  =&gt;  &apos;zzz&apos;</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/2020121610052394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAwMzg1MA==,size_16,color_FFFFFF,t_70#pic_center" alt="image"></p><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//定义一个 Animal 构造函数，作为 Dog 的父类</span><br><span class="line">function Animal () &#123;</span><br><span class="line">    this.superType = &apos;Animal&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Animal.prototype.superSpeak = function () &#123;</span><br><span class="line">    alert(this.superType);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Dog (name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.type = &apos;Dog&apos;;  </span><br><span class="line">&#125;</span><br><span class="line">//改变Dog的prototype指针，指向一个 Animal 实例</span><br><span class="line">Dog.prototype = new Animal();</span><br><span class="line">//上面那行就相当于这么写</span><br><span class="line">//var animal = new Animal();</span><br><span class="line">//Dog.prototype = animal;</span><br><span class="line"></span><br><span class="line">Dog.prototype.speak = function () &#123;</span><br><span class="line">　　alert(this.type);</span><br><span class="line">&#125;</span><br><span class="line">var doggie = new Dog(&apos;jiwawa&apos;);</span><br><span class="line">doggie.superSpeak();  //Animal</span><br></pre></td></tr></table></figure><p>就是当重写了Dog.prototype指向的原型对象后，实例的内部指针也发生了改变，指向了新的原型对象，然后就能实现类与类之间的继承了。</p><h3 id="构造函数、原型与实例之间的关系"><a href="#构造函数、原型与实例之间的关系" class="headerlink" title="构造函数、原型与实例之间的关系"></a>构造函数、原型与实例之间的关系</h3><p>每个构造函数都有一个原型对象（Fn.prototype）</p><p>每个原型内部都会有一个指针指向构造函数（Fn.prototype.constructor）</p><p>实例都包含一个指向原型对象的内部指针（new Fn().<strong>proto</strong> ）</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> 原型链 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>SSL证书作用以及如何工作的</title>
+      <link href="/2020/03/01/SSL%E8%AF%81%E4%B9%A6/"/>
+      <url>/2020/03/01/SSL%E8%AF%81%E4%B9%A6/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SSL证书如何工作的"><a href="#SSL证书如何工作的" class="headerlink" title="SSL证书如何工作的"></a>SSL证书如何工作的</h3><p>https证书 –&gt; SSL证书</p><h4 id="SSl证书的作用"><a href="#SSl证书的作用" class="headerlink" title="SSl证书的作用"></a>SSl证书的作用</h4><p>SSL证书的作用就好比信封封条的作用，确保客户端与服务器之间传输的信息没有被他人篡改或窃取，信息是经过加密的。</p><h4 id="什么是加密？"><a href="#什么是加密？" class="headerlink" title="什么是加密？"></a>什么是加密？</h4><p>在https网站内与服务器交换数据时，数据会被转化为不可以读的字符串</p><p>比如：在网站上面的进行登录操作时，密码会被转化为不可读的乱码，即使被截取也无法解密</p><p><img src="http://p9.itc.cn/images01/20201103/d265e23b683540d1a5ab4d05eeed91ff.png" alt="image"></p><h4 id="SSL证书如何工作？"><a href="#SSL证书如何工作？" class="headerlink" title="SSL证书如何工作？"></a>SSL证书如何工作？</h4><p>SSL证书基于公共密钥基础设施（PKI）与公钥加密，公钥用于加密，私钥则用于解密。</p><ul><li>如何获取公钥</li></ul><p>访问网站的每个人都将会收到对应证书的公钥</p><p>-查看公钥</p><p>可以通过在浏览器中查看SSL证书详细信息来查看网站的公钥</p><ul><li>解密</li></ul><p>使用特定公钥加密的信息只能使用附属于该公匙的私钥进行解密。</p><ul><li>非对称加密</li></ul><p>如果经客户端验证公钥可以与私钥进行匹配，则建立安全连接。这称为“非对称加密”。</p><h4 id="SSL握手"><a href="#SSL握手" class="headerlink" title="SSL握手"></a>SSL握手</h4><ul><li>定义</li></ul><p>建立安全连接的过程称为“SSL握手”</p><ul><li>步骤</li></ul><ol><li>交换加密功能</li><li>服务器验证</li><li>密钥传输</li></ol><ul><li>解释</li></ul><ol><li>客户端和服务器互相问好：客户端向服务器发送一条信息，并且携带ssl证书信息；作为回应，服务器也会发送一条信息，并且携带ssl证书信息</li><li>客户端验证服务器身份的阶段：通过SSL证书。SSL证书包含所有者/组织、其位置的公钥、有效日期等信息，客户端确保有效的证书颁发机构CA已验证证书</li><li>共享密钥：</li></ol><p>非对称加密</p><ul><li>客户端使用公共密钥生成预主密钥并且发送到服务器</li><li>服务器使用其私钥解密该预主密钥</li><li>客户端和服务器就会计算出一个新密钥</li></ul><p>对称加密</p><ul><li>主密钥用于加密和解密在客户端和服务器之间传输的信息</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> SSL </tag>
+            
+            <tag> 对称加密 </tag>
+            
+            <tag> HTTPS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>redis 在 mac 下的安装与使用</title>
       <link href="/2019/10/14/2019-10-14:redis%20%E5%9C%A8%20mac%20%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
       <url>/2019/10/14/2019-10-14:redis%20%E5%9C%A8%20mac%20%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
@@ -313,29 +359,6 @@
     </entry>
     
     <entry>
-      <title>JS特效-黑客帝国矩阵</title>
-      <link href="/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/"/>
-      <url>/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</url>
-      
-        <content type="html"><![CDATA[<p>简直不是我等凡人能理解的。。js代码仅有 308 个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(s=window.screen,w=q.width=s.width,h=q.height=s.height,m=Math.random,p=[],i=0;i&lt;256;p[i++]=1);setInterval(&apos;9Style=\&apos;rgba(0,0,0,.05)\&apos;9Rect(0,0,w,h)9Style=\&apos;#0F0\&apos;;p.map(function(v,i)&#123;9Text(String.fromCharCode(3e4+m()*33),i*10,v);p[i]=v&gt;758+m()*1e4?0:v+10&#125;)&apos;.split(9).join(&apos;;q.getContext(\&apos;2d\&apos;).fill&apos;),33)</span><br></pre></td></tr></table></figure><p><a href="http://webooxx.com/rdemo/matrix.html" target="_blank" rel="noopener">效果预览</a></p><p>本文摘自<br><a href="http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/" target="_blank" rel="noopener">http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</a></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> js </tag>
-            
-            <tag> 一行代码 </tag>
-            
-            <tag> 特效 </tag>
-            
-            <tag> 黑客帝国 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>通用上传组件设计</title>
       <link href="/2018/12/04/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
       <url>/2018/12/04/%E9%80%9A%E7%94%A8%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/</url>
@@ -355,6 +378,29 @@
             <tag> 文件上传 </tag>
             
             <tag> fs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JS特效-黑客帝国矩阵</title>
+      <link href="/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/"/>
+      <url>/2018/12/04/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</url>
+      
+        <content type="html"><![CDATA[<p>简直不是我等凡人能理解的。。js代码仅有 308 个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(s=window.screen,w=q.width=s.width,h=q.height=s.height,m=Math.random,p=[],i=0;i&lt;256;p[i++]=1);setInterval(&apos;9Style=\&apos;rgba(0,0,0,.05)\&apos;9Rect(0,0,w,h)9Style=\&apos;#0F0\&apos;;p.map(function(v,i)&#123;9Text(String.fromCharCode(3e4+m()*33),i*10,v);p[i]=v&gt;758+m()*1e4?0:v+10&#125;)&apos;.split(9).join(&apos;;q.getContext(\&apos;2d\&apos;).fill&apos;),33)</span><br></pre></td></tr></table></figure><p><a href="http://webooxx.com/rdemo/matrix.html" target="_blank" rel="noopener">效果预览</a></p><p>本文摘自<br><a href="http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/" target="_blank" rel="noopener">http://webooxx.com/2014/05/30/JS%E7%89%B9%E6%95%88-%E9%BB%91%E5%AE%A2%E5%B8%9D%E5%9B%BD%E7%9F%A9%E9%98%B5/</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 一行代码 </tag>
+            
+            <tag> 特效 </tag>
+            
+            <tag> 黑客帝国 </tag>
             
         </tags>
       
@@ -663,6 +709,25 @@
     </entry>
     
     <entry>
+      <title>箭头函数</title>
+      <link href="/2018/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
+      <url>/2018/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="箭头函数没有arugments"><a href="#箭头函数没有arugments" class="headerlink" title="箭头函数没有arugments"></a>箭头函数没有arugments</h2><p>普通函数有arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123; console.log(arguments) &#125;</span><br><span class="line">a(1,2,3)</span><br><span class="line"></span><br><span class="line">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span><br></pre></td></tr></table></figure><p>箭头函数才有 arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = ()=&gt;&#123; console.log(arguments) &#125;</span><br><span class="line">b(1,2,3)</span><br><span class="line">// VM13852:1 Uncaught ReferenceError: arguments is not defined</span><br></pre></td></tr></table></figure><h2 id="箭头函数的this为定义时的环境"><a href="#箭头函数的this为定义时的环境" class="headerlink" title="箭头函数的this为定义时的环境"></a>箭头函数的this为定义时的环境</h2><p>函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br></pre></td></tr></table></figure><p>真实函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>( <span class="built_in">window</span> )&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 箭头函数原理</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="function">(<span class="params"> (v</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        &#125;.bind( v )</span><br><span class="line"></span><br><span class="line">    &#125; )( <span class="keyword">this</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>定义返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a;</span><br><span class="line"><span class="comment">// ƒ a()&#123; console.log(this) &#125;</span></span><br><span class="line">b;</span><br><span class="line"><span class="comment">// ()=&gt;&#123; console.log(this) &#125;</span></span><br></pre></td></tr></table></figure><p>执行返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br><span class="line"></span><br><span class="line">b()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure><p>其他对象调用返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">obj = &#123;&#125;</span><br><span class="line">obj.name = <span class="string">'myObj'</span>;</span><br><span class="line">obj.fa = a;</span><br><span class="line">obj.fb = b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj.fa();</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;fa: ƒ, name: "myObj", fb: ƒ&#125;</span></span><br><span class="line">obj.fb();</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> JS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>硬连接和软连接</title>
       <link href="/2018/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/"/>
       <url>/2018/07/06/20180706-%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%92%8C%E8%BD%AF%E8%BF%9E%E6%8E%A5/</url>
@@ -678,25 +743,6 @@
             <tag> shell </tag>
             
             <tag> 文件系统 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>箭头函数</title>
-      <link href="/2018/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
-      <url>/2018/07/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
-      
-        <content type="html"><![CDATA[<h2 id="箭头函数没有arugments"><a href="#箭头函数没有arugments" class="headerlink" title="箭头函数没有arugments"></a>箭头函数没有arugments</h2><p>普通函数有arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123; console.log(arguments) &#125;</span><br><span class="line">a(1,2,3)</span><br><span class="line"></span><br><span class="line">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span><br></pre></td></tr></table></figure><p>箭头函数才有 arguments</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = ()=&gt;&#123; console.log(arguments) &#125;</span><br><span class="line">b(1,2,3)</span><br><span class="line">// VM13852:1 Uncaught ReferenceError: arguments is not defined</span><br></pre></td></tr></table></figure><h2 id="箭头函数的this为定义时的环境"><a href="#箭头函数的this为定义时的环境" class="headerlink" title="箭头函数的this为定义时的环境"></a>箭头函数的this为定义时的环境</h2><p>函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br></pre></td></tr></table></figure><p>真实函数定义</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>( <span class="built_in">window</span> )&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="params">()</span>=&gt;</span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 箭头函数原理</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="function">(<span class="params"> (v</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">        &#125;.bind( v )</span><br><span class="line"></span><br><span class="line">    &#125; )( <span class="keyword">this</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>定义返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a;</span><br><span class="line"><span class="comment">// ƒ a()&#123; console.log(this) &#125;</span></span><br><span class="line">b;</span><br><span class="line"><span class="comment">// ()=&gt;&#123; console.log(this) &#125;</span></span><br></pre></td></tr></table></figure><p>执行返回</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br><span class="line"></span><br><span class="line">b()</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure><p>其他对象调用返回<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">obj = &#123;&#125;</span><br><span class="line">obj.name = <span class="string">'myObj'</span>;</span><br><span class="line">obj.fa = a;</span><br><span class="line">obj.fb = b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj.fa();</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;fa: ƒ, name: "myObj", fb: ƒ&#125;</span></span><br><span class="line">obj.fb();</span><br><span class="line"><span class="comment">// Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …&#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 前端 </tag>
-            
-            <tag> JS </tag>
             
         </tags>
       

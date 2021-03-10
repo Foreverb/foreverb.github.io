@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="原型链js对象独有的proto属性，当访问一个对象的属性是，如果对象内不存在这个属性，会去它的proto属性所指向的对象（父对象）里找，直到null
+
+函数yang：function yang(){,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">SSL证书作用以及如何工作的</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">SSL证书作用以及如何工作的</h1>
+        <div class="stuff">
+            <span>三月 01, 2020</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/SSL/">SSL</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/博客/">博客</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/对称加密/">对称加密</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="SSL证书如何工作的"><a href="#SSL证书如何工作的" class="headerlink" title="SSL证书如何工作的"></a>SSL证书如何工作的</h3><p>https证书 –&gt; SSL证书</p>
+<h4 id="SSl证书的作用"><a href="#SSl证书的作用" class="headerlink" title="SSl证书的作用"></a>SSl证书的作用</h4><p>SSL证书的作用就好比信封封条的作用，确保客户端与服务器之间传输的信息没有被他人篡改或窃取，信息是经过加密的。</p>
+<h4 id="什么是加密？"><a href="#什么是加密？" class="headerlink" title="什么是加密？"></a>什么是加密？</h4><p>在https网站内与服务器交换数据时，数据会被转化为不可以读的字符串</p>
+<p>比如：在网站上面的进行登录操作时，密码会被转化为不可读的乱码，即使被截取也无法解密</p>
+<p><img src="http://p9.itc.cn/images01/20201103/d265e23b683540d1a5ab4d05eeed91ff.png" alt="image"></p>
+<h4 id="SSL证书如何工作？"><a href="#SSL证书如何工作？" class="headerlink" title="SSL证书如何工作？"></a>SSL证书如何工作？</h4><p>SSL证书基于公共密钥基础设施（PKI）与公钥加密，公钥用于加密，私钥则用于解密。</p>
+<ul>
+<li>如何获取公钥</li>
+</ul>
+<p>访问网站的每个人都将会收到对应证书的公钥</p>
+<p>-查看公钥</p>
+<p>可以通过在浏览器中查看SSL证书详细信息来查看网站的公钥</p>
+<ul>
+<li>解密</li>
+</ul>
+<p>使用特定公钥加密的信息只能使用附属于该公匙的私钥进行解密。</p>
+<ul>
+<li>非对称加密</li>
+</ul>
+<p>如果经客户端验证公钥可以与私钥进行匹配，则建立安全连接。这称为“非对称加密”。</p>
+<h4 id="SSL握手"><a href="#SSL握手" class="headerlink" title="SSL握手"></a>SSL握手</h4><ul>
+<li>定义</li>
+</ul>
+<p>建立安全连接的过程称为“SSL握手”</p>
+<ul>
+<li>步骤</li>
+</ul>
+<ol>
+<li>交换加密功能</li>
+<li>服务器验证</li>
+<li>密钥传输</li>
+</ol>
+<ul>
+<li>解释</li>
+</ul>
+<ol>
+<li>客户端和服务器互相问好：客户端向服务器发送一条信息，并且携带ssl证书信息；作为回应，服务器也会发送一条信息，并且携带ssl证书信息</li>
+<li>客户端验证服务器身份的阶段：通过SSL证书。SSL证书包含所有者/组织、其位置的公钥、有效日期等信息，客户端确保有效的证书颁发机构CA已验证证书</li>
+<li>共享密钥：</li>
+</ol>
+<p>非对称加密</p>
+<ul>
+<li>客户端使用公共密钥生成预主密钥并且发送到服务器</li>
+<li>服务器使用其私钥解密该预主密钥</li>
+<li>客户端和服务器就会计算出一个新密钥</li>
+</ul>
+<p>对称加密</p>
+<ul>
+<li>主密钥用于加密和解密在客户端和服务器之间传输的信息</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

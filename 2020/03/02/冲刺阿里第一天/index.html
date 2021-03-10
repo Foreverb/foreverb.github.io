@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cooper Yang - A FrontEnd Engineer</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="coopo.cc,"> 
+    <meta name="description" content="原型链js对象独有的proto属性，当访问一个对象的属性是，如果对象内不存在这个属性，会去它的proto属性所指向的对象（父对象）里找，直到null
+
+函数yang：function yang(){,"> 
+    <meta name="author" content="Cooper Yang"> 
+    <link rel="alternative" href="atom.xml" title="Cooper Yang" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">原型链和继承</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">原型链和继承</h1>
+        <div class="stuff">
+            <span>三月 02, 2020</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端/">前端</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/博客/">博客</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/原型链/">原型链</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>js对象独有的<strong>proto</strong>属性，当访问一个对象的属性是，如果对象内不存在这个属性，会去它的<strong>proto</strong>属性所指向的对象（父对象）里找，直到null</p>
+<hr>
+<p>函数yang：function yang(){};</p>
+<p>let a = new yang();</p>
+<p>a.__proto === yang.prototype;</p>
+<p>yang.prototype.constructor = function yang(){}</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//给函数yang的原型上面添加一个name属性</span><br><span class="line">yang.prototype.name = &apos;ygb&apos;;</span><br><span class="line"></span><br><span class="line">// 继承函数原型中的name属性</span><br><span class="line">let h1 = new yang();</span><br><span class="line">console.log(h1.name)  =&gt;   &apos;ygb&apos;;</span><br><span class="line"></span><br><span class="line">let h2 = new yang();</span><br><span class="line"></span><br><span class="line">//这里修改的不是原型对象的name属性，而是给h2自己新增了一个name属性，进行了赋值</span><br><span class="line">h2.name = &apos;zzz&apos;;</span><br><span class="line">console.log(h2.name)  =&gt;  &apos;zzz&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2020121610052394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAwMzg1MA==,size_16,color_FFFFFF,t_70#pic_center" alt="image"></p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//定义一个 Animal 构造函数，作为 Dog 的父类</span><br><span class="line">function Animal () &#123;</span><br><span class="line">    this.superType = &apos;Animal&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Animal.prototype.superSpeak = function () &#123;</span><br><span class="line">    alert(this.superType);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Dog (name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.type = &apos;Dog&apos;;  </span><br><span class="line">&#125;</span><br><span class="line">//改变Dog的prototype指针，指向一个 Animal 实例</span><br><span class="line">Dog.prototype = new Animal();</span><br><span class="line">//上面那行就相当于这么写</span><br><span class="line">//var animal = new Animal();</span><br><span class="line">//Dog.prototype = animal;</span><br><span class="line"></span><br><span class="line">Dog.prototype.speak = function () &#123;</span><br><span class="line">　　alert(this.type);</span><br><span class="line">&#125;</span><br><span class="line">var doggie = new Dog(&apos;jiwawa&apos;);</span><br><span class="line">doggie.superSpeak();  //Animal</span><br></pre></td></tr></table></figure>
+<p>就是当重写了Dog.prototype指向的原型对象后，实例的内部指针也发生了改变，指向了新的原型对象，然后就能实现类与类之间的继承了。</p>
+<h3 id="构造函数、原型与实例之间的关系"><a href="#构造函数、原型与实例之间的关系" class="headerlink" title="构造函数、原型与实例之间的关系"></a>构造函数、原型与实例之间的关系</h3><p>每个构造函数都有一个原型对象（Fn.prototype）</p>
+<p>每个原型内部都会有一个指针指向构造函数（Fn.prototype.constructor）</p>
+<p>实例都包含一个指向原型对象的内部指针（new Fn().<strong>proto</strong> ）</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
